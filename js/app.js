@@ -136,7 +136,7 @@ function changerLangue(code){S.langue=code;sauver();appliquerLangue();dessinerOn
 function dessinerBienvenue(){
   $('e-bienvenue').innerHTML=`<div class="haut-droite">${menuLangues()}</div>
     <div class="heros">${heros(170)}</div>
-    <h1 style="text-align:center">${NOM_APP}</h1>
+    <h1 class="logo-titre"><img src="pwa/logo-darsi.png" alt="${NOM_APP} — درسي" class="logo-darsi"></h1>   <!-- logo Grok, arabe corrigé (identite/) -->
     <p class="doux" style="text-align:center;margin-top:8px;line-height:1.6">${t('sousTitre')}</p>
     <div class="carte etapes">${[['livre','e1t','e1s'],['cible','e2t','e2s'],['famille','e3t','e3s'],['lanterne','e4t','e4s']]
       .map(x=>`<div class="etape"><div class="pastille">${ic(x[0])}</div><div><b>${t(x[1])}</b><span>${t(x[2])}</span></div></div>`).join('')}</div>
@@ -166,7 +166,7 @@ function blocDecompte(){
 function prochaineLecon(){return ORDRE.find(id=>!fait(id))||null}
 function dessinerAccueil(){
   const R=ramadanCourant();
-  let h=`<div class="marque"><h1>${NOM_APP}</h1><span class="lunette">${illuLune(46)}</span></div>
+  let h=`<div class="marque"><h1><img src="pwa/logo-darsi.png" alt="${NOM_APP} — درسي" class="logo-darsi petit"></h1><span class="lunette">${illuLune(46)}</span></div>
     <div class="ligne-salam"><div class="salam">${esc(S.prenom?t('salam',{n:S.prenom}):t('salamSeul'))}</div>
       <div class="entete-boutons">${menuLangues()}<button class="rond" onclick="ouvrirParametres()" aria-label="${t('parametres')}">${ic('reglages')}</button></div></div>`+bandeau();
   if(R&&(R.etat==='pendant'||R.etat==='fini')){

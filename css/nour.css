@@ -723,3 +723,9 @@ body.ecran-qibla{overflow:hidden;overscroll-behavior:none}
 .pwa-banniere.vu{opacity:1;transform:none}
 .pwa-banniere .ic{color:var(--or);vertical-align:-3px}
 .pwa-btns{display:flex;gap:8px;justify-content:flex-end}
+
+/* ---------- Logo Darsi / درسي (dessin Grok, arabe corrigé ; source : identite/logo_darsi.png) ---------- */
+.logo-titre{text-align:center;margin:6px 0 0;line-height:0}
+.logo-darsi{display:inline-block;width:min(74vw,320px);height:auto;filter:drop-shadow(0 6px 18px rgba(0,0,0,.35))}
+.marque h1{line-height:0;background:none;-webkit-background-clip:border-box;background-clip:border-box}
+.logo-darsi.petit{width:auto;height:64px;filter:none}
