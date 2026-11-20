@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#03211a">
+<title>Darsi</title>
+<link rel="icon" href="favicon.png"><link rel="apple-touch-icon" href="pwa/apple-touch-icon.png">
+<!-- Web app (PWA) : installable depuis Safari (iPhone) ou Chrome, fonctionne hors connexion (sw.js, créé par outils/preparer_web.sh) -->
+<link rel="manifest" href="pwa/manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Darsi"><!-- nom : voir NOM_APP dans js/structure.js -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/nour.css">
+</head>
+<body>
+<!-- Animation d'ouverture JINA Studios : jouée en premier à chaque lancement, puis on entre dans l'appli (js/app.js, finIntro) -->
+<div id="intro"><video id="intro-v" src="media/intro.mp4" poster="media/intro-debut.jpg" muted playsinline autoplay preload="auto" disablepictureinpicture></video></div>
+<div class="ciel" id="ciel"></div>
+<div class="motif"></div>
+<div class="app">
+  <section class="ecran" id="e-bienvenue"></section>
+  <section class="ecran" id="e-accueil"></section>
+  <section class="ecran" id="e-theme"></section>
+  <section class="ecran" id="e-ramadan"></section>
+  <section class="ecran" id="e-lecon"></section>
+  <section class="ecran" id="e-quiz"></section>
+  <section class="ecran" id="e-resultat"></section>
+  <section class="ecran" id="e-bilan"></section>
+  <section class="ecran" id="e-famille"></section>
+  <section class="ecran" id="e-ajout"></section>
+  <section class="ecran" id="e-question"></section>
+  <section class="ecran" id="e-relais"></section>
+  <section class="ecran" id="e-classement"></section>
+  <section class="ecran" id="e-parametres"></section>
+  <section class="ecran" id="e-doc"></section>
+  <section class="ecran" id="e-calendrier"></section>
+  <section class="ecran" id="e-recap"></section>
+  <section class="ecran" id="e-qibla"></section>
+  <section class="ecran" id="e-invocations"></section>
+  <section class="ecran" id="e-invocation"></section>
+  <section class="ecran" id="e-parcours"></section>
+  <section class="ecran" id="e-distinctions"></section>
+  <section class="ecran" id="e-boite"></section>
+  <section class="ecran" id="e-boite-poser"></section>
+  <section class="ecran" id="e-imam"></section>
+  <section class="ecran" id="e-imam-poser"></section>
+  <section class="ecran" id="e-mosquees"></section>
+  <section class="ecran" id="e-espace-imam"></section>
+</div>
+<nav class="onglets" id="onglets"></nav>
+<script src="js/icones.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/structure.js"></script>
+<script src="js/sources.js"></script>
+<script src="contenu/fr.js"></script>
+<script src="contenu/fr-expert.js"></script>
+<script src="contenu/legal-fr.js"></script>
+<script src="contenu/calendrier-fr.js"></script>
+<script src="contenu/invocations-fr.js"></script>
+<script src="contenu/en.js"></script><script src="contenu/en-expert.js"></script><script src="contenu/legal-en.js"></script><script src="contenu/calendrier-en.js"></script><script src="contenu/invocations-en.js"></script>
+<script src="contenu/ar.js"></script><script src="contenu/ar-expert.js"></script><script src="contenu/legal-ar.js"></script><script src="contenu/calendrier-ar.js"></script><script src="contenu/invocations-ar.js"></script>
+<script src="contenu/id.js"></script><script src="contenu/id-expert.js"></script><script src="contenu/legal-id.js"></script><script src="contenu/calendrier-id.js"></script><script src="contenu/invocations-id.js"></script>
+<script src="contenu/tr.js"></script><script src="contenu/tr-expert.js"></script><script src="contenu/legal-tr.js"></script><script src="contenu/calendrier-tr.js"></script><script src="contenu/invocations-tr.js"></script>
+<script src="contenu/de.js"></script><script src="contenu/de-expert.js"></script><script src="contenu/legal-de.js"></script><script src="contenu/calendrier-de.js"></script><script src="contenu/invocations-de.js"></script>
+<script src="contenu/nl.js"></script><script src="contenu/nl-expert.js"></script><script src="contenu/legal-nl.js"></script><script src="contenu/calendrier-nl.js"></script><script src="contenu/invocations-nl.js"></script>
+<script src="contenu/es.js"></script><script src="contenu/es-expert.js"></script><script src="contenu/legal-es.js"></script><script src="contenu/calendrier-es.js"></script><script src="contenu/invocations-es.js"></script>
+<script src="contenu/it.js"></script><script src="contenu/it-expert.js"></script><script src="contenu/legal-it.js"></script><script src="contenu/calendrier-it.js"></script><script src="contenu/invocations-it.js"></script>
+<script src="js/geomag.js"></script>
+<script src="js/app.js"></script>
+<script src="js/en_ligne.js"></script>
+<script src="js/imam.js"></script>
+<script src="js/pwa.js"></script>
+</body>
+</html>
