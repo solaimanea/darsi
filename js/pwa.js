@@ -28,6 +28,7 @@
   const masqueeRecemment=()=>{try{return Date.now()-(+localStorage.getItem(CLE)||0)<14*864e5}catch(e){return false}};
   function banniere(html,action){
     if(installee()||masqueeRecemment()||document.getElementById('pwa-banniere'))return;
+    if(!(window.S&&(S.demarre||S.prenom))){setTimeout(()=>banniere(html,action),15000);return}   // pas sur l'écran de bienvenue : on attend « Commencer »
     const b=document.createElement('div');b.id='pwa-banniere';b.className='pwa-banniere';
     b.innerHTML=`<p>${html}</p><div class="pwa-btns">${action?`<button class="btn mini" id="pwa-ok">${tx().ok}</button>`:''}<button class="btn mini sec" id="pwa-non">${tx().non}</button></div>`;
     document.body.appendChild(b);requestAnimationFrame(()=>b.classList.add('vu'));
