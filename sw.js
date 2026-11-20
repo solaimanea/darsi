@@ -1,14 +1,14 @@
 /* Darsi — service worker de la web app (généré par outils/preparer_web.sh à partir de outils/sw-modele.js).
    - À l'installation : met en cache TOUS les fichiers de l'appli → elle s'ouvre et fonctionne sans réseau.
-   - Fichiers de l'appli : servis depuis le cache (instantané, hors ligne).
+   - Fichiers de l'appli : servis depuis le cache (instantané, hors ligne) ; page d'accueil et manifeste : en ligne d'abord.
    - Polices Google : gardées en cache après le premier chargement.
    - Serveur « Demander à l'imam » (Supabase) : toujours en direct, jamais mis en cache.
    - Vidéo d'ouverture : servie depuis le cache avec gestion des « plages » (Safari/iPhone l'exige pour les vidéos).
    - Nouvelle version mise en ligne → nouveau cache, l'ancien est supprimé. */
 'use strict';
-const VERSION = '0799245e5634';
+const VERSION = '68e454282816';
 const CACHE = 'darsi-' + VERSION, POLICES = 'darsi-polices';
-const FICHIERS = ["./", "apple-touch-icon.png", "contenu/ar-expert.js", "contenu/ar.js", "contenu/calendrier-ar.js", "contenu/calendrier-de.js", "contenu/calendrier-en.js", "contenu/calendrier-es.js", "contenu/calendrier-fr.js", "contenu/calendrier-id.js", "contenu/calendrier-it.js", "contenu/calendrier-nl.js", "contenu/calendrier-tr.js", "contenu/de-expert.js", "contenu/de.js", "contenu/en-expert.js", "contenu/en.js", "contenu/es-expert.js", "contenu/es.js", "contenu/fr-expert.js", "contenu/fr.js", "contenu/id-expert.js", "contenu/id.js", "contenu/invocations-ar.js", "contenu/invocations-de.js", "contenu/invocations-en.js", "contenu/invocations-es.js", "contenu/invocations-fr.js", "contenu/invocations-id.js", "contenu/invocations-it.js", "contenu/invocations-nl.js", "contenu/invocations-tr.js", "contenu/it-expert.js", "contenu/it.js", "contenu/legal-ar.js", "contenu/legal-de.js", "contenu/legal-en.js", "contenu/legal-es.js", "contenu/legal-fr.js", "contenu/legal-id.js", "contenu/legal-it.js", "contenu/legal-nl.js", "contenu/legal-tr.js", "contenu/nl-expert.js", "contenu/nl.js", "contenu/tr-expert.js", "contenu/tr.js", "css/nour.css", "favicon.png", "index.html", "js/app.js", "js/en_ligne.js", "js/geomag.js", "js/i18n.js", "js/icones.js", "js/imam.js", "js/pwa.js", "js/sources.js", "js/structure.js", "media/intro-debut.jpg", "pwa/apple-touch-icon.png", "pwa/icone-192.png", "pwa/icone-512.png", "pwa/manifest.webmanifest"];
+const FICHIERS = ["./", "apple-touch-icon.png", "contenu/ar-expert.js", "contenu/ar.js", "contenu/calendrier-ar.js", "contenu/calendrier-de.js", "contenu/calendrier-en.js", "contenu/calendrier-es.js", "contenu/calendrier-fr.js", "contenu/calendrier-id.js", "contenu/calendrier-it.js", "contenu/calendrier-nl.js", "contenu/calendrier-tr.js", "contenu/de-expert.js", "contenu/de.js", "contenu/en-expert.js", "contenu/en.js", "contenu/es-expert.js", "contenu/es.js", "contenu/fr-expert.js", "contenu/fr.js", "contenu/id-expert.js", "contenu/id.js", "contenu/invocations-ar.js", "contenu/invocations-de.js", "contenu/invocations-en.js", "contenu/invocations-es.js", "contenu/invocations-fr.js", "contenu/invocations-id.js", "contenu/invocations-it.js", "contenu/invocations-nl.js", "contenu/invocations-tr.js", "contenu/it-expert.js", "contenu/it.js", "contenu/legal-ar.js", "contenu/legal-de.js", "contenu/legal-en.js", "contenu/legal-es.js", "contenu/legal-fr.js", "contenu/legal-id.js", "contenu/legal-it.js", "contenu/legal-nl.js", "contenu/legal-tr.js", "contenu/nl-expert.js", "contenu/nl.js", "contenu/tr-expert.js", "contenu/tr.js", "css/nour.css", "favicon.png", "index.html", "js/app.js", "js/en_ligne.js", "js/geomag.js", "js/i18n.js", "js/icones.js", "js/imam.js", "js/pwa.js", "js/sources.js", "js/structure.js", "media/intro-debut.jpg", "pwa/apple-touch-icon.png", "pwa/icone-192.png", "pwa/icone-512.png", "pwa/index.html", "pwa/manifest.webmanifest"];
 
 self.addEventListener('install', e => {
   e.waitUntil((async () => {
@@ -50,9 +50,18 @@ self.addEventListener('fetch', e => {
   }
   if (url.origin !== location.origin) return;
   if (url.pathname.endsWith('/media/intro.mp4')) { e.respondWith(plage(req)); return; }
+  // Page d'accueil, manifeste et pages de secours : TOUJOURS en ligne d'abord (versions à jour, adresse de démarrage juste),
+  // le cache ne sert que sans réseau.
+  if (req.mode === 'navigate' || url.pathname.endsWith('.webmanifest')) {
+    e.respondWith((async () => {
+      const c = await caches.open(CACHE);
+      try { const n = await fetch(req, { cache: 'no-store' }); if (n.ok && req.mode !== 'navigate') c.put(req, n.clone()); return n; }
+      catch (x) { return (req.mode === 'navigate' ? ((await c.match('./')) || (await c.match('index.html'))) : (await c.match(req, { ignoreSearch: true }))) || new Response('', { status: 504 }); }
+    })());
+    return;
+  }
   e.respondWith((async () => {
     const c = await caches.open(CACHE);
-    if (req.mode === 'navigate') return (await c.match('./')) || (await c.match('index.html')) || fetch(req);
     const r = await c.match(req, { ignoreSearch: true });
     if (r) return r;
     try { const n = await fetch(req); if (n.ok) c.put(req, n.clone()); return n; }
