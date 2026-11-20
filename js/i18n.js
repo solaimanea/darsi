@@ -696,3 +696,8 @@ it:{qEtalonner:"Calibra la bussola: muovi il telefono disegnando un grande 8, lo
 tr:{qEtalonner:"Pusulayı kalibre et: telefonu metal eşyalardan uzakta ve mıknatıslı kılıf olmadan büyük bir 8 çizerek hareket ettir.",qPrecAttente:"Hassasiyet…",qPrecBonne:"Hassasiyet iyi",qPrecMoyenne:"Hassasiyet orta",qPrecFaible:"Hassasiyet düşük",qSansGpsCourt:"GPS yok",qGauche:"Sola dön",qDroite:"Sağa dön",qPosCourt:"Konum aranıyor…",qGpsCourt:"GPS",qApproxCourt:"Yaklaşık",qs_calligraphie:"Hat sanatı",qs_arabesque:"Arabesk",qs_mihrab:"Mihrap",qs_nuit:"Yıldızlı gece",qs_zellige:"Zellige"},
 id:{qEtalonner:"Kalibrasi kompas: gerakkan ponsel membentuk angka 8 besar, jauh dari benda logam dan tanpa casing magnet.",qPrecAttente:"Akurasi…",qPrecBonne:"Akurasi baik",qPrecMoyenne:"Akurasi sedang",qPrecFaible:"Akurasi rendah",qSansGpsCourt:"Tanpa GPS",qGauche:"Putar ke kiri",qDroite:"Putar ke kanan",qPosCourt:"Mencari posisi…",qGpsCourt:"GPS",qApproxCourt:"Perkiraan",qs_calligraphie:"Kaligrafi",qs_arabesque:"Arabes",qs_mihrab:"Mihrab",qs_nuit:"Malam berbintang",qs_zellige:"Zellige"}};
 for(const l in I18N_QIBLA2)Object.assign(I18N[l],I18N_QIBLA2[l]);
+
+/* Intro JINA Studios : « toucher pour passer » (2026-11-20) */
+const I18N_INTRO={fr:{touchePasser:"Touche pour passer"},en:{touchePasser:"Tap to skip"},ar:{touchePasser:"المس للتخطي"},de:{touchePasser:"Tippen zum Überspringen"},
+ nl:{touchePasser:"Tik om over te slaan"},es:{touchePasser:"Toca para saltar"},it:{touchePasser:"Tocca per saltare"},tr:{touchePasser:"Geçmek için dokun"},id:{touchePasser:"Ketuk untuk melewati"}};
+for(const l in I18N_INTRO)Object.assign(I18N[l],I18N_INTRO[l]);

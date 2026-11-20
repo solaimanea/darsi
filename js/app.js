@@ -135,7 +135,7 @@ function changerLangue(code){S.langue=code;sauver();appliquerLangue();dessinerOn
 /* ---------- Bienvenue ---------- */
 function dessinerBienvenue(){
   $('e-bienvenue').innerHTML=`<div class="haut-droite">${menuLangues()}</div>
-    <div class="heros">${heros(170)}</div>
+    <div class="heros">${heros(104)}</div>   <!-- 2026-11-20 : plus petit, pour que toute la page tienne à l'écran -->
     <h1 class="logo-titre"><img src="pwa/logo-darsi.png" alt="${NOM_APP} — درسي" class="logo-darsi"></h1>   <!-- logo Grok, arabe corrigé (identite/) -->
     <p class="doux" style="text-align:center;margin-top:8px;line-height:1.6">${t('sousTitre')}</p>
     <div class="carte etapes">${[['livre','e1t','e1s'],['cible','e2t','e2s'],['famille','e3t','e3s'],['lanterne','e4t','e4s']]
@@ -1098,11 +1098,13 @@ if((navigator.deviceMemory&&navigator.deviceMemory<=4)||(navigator.hardwareConcu
    Si la vidéo ne peut pas se lire, on entre tout de suite dans l'appli. */
 (function(){
   const z=$('intro'),v=$('intro-v');if(!z)return;
+  const sk=z.querySelector('.op-skip');if(sk)sk.textContent=t('touchePasser');   // « Touche pour passer » dans la langue choisie
   let fini=false;
   const finIntro=()=>{if(fini)return;fini=true;z.classList.add('fin');setTimeout(()=>z.remove(),650)};
   v.addEventListener('ended',finIntro);v.addEventListener('error',finIntro);z.addEventListener('click',finIntro);
   const p=v.play();if(p&&p.catch)p.catch(finIntro);
   setTimeout(finIntro,9000);   // sécurité
+  let lance=false;v.addEventListener('playing',()=>{lance=true});setTimeout(()=>{if(!lance)finIntro()},2500);   // vidéo qui ne démarre pas : pas d'écran noir
 })();
 dessinerCiel();appliquerLangue();dessinerOnglets();
 if(S.demarre||S.prenom)aller('accueil');else dessinerBienvenue();
