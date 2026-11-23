@@ -117,9 +117,10 @@ function ramOuvert(R,n){return DEMO||(R.etat==='pendant'&&n<=R.jour)||R.etat==='
 let RETOUR='accueil';
 function aller(nom){
   clearInterval(T);
+  if($('e-decouvrir').classList.contains('actif')&&$('fil'))FIL.scroll=$('fil').scrollTop;   // on retrouvera la même carte
   document.querySelectorAll('.ecran').forEach(e=>e.classList.remove('actif'));
   $('e-'+nom).classList.add('actif');scrollTo(0,0);majOnglets(nom);
-  document.body.classList.toggle('ecran-qibla',nom==='qibla');if(nom!=='qibla'&&typeof arreterBoussole==='function')arreterBoussole();
+  document.body.classList.toggle('ecran-qibla',nom==='qibla');document.body.classList.toggle('ecran-fil',nom==='decouvrir');if(nom!=='qibla'&&typeof arreterBoussole==='function')arreterBoussole();
   if(nom==='accueil')dessinerAccueil();
 }
 function boutonRetour(action,cle='retour'){return `<button class="retour" onclick="${action}">${ic('gauche','sm')} ${t(cle)}</button>`}
@@ -129,7 +130,7 @@ function selecteurLangue(compact=false){
   return `<label class="langue">${ic('globe','sm')}<select onchange="changerLangue(this.value)" aria-label="${t('langue')}">
     ${LANGUES.map(l=>`<option value="${l.code}"${l.code===S.langue?' selected':''}>${l.nom}</option>`).join('')}</select></label>`;
 }
-function changerLangue(code){S.langue=code;sauver();appliquerLangue();dessinerOnglets();
+function changerLangue(code){S.langue=code;FIL.n=0;$('e-decouvrir').innerHTML='';sauver();appliquerLangue();dessinerOnglets();
   if($('e-parametres').classList.contains('actif'))ouvrirParametres();else if(S.demarre||S.prenom)aller('accueil');else dessinerBienvenue()}
 
 /* ---------- Bienvenue ---------- */
@@ -188,7 +189,7 @@ function dessinerAccueil(){
   // Grille d'icônes : tout est à un toucher
   const R2=ramadanCourant(),nbB=badges().filter(b=>b[2]).length,revOk=S.revision===dateCle(),semN=leconsSemaine().length;
   const T=[
-    ['livre','or',t('t_lecons'),"ouvrirParcours()",Object.keys(S.lecons).length+'/'+LECONS.length],
+    ['chemin','or',t('cheminTitre'),"ouvrirChemin()",Object.keys(S.lecons).length+'/'+LECONS.length],
     ['cible','vert',t('t_revision'),"lancerRevision()",revOk?'ok':''],
     ['calendrier','azur',t('t_semaine'),semN>=2?"ouvrirHebdo()":"",semN>=2?(S.hebdo===cleSemaine()?'ok':''):'verrou'],
     ['lanterne','rose',t('t_ramadan'),"ouvrirRamadan()",R2&&R2.etat==='pendant'?t('jourN',{n:Math.min(R2.jour,30)}):R2&&R2.reste>0?t('jMoins',{n:R2.reste}):''],
@@ -197,7 +198,7 @@ function dessinerAccueil(){
   h+=`<div class="grille-ic">${T.map(([i2,c,lib,act,pastille])=>`<button class="tuile-ic t-${c} ${pastille==='verrou'?'verrou':''}" ${act?`onclick="${act}"`:'disabled'}>
       <span class="rond-ic">${ic(pastille==='verrou'?'cadenas':i2,'lg')}</span><span class="lib">${lib}</span>
       ${pastille&&pastille!=='verrou'?`<span class="pastille-num ${pastille==='ok'?'ok':''}">${pastille==='ok'?ic('check','sm'):esc(pastille)}</span>`:''}</button>`).join('')}</div>
-    <div class="mini-stats"><span>${ic('etoile','sm')} <b>${S.points}</b> ${t('points')}</span><span>${ic('flamme','sm')} <b>${S.serie}</b> ${t('serie')}</span></div>`;
+    <div class="mini-stats"><span>${ic('etoile','sm')} <b>${S.points}</b> ${t('points')}</span><span>${ic('flamme','sm')} <b>${S.serie}</b> ${t('serie')}</span><span>${ic('ampoule','sm')} <b>${apprisTotal()}</b> ${t('appris',{n:apprisTotal()})}</span></div>`;
   $('e-accueil').innerHTML=h;
 }
 
@@ -206,7 +207,7 @@ function badges(){
   const themeFini=Object.keys(CATS).some(k=>parTheme(k).every(l=>fait(l.id))),ramFini=Object.values(S.ram).some(d=>d.final!==null);
   return [['pousse','b1',nbF>=1],['flamme','b2',S.serie>=7],['etoile','b3',parfaits>=1],['livre','b4',themeFini],['lune','b5',S.serie>=30],['trophee','b6',ramFini]];
 }
-function ouvrirParcours(){
+function ouvrirParcours(){ouvrirChemin();return;   // 2026-11-23 : remplacé par « Mon chemin » (js/decouvrir.js)
   $('e-parcours').innerHTML=boutonRetour("aller('accueil')")+`<div class="surtitre">${ic('livre','sm')} ${t('parcours')}</div><h2>${t('monParcours')}</h2>
     <div class="grille-ic themes">${Object.keys(CATS).map((k,n)=>{const arr=parTheme(k),f=arr.filter(l=>fait(l.id)).length,p=Math.round(f/arr.length*100);
       return `<button class="tuile-ic t-${['or','vert','azur','rose','violet'][n%5]}" onclick="ouvrirTheme('${k}')"><span class="rond-ic">${ic(CATS[k],'lg')}</span>
@@ -275,9 +276,25 @@ function ouvrirLecon(id,ram=null,retour=null){
 }
 
 /* ---------- Quiz : on répond à tout, la correction s'affiche à la fin ---------- */
-let Q=[],qi=0,bonnes=0,PTS=0,CTX={},T=null,reste=0,JOUEUR='moi',ORDRE_CHOIX=[],SEL=new Set(),REP=[],CORR=null;
+let Q=[],qi=0,bonnes=0,PTS=0,CTX={},T=null,reste=0,JOUEUR='moi',ORDRE_CHOIX=[],SEL=new Set(),REP=[],CORR=null,TOT=0,PAIRES=null;
+/* 2026-11-23 : dans une leçon, les questions ne se ressemblent plus : 3 deviennent « vrai ou faux » (une réponse proposée,
+   juste ou fausse) et 3 à réponse courte deviennent un écran « relie les paires ». Même nombre de questions, même score. */
+const poids=it=>it.paires?it.paires.length:1;
+function varier(qs){
+  const simples=qs.filter(q=>!q.m),courtes=melanger(simples.filter(q=>q.c[q.b].length<=42&&q.q.length<=130));
+  const paire=[];for(const q of courtes){if(paire.length<3&&!paire.some(p=>p.c[p.b]===q.c[q.b]))paire.push(q)}
+  const prises=paire.length===3?paire:[];
+  const vf=melanger(simples.filter(q=>!prises.includes(q))).slice(0,3);
+  const out=[];let place=false;
+  for(const q of qs){
+    if(prises.includes(q)){if(!place){out.push({paires:prises});place=true}continue}
+    out.push(vf.includes(q)?{...q,vf:Math.random()<.5?q.b:melanger([0,1,2,3].filter(k=>k!==q.b))[0]}:q);
+  }
+  return out;
+}
 function lancerQuiz(questions,titre,ctx){
-  Q=questions;qi=0;bonnes=0;PTS=0;CTX=ctx;JOUEUR=ctx.joueur||'moi';REP=[];
+  if(ctx.mode==='lecon')questions=varier(questions);
+  Q=questions;TOT=Q.reduce((a,it)=>a+poids(it),0);qi=0;bonnes=0;PTS=0;CTX=ctx;JOUEUR=ctx.joueur||'moi';REP=[];
   const icone={defi:'cible',bilan:'graphe',revision:'cible',final:'trophee',semaine:'calendrier',hebdo:'calendrier'}[ctx.mode]||'livre';
   $('e-quiz').innerHTML=`<div class="quiz-tete">${boutonRetour("aller('accueil')",'quitter')}<span class="chrono" id="chrono"></span></div>
     <div class="surtitre">${ic(icone,'sm')} ${esc(titre)}</div><div class="barre"><i id="q-barre"></i></div>
@@ -305,9 +322,12 @@ function lancerRevision(){
   lancerQuiz(melanger(prio.concat(melanger(base.filter(q=>!prio.includes(q))).slice(0,NB_REVISION-prio.length))),t('revision'),{mode:'revision'});
 }
 function afficherQuestion(){
-  const q=Q[qi];
-  $('q-barre').style.width=(qi/Q.length*100)+'%';
-  $('q-compteur').textContent=t('question',{i:qi+1,n:Q.length});
+  const q=Q[qi],pos=Q.slice(0,qi).reduce((a,it)=>a+poids(it),0);
+  $('q-barre').style.width=(pos/TOT*100)+'%';
+  $('q-compteur').textContent=t('question',{i:pos+1,n:TOT});
+  const sv0=$('q-suivant');sv0.textContent=qi===Q.length-1?t('voirScore'):t('suivante');
+  if(q.paires)return afficherPaires(q);
+  if(q.vf!==undefined)return afficherVF(q);
   if(q.m)$('q-compteur').innerHTML+=` <span class="tag-expert">${ic('etoile','sm')} ${t('expert')}</span>`;
   $('q-texte').textContent=q.q;
   $('q-consigne').textContent=q.m?t('consigneMulti'):'';
@@ -316,7 +336,7 @@ function afficherQuestion(){
   ORDRE_CHOIX.forEach((orig,i)=>{const b=document.createElement('button');b.className='choix';
     b.innerHTML=`<span class="lettre">${'ABCDE'[i]}</span><span></span>`;b.lastChild.textContent=q.c[orig];
     b.onclick=()=>choisir(i,b,q.m);z.appendChild(b)});
-  const sv=$('q-suivant');sv.disabled=true;sv.textContent=qi===Q.length-1?t('voirScore'):t('suivante');
+  const sv=$('q-suivant');sv.disabled=true;
   const ch=$('chrono');clearInterval(T);ch.innerHTML='';
   if(CTX.mode==='final'){reste=SECONDES_FINAL;ch.innerHTML=ic('chrono','sm')+' '+reste+' s';
     T=setInterval(()=>{reste--;ch.innerHTML=ic('chrono','sm')+' '+reste+' s';if(reste<=0)enregistrer()},1000);}
@@ -327,8 +347,48 @@ function choisir(i,b,multi){
   if(SEL.has(i)){SEL.delete(i);b.classList.remove('sel')}else{SEL.add(i);b.classList.add('sel')}
   $('q-suivant').disabled=SEL.size===0;vibrer(10);
 }
+function afficherVF(q){
+  $('q-texte').textContent='';$('q-consigne').textContent=t('consigneVF');SEL=new Set();
+  // Une carte (question + réponse proposée) à balayer : droite = Vrai, gauche = Faux (boutons dans le même ordre)
+  $('q-choix').innerHTML=`<div class="vf-carte arrive"><p class="vf-q"></p><div class="vf-prop"><span>${t('propose')}</span><b></b></div></div>
+    <p class="vf-indice" dir="ltr">${ic('gauche','sm')} ${t('faux')} · ${t('vrai')} ${ic('droite','sm')}</p>
+    <div class="vf-boutons" dir="ltr"><button class="choix vf-b" data-v="f">${ic('croix')} ${t('faux')}</button><button class="choix vf-b" data-v="v">${ic('check')} ${t('vrai')}</button></div>`;
+  $('q-choix').querySelector('.vf-q').textContent=q.q;
+  $('q-choix').querySelector('.vf-prop b').textContent=q.c[q.vf];
+  $('q-choix').querySelectorAll('.vf-b').forEach(b=>b.onclick=()=>{SEL=new Set([b.dataset.v]);
+    $('q-choix').querySelectorAll('.vf-b').forEach(x=>x.classList.toggle('sel',x===b));$('q-suivant').disabled=false;vibrer(10)});
+  $('q-suivant').disabled=true;
+  balayage($('q-choix').querySelector('.vf-carte'),dit=>{SEL=new Set([dit?'v':'f']);enregistrer()});
+}
+function afficherPaires(it){
+  $('q-texte').textContent='';$('q-consigne').textContent=t('consignePaires');
+  PAIRES={sel:0,lien:{},ordre:melanger(it.paires.map((_,k)=>k))};dessinerPaires(it);
+}
+function dessinerPaires(it){
+  const P=PAIRES,coul=k=>COULEURS[[1,2,3][k]];
+  const pris=r=>Object.keys(P.lien).find(k=>P.lien[k]===r);
+  $('q-choix').innerHTML=`<div class="paires-q">${it.paires.map((q,k)=>`<button class="paire-q ${P.sel===k?'sel':''} ${P.lien[k]!==undefined?'liee':''}" data-k="${k}" style="--pc:${coul(k)}">
+      <span class="pq-pt"></span><span class="pq-txt"></span>${P.lien[k]!==undefined?`<span class="pq-rep"></span>`:''}</button>`).join('')}</div>
+    <div class="paires-r">${P.ordre.map(r=>{const k=pris(r);return `<button class="paire-r ${k!==undefined?'prise':''}" data-r="${r}" ${k!==undefined?`style="--pc:${coul(+k)}"`:''}><span></span></button>`}).join('')}</div>`;
+  $('q-choix').querySelectorAll('.paire-q').forEach(b=>{const k=+b.dataset.k,q=it.paires[k];b.querySelector('.pq-txt').textContent=q.q;
+    if(P.lien[k]!==undefined){const a=it.paires[P.lien[k]];b.querySelector('.pq-rep').textContent=a.c[a.b]}
+    b.onclick=()=>{P.sel=k;dessinerPaires(it)}});
+  $('q-choix').querySelectorAll('.paire-r').forEach(b=>{const r=+b.dataset.r,a=it.paires[r];b.firstChild.textContent=a.c[a.b];
+    b.onclick=()=>{if(P.sel===null)P.sel=it.paires.findIndex((_,k)=>P.lien[k]===undefined);if(P.sel<0)return;
+      for(const k of Object.keys(P.lien))if(P.lien[k]===r)delete P.lien[k];
+      P.lien[P.sel]=r;vibrer(10);const libre=it.paires.findIndex((_,k)=>P.lien[k]===undefined);P.sel=libre<0?null:libre;dessinerPaires(it)}});
+  $('q-suivant').disabled=Object.keys(P.lien).length<it.paires.length;
+}
 function enregistrer(){
   clearInterval(T);
+  if(Q[qi].paires){const it=Q[qi];
+    it.paires.forEach((q,k)=>{const r=PAIRES.lien[k],juste=r===k;if(juste){bonnes++;PTS++}if(q.cat)noter(JOUEUR,q.cat,juste);
+      REP.push({q,choisis:juste?[q.b]:[],juste,paire:juste?null:(r!==undefined?it.paires[r].c[it.paires[r].b]:'')})});
+    qi++;if(qi<Q.length){afficherQuestion();scrollTo({top:0,behavior:'smooth'})}else finir();return}
+  if(Q[qi].vf!==undefined){const q=Q[qi],dit=[...SEL][0],juste=(dit==='v')===(q.vf===q.b);
+    if(juste){bonnes++;PTS++}if(q.cat)noter(JOUEUR,q.cat,juste);
+    REP.push({q,choisis:dit==='v'?[q.vf]:[],juste,vfDit:dit});
+    qi++;if(qi<Q.length){afficherQuestion();scrollTo({top:0,behavior:'smooth'})}else finir();return}
   const q=Q[qi],choisis=[...SEL].map(k=>ORDRE_CHOIX[k]).sort((a,b)=>a-b);
   const bons=(q.m?q.b:[q.b]).slice().sort((a,b)=>a-b);   // multiple : toutes les bonnes, et seulement elles
   const juste=choisis.length===bons.length&&bons.every((x,k)=>x===choisis[k]);
@@ -346,8 +406,9 @@ function activite(){
 function finir(){
   $('q-barre').style.width='100%';
   if(CTX.mode==='defi'){DEFI.rep=DEFI.rep.concat(REP);sauver();finTour();return}
-  const r=bonnes/Q.length,titreRes=r===1?t('resParfait'):r>=.5?t('resBravo'):t('resProgres');
-  if(CTX.mode==='bilan'){sauver();montrerResultat(bonnes,Q.length,titreRes,'',"RETOUR='accueil';afficherBilan('moi')",REP);return}
+  REP.forEach(x=>noterErreur(x.q,x.juste));   // erreurs à revoir dans Découvrir
+  const r=bonnes/TOT,titreRes=r===1?t('resParfait'):r>=.5?t('resBravo'):t('resProgres');
+  if(CTX.mode==='bilan'){sauver();montrerResultat(bonnes,TOT,titreRes,'',"RETOUR='accueil';afficherBilan('moi')",REP);return}
   let gagnes=0,texte='',suite="aller('accueil')";const gainTxt=()=>t('gain',{p:gagnes,j:t('jours',{n:S.serie})});
   if(CTX.mode==='lecon'){
     const nouvelle=!fait(CTX.id),nouveauJour=CTX.ram&&ramDonnees(CTX.ram.an).jours[CTX.ram.jour]===undefined;
@@ -370,7 +431,8 @@ function finir(){
     texte=t('gqGain',{p:gagnes,an:CTX.an});suite='ouvrirRamadan()';
   }
   S.points+=gagnes;sauver();
-  montrerResultat(bonnes,Q.length,CTX.mode==='final'?t('gqFini'):titreRes,texte,suite,REP);
+  montrerResultat(bonnes,TOT,CTX.mode==='final'?t('gqFini'):titreRes,texte,suite,REP);
+  document.querySelector('#e-resultat .resultat').insertAdjacentHTML('afterend',blocFinQuiz(REP.filter(x=>!x.juste).length));
   if(r>=.75)pluie();
 }
 function montrerResultat(b,total,titre,texte,suite="aller('accueil')",rep=null){
@@ -398,7 +460,8 @@ function correctionHTML(rep,filtre){
     let src=rendreSources(q.s);
     if(!q.s&&q.src)src=`<div class="sources"><div class="source f"><div class="src-tete">${ic('repere','sm')} ${esc(t('sourceDonnee',{n:membre(q.auteur).nom}))}</div><p class="tr">${esc(q.src)}</p></div></div>`;
     return `<div class="carte corrige ${neutre?'':r.juste?'ok':'ko'}"><div class="cor-tete">${neutre?ic('livre','sm'):ic(r.juste?'ok':'ko','sm')} ${t('question',{i:r.i+1,n:rep.length})}${q.m?` <span class="tag-expert">${ic('etoile','sm')} ${t('expert')}</span>`:''}</div>
-      <p class="cor-q">${esc(q.q)}</p>${choix}${!neutre&&!r.choisis.length?`<p class="petit">${t('sansReponse')}</p>`:''}
+      <p class="cor-q">${esc(q.q)}</p>${choix}${r.vfDit?`<p class="petit">${esc(t('propose'))} : « ${esc(q.c[q.vf])} » · ${esc(t('tuAsDit',{r:t(r.vfDit==='v'?'vrai':'faux')}))}</p>`
+        :r.paire?`<p class="petit">${esc(t('tuAsRelie',{r:r.paire}))}</p>`:!neutre&&!r.choisis.length&&r.paire===undefined?`<p class="petit">${t('sansReponse')}</p>`:''}
       <p class="explic">${esc(q.e||t('poseePar',{n:membre(q.auteur).nom}))}</p>${src?`<details><summary>${t('voirSources')}</summary>${src}</details>`:''}</div>`}).join('');
 }
 
@@ -542,7 +605,7 @@ function ouvrirCalendrier(dec){
       <b>${n}</b><span>${hijriDe(d).day||''}</span></button>`}
   const dj=new Date(JOUR_CAL+'T00:00:00'),LJ=evtsDuJour(dj);
   const leg=[['c-blanc',t('cal_blancs')],['c-jeune',t('tag_jeune')],['c-fete',t('tag_fete')],['c-interdit',t('tag_interdit')],['c-periode',t('tag_periode')]];
-  $('e-calendrier').innerHTML=`<div class="surtitre">${ic('calendrier','sm')} ${t('calendrier')}</div>
+  $('e-calendrier').innerHTML=boutonRetour("aller('accueil')")+`<div class="surtitre">${ic('calendrier','sm')} ${t('calendrier')}</div>
     <div class="carte mois">
       <div class="mois-tete"><button class="rond" ${ecart>0?'onclick="ouvrirCalendrier(-1)"':'disabled'} aria-label="${t('precedente')}">${ic('gauche','sm')}</button>
         <div><h2>${esc(titre.charAt(0).toUpperCase()+titre.slice(1))}</h2><div class="or petit">${esc((hijriDe(M).month===hijriDe(dernier).month?hm[1]:hm[0]+' – '+hm[1]))}</div></div>
@@ -732,8 +795,8 @@ function ouvrirDoc(k){
 }
 
 /* ---------- Barre d'onglets (en bas) ---------- */
-const ONGLETS=[['accueil','maison',"aller('accueil')"],['calendrier','calendrier','ouvrirCalendrier()'],['qibla','boussole','ouvrirQibla()'],
-  ['invocations','doua','ouvrirInvocations()'],['famille','famille','ouvrirFamille()']];
+const ONGLETS=[['accueil','maison',"aller('accueil')"],['invocations','doua','ouvrirInvocations()'],['decouvrir','decouvrir','retourFil()'],
+  ['qibla','boussole','ouvrirQibla()'],['famille','famille','ouvrirFamille()']];   // 2026-11-23 : Découvrir au centre, le calendrier s'ouvre depuis le bandeau
 function dessinerOnglets(){
   $('onglets').innerHTML=ONGLETS.map(([k,i,a])=>`<button class="onglet" data-o="${k}" onclick="${a}">${ic(i)}<span>${t('tab_'+k)}</span></button>`).join('');
 }
@@ -1037,7 +1100,7 @@ function listeInv(){return groupesInv().flatMap(g=>g.liste.map(d=>({...d,cat:g.c
 function favoris(){return S.favInv||(S.favInv=[])}
 function sansAccent(x){return String(x).normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[ʿʾ'’]/g,'').toLowerCase()}
 function sensDe(d){if(d.v){const v=QURAN[d.v.slice(2)];return v.tr[S.langue]||v.tr.en}return d.sens}
-function ouvrirInvocations(){
+function ouvrirInvocations(){INV_RETOUR=null;   // 2026-11-23 : ouverte depuis Découvrir → le retour y ramène (INV_RETOUR)
   $('e-invocations').innerHTML=`<div class="tete-inv"><div><div class="surtitre">${ic('doua','sm')} ${t('tab_invocations')}</div><h2>${t('invTitre')}</h2></div>
       <button class="rond" onclick="S.vueInv=S.vueInv==='liste'?'grille':'liste';sauver();ouvrirInvocations()" aria-label="${t('changerVue')}">${ic(S.vueInv==='liste'?'grille':'liste')}</button></div>
     <label class="recherche">${ic('loupe','sm')}<input id="inv-q" type="search" placeholder="${t('rechercheInv')}" value="${esc(RECH)}" autocomplete="off" enterkeyhint="search"></label>
@@ -1070,7 +1133,7 @@ function ouvrirInvocation(id){
   if(d.v){const v=QURAN[d.v.slice(2)];ar=v.ar;ph=S.langue==='tr'?v.tl.tr:v.tl.en;credit=t('tradCoran',{t:TRADUCTEURS_CORAN[S.langue]||TRADUCTEURS_CORAN.en})}
   else{ar=d.ar;ph=d.ph;credit=d.coran?t('tradCoran',{t:TRADUCTEURS_CORAN.fr}):t('sensEquipe')}
   const srcs=d.v?[d.v]:d.src||[];
-  $('e-invocation').innerHTML=`<div class="quiz-tete">${boutonRetour('ouvrirInvocations()')}
+  $('e-invocation').innerHTML=`<div class="quiz-tete">${boutonRetour(INV_RETOUR||'ouvrirInvocations()')}
       <button class="fav grand ${fav?'on':''}" onclick="basculerFavori('${id}',1)" aria-label="${t('favori')}">${ic('etoile_v')}</button></div>
     <div class="inv-tete"><div class="pastille">${ic(ICONE_INV[id]||'doua')}</div><div><div class="surtitre">${t('inv_cat_'+d.cat)}</div><h2>${esc(d.titre)}</h2></div></div>
     <div class="carte invocation detail">${ar.split('\n').map(l=>`<p class="ar inv-ar" lang="ar" dir="rtl">${esc(l)}</p>`).join('')}

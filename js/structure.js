@@ -56,7 +56,10 @@ const HADITHS_REFS={
   inv_manger:[['bukhari',5376]], inv_oubli_manger:[['abudawud',3767]], inv_apres_repas:[['abudawud',4023]], inv_sommeil:[['bukhari',6324]],
   inv_toilettes:[['bukhari',142],['muslim',375]], inv_sortir:[['abudawud',5095]], inv_mosquee:[['muslim',713]], inv_wudu:[['muslim',234]],
   inv_eternuement:[['bukhari',6224]], inv_pluie:[['bukhari',1032]], inv_rupture:[['abudawud',2357]], inv_istighfar:[['bukhari',6306]],
-  inv_detresse:[['bukhari',6346]], inv_tasbih:[['bukhari',6405]], inv_yunus:[['tirmidhi',3505]]
+  inv_detresse:[['bukhari',6346]], inv_tasbih:[['bukhari',6405]], inv_yunus:[['tirmidhi',3505]],
+  // Rappels « pourquoi j'apprends » (fil Découvrir, chemin, fin de quiz)
+  sav_chemin:[['muslim',2699]], sav_trois:[['muslim',1631]], sav_fiqh:[['bukhari',71],['muslim',1037]], sav_coran:[['bukhari',5027]],
+  sav_indiquer:[['muslim',1893]], sav_appeler:[['muslim',2674]]
 };
 const RECUEILS={bukhari:'Sahih al-Bukhari',muslim:'Sahih Muslim',abudawud:'Sunan Abî Dâwûd',tirmidhi:'Sunan at-Tirmidhî'};
 
