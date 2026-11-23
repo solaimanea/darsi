@@ -120,7 +120,7 @@ function aller(nom){
   if($('e-decouvrir').classList.contains('actif')&&$('fil'))FIL.scroll=$('fil').scrollTop;   // on retrouvera la même carte
   document.querySelectorAll('.ecran').forEach(e=>e.classList.remove('actif'));
   $('e-'+nom).classList.add('actif');scrollTo(0,0);majOnglets(nom);
-  document.body.classList.toggle('ecran-qibla',nom==='qibla');document.body.classList.toggle('ecran-fil',nom==='decouvrir');if(nom!=='qibla'&&typeof arreterBoussole==='function')arreterBoussole();
+  document.body.classList.toggle('ecran-qibla',nom==='qibla');document.body.classList.toggle('ecran-fil',nom==='decouvrir');document.body.classList.toggle('ecran-accueil',nom==='accueil');if(nom!=='qibla'&&typeof arreterBoussole==='function')arreterBoussole();
   if(nom==='accueil')dessinerAccueil();
 }
 function boutonRetour(action,cle='retour'){return `<button class="retour" onclick="${action}">${ic('gauche','sm')} ${t(cle)}</button>`}
@@ -198,7 +198,7 @@ function dessinerAccueil(){
   h+=`<div class="grille-ic">${T.map(([i2,c,lib,act,pastille])=>`<button class="tuile-ic t-${c} ${pastille==='verrou'?'verrou':''}" ${act?`onclick="${act}"`:'disabled'}>
       <span class="rond-ic">${ic(pastille==='verrou'?'cadenas':i2,'lg')}</span><span class="lib">${lib}</span>
       ${pastille&&pastille!=='verrou'?`<span class="pastille-num ${pastille==='ok'?'ok':''}">${pastille==='ok'?ic('check','sm'):esc(pastille)}</span>`:''}</button>`).join('')}</div>
-    <div class="mini-stats"><span>${ic('etoile','sm')} <b>${S.points}</b> ${t('points')}</span><span>${ic('flamme','sm')} <b>${S.serie}</b> ${t('serie')}</span><span>${ic('ampoule','sm')} <b>${apprisTotal()}</b> ${t('appris',{n:apprisTotal()})}</span></div>`;
+    <div class="mini-stats"><span>${ic('etoile','sm')} <b>${S.points}</b> ${t('points')}</span><span>${ic('flamme','sm')} <b>${S.serie}</b> ${t('serie',{n:S.serie})}</span><span>${ic('ampoule','sm')} <b>${apprisTotal()}</b> ${t('appris',{n:apprisTotal()})}</span></div>`;
   $('e-accueil').innerHTML=h;
 }
 

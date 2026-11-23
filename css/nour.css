@@ -883,3 +883,13 @@ body.ecran-fil .app{padding-bottom:0}
 .vf-indice .ic{opacity:.8}
 .vf-indice .ic.sens{transform:none}
 .fc-ph{text-align:center;margin:-4px 0 12px;font-size:15px}.rap-ar+.fc-ph{margin-top:4px}
+
+/* 2026-11-24 : accueil plein écran — la grille d'icônes s'agrandit pour remplir, les compteurs juste au-dessus de la barre d'onglets */
+body.ecran-accueil .app{padding-bottom:calc(72px + var(--sb))}
+#e-accueil.actif{display:flex;flex-direction:column;min-height:calc(100dvh - var(--st) - var(--sb) - 12px - 72px)}
+#e-accueil .grille-ic{flex:1;grid-auto-rows:1fr;gap:12px}
+#e-accueil .tuile-ic{justify-content:center;gap:10px;padding:14px 6px}
+#e-accueil .tuile-ic .rond-ic{width:clamp(56px,17vw,74px);height:clamp(56px,17vw,74px);border-radius:22px}
+#e-accueil .tuile-ic .rond-ic .ic{width:34px;height:34px}
+#e-accueil .tuile-ic .lib{font-size:14px}
+#e-accueil .mini-stats{margin-top:auto;padding-top:12px}
