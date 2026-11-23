@@ -481,8 +481,9 @@ function fmt(d,o,cal='gregory'){try{return new Intl.DateTimeFormat(S.langue+'-u-
    On ne prend donc à Intl que les CHIFFRES (jour, mois, année Umm al-Qura, justes partout) et on écrit le reste. */
 const MOIS_H={
   fr:['Mouharram','Safar','Rabiʿ al-Awwal','Rabiʿ ath-Thani','Joumada al-Oula','Joumada ath-Thania','Rajab','Chaʿbane','Ramadan','Chawwal','Dhou al-Qiʿda','Dhou al-Hijja'],
-  en:['Muharram','Safar','Rabi al-Awwal','Rabi al-Thani','Jumada al-Ula','Jumada al-Akhirah','Rajab','Shaban','Ramadan','Shawwal','Dhu al-Qadah','Dhu al-Hijjah'],
-  ar:['محرم','صفر','ربيع الأول','ربيع الآخر','جمادى الأولى','جمادى الآخرة','رجب','شعبان','رمضان','شوال','ذو القعدة','ذو الحجة'],
+  en:['Muharram','Safar','Rabi al-Awwal','Rabi al-Thani','Jumada al-Ula','Jumada al-Thani','Rajab','Shaban','Ramadan','Shawwal','Dhu al-Qadah','Dhu al-Hijjah'],
+  // 2026-11-21 : « الثاني / الثانية » (Maghreb, comme le français « ath-Thania ») plutôt que « الآخر / الآخرة » d'Umm al-Qura — mêmes mois
+  ar:['محرم','صفر','ربيع الأول','ربيع الثاني','جمادى الأولى','جمادى الثانية','رجب','شعبان','رمضان','شوال','ذو القعدة','ذو الحجة'],
   de:['Muharram','Safar','Rabīʿ al-awwal','Rabīʿ ath-thānī','Dschumādā l-ūlā','Dschumādā th-thāniya','Radschab','Schaʿbān','Ramadan','Schawwāl','Dhū l-Qaʿda','Dhū l-Hiddscha'],
   es:['Muharram','Safar','Rabí al-Awal','Rabí al-Thani','Yumada al-Ula','Yumada al-Thani','Rayab','Shabán','Ramadán','Shawwal','Dhu al-Qada','Dhu al-Hiyya'],
   it:['Muharram','Safar','Rabi al-Awwal','Rabi al-Thani','Jumada al-Ula','Jumada al-Thani','Rajab','Shaban','Ramadan','Shawwal','Dhu al-Qada','Dhu al-Hijja'],
