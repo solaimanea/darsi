@@ -40,6 +40,7 @@ confidentialite:{titre:"Datenschutzerklärung",maj:"2026-11-19",sections:[
  {h:"Deine Rechte",p:["Du kannst deinen Vornamen jederzeit in den Einstellungen ändern und deinen gesamten Fortschritt mit der Schaltfläche „Meinen Fortschritt zurücksetzen“ löschen. Das Löschen der App entfernt ebenfalls alle diese Daten."]},
  {h:"Dienste Dritter",p:["In dieser Version werden die Schriftarten von Google Fonts geladen, wodurch deine IP-Adresse an Google übermittelt wird. In der veröffentlichten Version werden sie in die App integriert, damit nichts mehr übermittelt wird."]},
  {h:"Weiterentwicklungen",p:["Wenn Online-Funktionen hinzukommen (Gruppen aus der Ferne, Rangliste), wird diese Erklärung vor ihrem Start aktualisiert, und deine Zustimmung wird eingeholt, wenn das Gesetz es verlangt."]},
+ {h:"Frage melden",p:["Wenn Sie eine Frage melden, erhalten wir ihre Nummer, den Text, die Sprache, den Grund und Ihren Kommentar. Je nach Version erfolgt der Versand über Ihre E-Mail-App (Ihre Adresse ist für uns sichtbar) oder über unseren Server ohne Namen und Konto. Dies dient nur der Korrektur der Inhalte. Schreiben Sie keine personenbezogenen Daten."]},
  {h:"Kontakt",p:["Verantwortlicher für die Verarbeitung: JINA Studios, [Adresse zu ergänzen]. Kontakt: [E-Mail-Adresse zu ergänzen]. Du kannst dich auch an die CNIL (cnil.fr) wenden."]}
 ]},
 mentions:{titre:"Impressum",maj:"2026-11-18",sections:[

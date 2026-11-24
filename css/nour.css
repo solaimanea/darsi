@@ -934,3 +934,15 @@ body.ecran-accueil .app{padding-bottom:calc(72px + var(--sb))}
 .nv-texte .petit{margin-top:6px}
 .nv-go{display:flex;align-items:center;gap:6px;margin-top:8px;color:var(--or2);font-size:14px}
 .paires-r .paire-r{font-size:14px;padding:10px 12px}
+
+/* Signaler une question */
+.btn-sig{width:36px;height:36px;flex:none;padding:0;border:0;border-radius:50%;background:none;color:var(--doux);display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;cursor:pointer}
+.btn-sig:focus-visible{outline:2px solid var(--or2)}
+.fc-cat+.btn-sig{margin-inline-start:-4px}.fc-tete .fc-cat{margin-inline-start:auto}
+dialog.sig{margin:auto;width:min(92vw,430px);max-height:88dvh;overflow:auto;padding:20px;border:1px solid var(--or);border-radius:24px;background:#06291f;color:var(--texte)}
+dialog.sig::backdrop{background:rgba(0,0,0,.65)}
+.sig-txt{margin:12px 0;padding:10px 12px;border-inline-start:3px solid var(--or);font-size:15px;line-height:1.4}
+.sig-q{display:block;margin:12px 0;font-size:13px}.sig select,.sig textarea{width:100%;margin-top:8px;padding:12px;border:1px solid var(--bord);border-radius:14px;background:#03211a;color:var(--texte);font:16px var(--corps)}
+.sig-motifs label{display:flex;align-items:center;gap:10px;padding:8px 2px;font-size:15px;cursor:pointer}.sig-motifs input{accent-color:var(--or);width:18px;height:18px;flex:none}
+.sig .petit{margin-top:8px}
+.sig .sig-motifs label{margin:0;padding:7px 2px}.sig .sig-motifs input{margin:0}.sig .sig-motifs span{margin:0}

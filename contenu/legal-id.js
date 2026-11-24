@@ -39,6 +39,7 @@ confidentialite:{titre:"Kebijakan privasi",maj:"2026-11-19",sections:[
  {h:"Hak-hakmu",p:["Kamu dapat mengubah nama depanmu kapan saja di Pengaturan, dan menghapus seluruh kemajuan belajarmu dengan tombol “Atur ulang kemajuanku”. Menghapus aplikasi juga akan menghapus semua data tersebut."]},
  {h:"Layanan pihak ketiga",p:["Dalam versi ini, fon dimuat dari Google Fonts, sehingga alamat IP-mu dikirimkan ke Google. Fon tersebut akan disertakan langsung di dalam aplikasi pada versi yang dipublikasikan, sehingga tidak ada lagi data yang dikirimkan."]},
  {h:"Perubahan",p:["Jika fitur daring ditambahkan (grup jarak jauh, papan peringkat), kebijakan ini akan diperbarui sebelum fitur tersebut diluncurkan, dan persetujuanmu akan diminta jika diwajibkan oleh hukum."]},
+ {h:"Melaporkan pertanyaan",p:["Jika Anda melaporkan pertanyaan, kami menerima nomor, teks, bahasa, alasan, dan komentar Anda. Tergantung versinya, laporan dikirim lewat aplikasi email Anda (alamat Anda terlihat oleh kami) atau server kami, tanpa nama atau akun. Informasi ini hanya untuk memperbaiki konten. Jangan menulis data pribadi."]},
  {h:"Kontak",p:["Pengendali data: JINA Studios, [alamat perlu dilengkapi]. Kontak: [alamat e-mail perlu dilengkapi]. Kamu juga dapat mengajukan pengaduan kepada CNIL (cnil.fr), otoritas perlindungan data Prancis."]}
 ]},
 mentions:{titre:"Informasi hukum",maj:"2026-11-18",sections:[

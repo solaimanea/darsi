@@ -40,6 +40,7 @@ confidentialite:{titre:"Informativa sulla privacy",maj:"2026-11-19",sections:[
  {h:"I tuoi diritti",p:["Puoi modificare il tuo nome in qualsiasi momento nelle Impostazioni, e cancellare tutti i tuoi progressi con il pulsante «Azzera i miei progressi». Anche disinstallare l'applicazione cancella tutti questi dati."]},
  {h:"Servizi di terzi",p:["In questa versione, i caratteri tipografici sono caricati da Google Fonts, il che trasmette il tuo indirizzo IP a Google. Saranno integrati nell'applicazione nella versione pubblicata, in modo che non venga più trasmesso nulla."]},
  {h:"Evoluzioni",p:["Se verranno aggiunte funzioni online (gruppi a distanza, classifica), questa informativa sarà aggiornata prima del loro lancio e ti verrà chiesto il consenso quando la legge lo richiede."]},
+ {h:"Segnalare una domanda",p:["Se segnala una domanda, riceviamo il numero, il testo, la lingua, il motivo e il suo commento. Secondo la versione, l'invio avviene con la sua app e-mail (vediamo il suo indirizzo) o con il nostro server, senza nome né account. Serve solo a correggere i contenuti. Non scriva dati personali."]},
  {h:"Contatti",p:["Titolare del trattamento: JINA Studios, [indirizzo da completare]. Contatto: [indirizzo e-mail da completare]. Puoi anche rivolgerti alla CNIL (cnil.fr)."]}
 ]},
 mentions:{titre:"Note legali",maj:"2026-11-18",sections:[

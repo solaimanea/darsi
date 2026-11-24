@@ -32,6 +32,7 @@ confidentialite:{titre:"Gizlilik politikası",maj:"2026-11-19",sections:[
  {h:"Hakların",p:["Adını istediğin zaman Ayarlar'dan değiştirebilir ve \"İlerlememi sıfırla\" düğmesiyle bütün ilerlemeni silebilirsin. Uygulamayı silmek de bütün bu verileri siler."]},
  {h:"Üçüncü taraf hizmetleri",p:["Bu sürümde yazı tipleri Google Fonts'tan yüklenir; bu da IP adresini Google'a iletir. Yayımlanacak sürümde yazı tipleri uygulamaya dahil edilecek, böylece artık hiçbir şey iletilmeyecektir."]},
  {h:"Değişiklikler",p:["Çevrim içi işlevler eklenirse (uzaktan gruplar, sıralama), bu politika bunlar kullanıma sunulmadan önce güncellenecek ve yasanın gerektirdiği durumlarda onayın istenecektir."]},
+ {h:"Soru bildirme",p:["Bir soruyu bildirdiğinizde numarasını, metnini, dilini, nedenini ve yorumunuzu alırız. Sürüme göre bildirim e-posta uygulamanızla (adresinizi görürüz) ya da sunucumuzla, ad ve hesap olmadan gönderilir. Bu bilgiler yalnızca içeriği düzeltmek için kullanılır. Kişisel veri yazmayın."]},
  {h:"İletişim",p:["Veri sorumlusu: JINA Studios, [adres doldurulacak]. İletişim: [e-posta adresi doldurulacak]. Fransız veri koruma kurumu CNIL'e de (cnil.fr) başvurabilirsin."]}
 ]},
 mentions:{titre:"Yasal bilgiler",maj:"2026-11-18",sections:[

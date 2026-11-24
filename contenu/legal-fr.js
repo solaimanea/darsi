@@ -41,6 +41,7 @@ confidentialite:{titre:"Politique de confidentialité",maj:"2026-11-19",sections
  {h:"Vos droits",p:["Vous pouvez modifier votre prénom à tout moment dans les Paramètres, et effacer toute votre progression avec le bouton « Réinitialiser ma progression ». Supprimer l'application efface aussi toutes ces données."]},
  {h:"Services tiers",p:["Dans cette version, les polices de caractères sont chargées depuis Google Fonts, ce qui transmet votre adresse IP à Google. Elles seront intégrées à l'application dans la version publiée, afin que plus rien ne soit transmis."]},
  {h:"Évolutions",p:["Si des fonctions en ligne sont ajoutées (groupes à distance, classement), cette politique sera mise à jour avant leur lancement et votre accord sera demandé lorsque la loi l'exige."]},
+ {h:"Signalement d'une question",p:["Si vous signalez une question, nous recevons son numéro, son texte, la langue, le motif et votre commentaire. Selon la version, l'envoi se fait par votre application e-mail (votre adresse nous est alors visible) ou par notre serveur, sans nom ni compte. Ces informations servent uniquement à corriger le contenu. N'y écrivez pas de données personnelles."]},
  {h:"Contact",p:["Responsable du traitement : JINA Studios, [adresse à compléter]. Contact : [adresse e-mail à compléter]. Vous pouvez aussi saisir la CNIL (cnil.fr)."]}
 ]},
 mentions:{titre:"Mentions légales",maj:"2026-11-18",sections:[

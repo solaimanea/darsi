@@ -40,6 +40,7 @@ confidentialite:{titre:"Privacy policy",maj:"2026-11-19",sections:[
  {h:"Your rights",p:["You can change your first name at any time in Settings, and erase all your progress with the “Reset my progress” button. Deleting the app also erases all this data."]},
  {h:"Third-party services",p:["In this version, fonts are loaded from Google Fonts, which sends your IP address to Google. They will be built into the app in the published version, so that nothing is sent any more."]},
  {h:"Changes",p:["If online features are added (remote groups, leaderboard), this policy will be updated before they launch and your consent will be requested where the law requires it."]},
+ {h:"Reporting a question",p:["If you report a question, we receive its number, text, language, reason and your comment. Depending on the version, it is sent through your email app (we then see your address) or through our server, without name or account. This is used only to correct content. Do not include personal data."]},
  {h:"Contact",p:["Data controller: JINA Studios, [address to be completed]. Contact: [email address to be completed]. You can also contact the CNIL, the French data protection authority (cnil.fr)."]}
 ]},
 mentions:{titre:"Legal notice",maj:"2026-11-18",sections:[

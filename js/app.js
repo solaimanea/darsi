@@ -336,6 +336,8 @@ function afficherQuestion(){
   $('q-barre').style.width=(pos/TOT*100)+'%';
   $('q-compteur').textContent=t('question',{i:pos+1,n:TOT});
   const sv0=$('q-suivant');sv0.textContent=qi===Q.length-1?t('voirScore'):t('suivante');
+  // signaler : pas pendant le Grand Quiz chronométré (possible dans sa correction)
+  if(CTX.mode!=='final')$('q-compteur').innerHTML+=boutonSignaler(q.paires?q.paires.map(x=>x.uid):[q.uid]);
   if(q.paires)return afficherPaires(q);
   if(q.vf!==undefined)return afficherVF(q);
   if(q.m)$('q-compteur').innerHTML+=` <span class="tag-expert">${ic('etoile','sm')} ${t('expert')}</span>`;
@@ -468,7 +470,7 @@ function correctionHTML(rep,filtre){
     let src=rendreSources(q.s);
     if(!q.s&&q.src)src=`<div class="sources"><div class="source f"><div class="src-tete">${ic('repere','sm')} ${esc(t('sourceDonnee',{n:membre(q.auteur).nom}))}</div><p class="tr">${esc(q.src)}</p></div></div>`;
     return `<div class="carte corrige ${neutre?'':r.juste?'ok':'ko'}"><div class="cor-tete">${neutre?ic('livre','sm'):ic(r.juste?'ok':'ko','sm')} ${t('question',{i:r.i+1,n:rep.length})}${q.m?` <span class="tag-expert">${ic('etoile','sm')} ${t('expert')}</span>`:''}</div>
-      <p class="cor-q">${esc(q.q)}</p>${choix}${r.vfDit?`<p class="petit">${esc(t('propose'))} : « ${esc(q.c[q.vf])} » · ${esc(t('tuAsDit',{r:t(r.vfDit==='v'?'vrai':'faux')}))}</p>`
+      <p class="cor-q">${esc(q.q)} ${boutonSignaler([q.uid])}</p>${choix}${r.vfDit?`<p class="petit">${esc(t('propose'))} : « ${esc(q.c[q.vf])} » · ${esc(t('tuAsDit',{r:t(r.vfDit==='v'?'vrai':'faux')}))}</p>`
         :r.paire?`<p class="petit">${esc(t('tuAsRelie',{r:r.paire}))}</p>`:!neutre&&!r.choisis.length&&r.paire===undefined?`<p class="petit">${t('sansReponse')}</p>`:''}
       <p class="explic">${esc(q.e||t('poseePar',{n:membre(q.auteur).nom}))}</p>${src?`<details><summary>${t('voirSources')}</summary>${src}</details>`:''}</div>`}).join('');
 }

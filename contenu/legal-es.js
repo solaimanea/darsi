@@ -40,6 +40,7 @@ confidentialite:{titre:"Política de privacidad",maj:"2026-11-19",sections:[
  {h:"Tus derechos",p:["Puedes cambiar tu nombre en cualquier momento en Ajustes y borrar todo tu progreso con el botón «Reiniciar mi progreso». Eliminar la aplicación también borra todos estos datos."]},
  {h:"Servicios de terceros",p:["En esta versión, las fuentes tipográficas se cargan desde Google Fonts, lo que transmite tu dirección IP a Google. Se integrarán en la aplicación en la versión publicada, para que ya no se transmita nada."]},
  {h:"Cambios",p:["Si se añaden funciones en línea (grupos a distancia, clasificación), esta política se actualizará antes de su lanzamiento y se pedirá tu consentimiento cuando la ley lo exija."]},
+ {h:"Informar sobre una pregunta",p:["Si informa sobre una pregunta, recibimos su número, texto, idioma, motivo y su comentario. Según la versión, se envía por su aplicación de correo (vemos su dirección) o por nuestro servidor, sin nombre ni cuenta. Solo se usa para corregir el contenido. No escriba datos personales."]},
  {h:"Contacto",p:["Responsable del tratamiento: JINA Studios, [dirección por completar]. Contacto: [dirección de correo por completar]. También puedes presentar una reclamación ante la CNIL (cnil.fr)."]}
 ]},
 mentions:{titre:"Aviso legal",maj:"2026-11-18",sections:[

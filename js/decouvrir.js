@@ -126,7 +126,7 @@ function fabriquerCarte(){
 }
 const ICONE_K={perle:'etoile8',savoir:'ampoule',retenir:'cle',eclair:'chrono',vf:'cible',revoir:'pousse',verset:'livre',inv:'doua',rappel:'chemin'};
 function carteHTML(C,k){
-  const tete=`<div class="fc-tete"><span class="fc-tag">${ic(ICONE_K[C.type],'sm')} ${t('k_'+C.type)}</span>${C.cat&&!['verset','inv','rappel','perle'].includes(C.type)?`<span class="fc-cat">${ic(CATS[C.cat],'sm')} ${nomCat(C.cat)}</span>`:''}</div>`;
+  const tete=`<div class="fc-tete"><span class="fc-tag">${ic(ICONE_K[C.type],'sm')} ${t('k_'+C.type)}</span>${C.cat&&!['verset','inv','rappel','perle'].includes(C.type)?`<span class="fc-cat">${ic(CATS[C.cat],'sm')} ${nomCat(C.cat)}</span>`:''}${C.q?boutonSignaler([C.q.uid]):''}</div>`;
   let corps='',pied='',txt='';
   if(C.type==='savoir'||C.type==='retenir'){
     corps=`<p class="fc-titre">${esc(C.titre)}</p><p class="fc-texte ${C.type==='retenir'?'gros':''}">${esc(C.texte)}</p>`;txt=C.texte;

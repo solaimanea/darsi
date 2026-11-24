@@ -40,6 +40,7 @@ confidentialite:{titre:"Privacybeleid",maj:"2026-11-19",sections:[
  {h:"Je rechten",p:["Je kunt je voornaam op elk moment wijzigen in de Instellingen, en al je voortgang wissen met de knop “Mijn voortgang wissen”. Het verwijderen van de app wist ook al deze gegevens."]},
  {h:"Diensten van derden",p:["In deze versie worden de lettertypen geladen via Google Fonts, waardoor je IP-adres naar Google wordt verzonden. In de gepubliceerde versie worden ze in de app opgenomen, zodat er niets meer wordt verzonden."]},
  {h:"Wijzigingen",p:["Als er onlinefuncties worden toegevoegd (groepen op afstand, ranglijst), wordt dit beleid vóór de lancering ervan bijgewerkt en wordt om je toestemming gevraagd wanneer de wet dat vereist."]},
+ {h:"Een vraag melden",p:["Als u een vraag meldt, ontvangen wij het nummer, de tekst, de taal, de reden en uw opmerking. Afhankelijk van de versie gaat dit via uw e-mailapp (wij zien uw adres) of via onze server, zonder naam of account. Dit dient alleen om de inhoud te verbeteren. Schrijf geen persoonsgegevens."]},
  {h:"Contact",p:["Verwerkingsverantwoordelijke: JINA Studios, [adres aan te vullen]. Contact: [e-mailadres aan te vullen]. Je kunt ook een klacht indienen bij de CNIL (cnil.fr)."]}
 ]},
 mentions:{titre:"Juridische informatie",maj:"2026-11-18",sections:[
