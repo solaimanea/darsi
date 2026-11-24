@@ -81,12 +81,6 @@ function rappelHTML(r,compact=false){
 function rappel(id){return RAPPELS.find(r=>r.id===id)}
 
 /* ---------- Partage : transmettre un bien, c'est en avoir la récompense ---------- */
-function partager(texte){
-  const tout=texte+'\n\n— '+t('partageVia',{app:NOM_APP})+'\n'+URL_APP;
-  const fini=()=>toast(t('partageFin'));
-  if(navigator.share)navigator.share({text:tout}).then(fini).catch(()=>{});
-  else if(navigator.clipboard)navigator.clipboard.writeText(tout).then(()=>toast(t('copie')+' '+t('partageFin'))).catch(()=>{});
-}
 let TOAST=null;
 function toast(msg){let z=$('toast');if(!z){z=document.createElement('div');z.id='toast';document.body.appendChild(z)}
   z.textContent=msg;z.classList.add('vu');clearTimeout(TOAST);TOAST=setTimeout(()=>z.classList.remove('vu'),3800)}
@@ -151,7 +145,7 @@ function carteHTML(C,k){
     corps=`<div class="fc-rappel">${rappelHTML(C.r)}</div><p class="fc-pas">${t('rappelPas')}</p><p class="fc-total">${ic('ampoule','sm')} <b>${apprisTotal()}</b> ${t('appris',{n:apprisTotal()})}</p>`;
     txt=(C.r.v?QURAN[C.r.v.slice(2)].ar:C.r.ar)+'\n\n'+(C.r.v?(QURAN[C.r.v.slice(2)].tr[S.langue]||''):sensRappel(C.r))+'\n'+refCourte(C.r.v||C.r.src);
   }
-  if(txt)FIL.cartes[k].partage=txt;
+  if(txt)FIL.cartes[k].partage=partieCarte(C,txt);
   const share=txt?`<button class="fc-partage" onclick="partager(FIL.cartes[${k}].partage)" aria-label="${t('partager')}">${ic('partage')}</button>`:'';
   return `<article class="fcarte k-${C.type}" data-k="${k}"><div class="fc-in">${tete}${corps}<div class="fc-pied">${pied}${share}</div></div>
     ${k===0?`<div class="fc-glisser">${ic('droite','sm')} ${t('glisser')}</div>`:''}</article>`;
@@ -203,7 +197,7 @@ function finirCarteQuestion(k,juste,bonne){
   $('fx-'+k).innerHTML=`<b class="${juste?'vert':'rouge'}">${ic(juste?'ok':'ko','sm')} ${juste?t('bienVu'):t('pasToutFil')}</b>
     ${juste?'':`<p class="fc-bonne">${esc(t('bonneRep',{r:q.c[q.b]}))}</p>`}<p>${esc(q.e||'')}</p>${src?`<p class="rap-ref">${esc(src)}</p>`:''}
     <button class="fc-lien" onclick="ouvrirLecon('${C.id}',null,'retourFil()')">${t('voirLecon')} ${ic('droite','sm')}</button>`;
-  C.partage=q.q+'\n→ '+q.c[q.b]+(q.e?'\n\n'+q.e:'');
+  C.partage={titre:q.q,tr:q.c[q.b]+(q.e?'\n'+q.e:''),ref:src||'',brut:q.q+'\n→ '+q.c[q.b]+(q.e?'\n\n'+q.e:'')};
   const pied=document.querySelector(`.fcarte[data-k="${k}"] .fc-pied`);
   if(pied&&!pied.querySelector('.fc-partage'))pied.insertAdjacentHTML('beforeend',`<button class="fc-partage" onclick="partager(FIL.cartes[${k}].partage)" aria-label="${t('partager')}">${ic('partage')}</button>`);
 }

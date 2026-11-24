@@ -801,6 +801,8 @@ function ouvrirDoc(k){
     <h2>${esc(D.titre.replace(/\{APP\}/g,NOM_APP))}</h2><p class="maj">${t('majLe',{d:dateLoc(D.maj)})}</p>
     ${S.langue==='fr'?'':trad?`<p class="avis">${t('aRelire')}</p>`:`<p class="avis">${t('docFr')}</p>`}<div class="frise"></div>
     ${D.sections.map(s=>(s.h?`<h3>${esc(s.h)}</h3>`:'')+s.p.map(p=>`<p>${esc(p.replace('{CORAN}',coran).replace(/\{APP\}/g,NOM_APP))}</p>`).join('')).join('')}</div>`;
+  if(k==='credits')$('e-doc').insertAdjacentHTML('beforeend',`<div class="carte"><h3>${esc(t('pf_credits'))}</h3>${FONDS.map(z=>{const c=FOND_CREDITS[z[0]],l=c[1].startsWith('CC0')?'https://creativecommons.org/publicdomain/zero/1.0/':'https://creativecommons.org/licenses/by/'+c[1].split(' ')[2]+'/';
+    return `<p class="petit">${esc(S.langue==='fr'?z[2]:z[3])} — <a href="${esc(c[2])}" target="_blank" rel="noopener">${esc(c[0])}</a>, <a href="${l}" target="_blank" rel="noopener">${esc(c[1])}</a></p>`}).join('')}</div>`);
   aller('doc');
 }
 
