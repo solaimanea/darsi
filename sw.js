@@ -6,14 +6,14 @@
    - Vidéo d'ouverture : servie depuis le cache avec gestion des « plages » (Safari/iPhone l'exige pour les vidéos).
    - Nouvelle version mise en ligne → nouveau cache, l'ancien est supprimé. */
 'use strict';
-const VERSION = 'e78b120debc3';
+const VERSION = '2d189910dca0';
 const CACHE = 'darsi-' + VERSION, POLICES = 'darsi-polices';
 const FICHIERS = ["./", "apple-touch-icon.png", "contenu/ar-expert.js", "contenu/ar.js", "contenu/calendrier-ar.js", "contenu/calendrier-de.js", "contenu/calendrier-en.js", "contenu/calendrier-es.js", "contenu/calendrier-fr.js", "contenu/calendrier-id.js", "contenu/calendrier-it.js", "contenu/calendrier-nl.js", "contenu/calendrier-tr.js", "contenu/de-expert.js", "contenu/de.js", "contenu/en-expert.js", "contenu/en.js", "contenu/es-expert.js", "contenu/es.js", "contenu/fr-expert.js", "contenu/fr-plus.js", "contenu/fr.js", "contenu/id-expert.js", "contenu/id.js", "contenu/invocations-ar.js", "contenu/invocations-de.js", "contenu/invocations-en.js", "contenu/invocations-es.js", "contenu/invocations-fr.js", "contenu/invocations-id.js", "contenu/invocations-it.js", "contenu/invocations-nl.js", "contenu/invocations-tr.js", "contenu/it-expert.js", "contenu/it.js", "contenu/legal-ar.js", "contenu/legal-de.js", "contenu/legal-en.js", "contenu/legal-es.js", "contenu/legal-fr.js", "contenu/legal-id.js", "contenu/legal-it.js", "contenu/legal-nl.js", "contenu/legal-tr.js", "contenu/nl-expert.js", "contenu/nl.js", "contenu/rappels.js", "contenu/tr-expert.js", "contenu/tr.js", "css/nour.css", "favicon.png", "index.html", "js/app.js", "js/decouvrir.js", "js/en_ligne.js", "js/fonds-mini.js", "js/geomag.js", "js/i18n.js", "js/icones.js", "js/imam.js", "js/partage.js", "js/pwa.js", "js/signaler.js", "js/sources.js", "js/structure.js", "media/intro-debut.jpg", "pwa/apple-touch-icon.png", "pwa/icone-192.png", "pwa/icone-512.png", "pwa/index.html", "pwa/logo-darsi.png", "pwa/manifest.webmanifest"];
 
 self.addEventListener('install', e => {
   e.waitUntil((async () => {
     const c = await caches.open(CACHE);
-    await c.addAll(FICHIERS);
+    await c.addAll(FICHIERS.map(f => new Request(f, { cache: 'reload' })));   // jamais un ancien fichier gardé par le navigateur
     try { await c.add('media/intro.mp4'); } catch (x) { /* la vidéo n'est pas indispensable */ }
     await self.skipWaiting();
   })());
@@ -62,9 +62,10 @@ self.addEventListener('fetch', e => {
   }
   e.respondWith((async () => {
     const c = await caches.open(CACHE);
-    const r = await c.match(req, { ignoreSearch: true });
-    if (r) return r;
-    try { const n = await fetch(req); if (n.ok) c.put(req, n.clone()); return n; }
-    catch (x) { return new Response('', { status: 504 }); }
+    // La page demande ses fichiers avec ?v=version : on ne sert le cache que s'il est de CETTE version (pas de mélange ancien / nouveau)
+    const v = url.searchParams.get('v'), r = await c.match(req, { ignoreSearch: true });
+    if (r && (!v || v === VERSION)) return r;
+    try { const n = await fetch(req); if (n.ok && !v) c.put(req, n.clone()); return n; }
+    catch (x) { return r || new Response('', { status: 504 }); }
   })());
 });

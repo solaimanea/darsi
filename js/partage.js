@@ -66,8 +66,12 @@ function texteComplet(P){return P.brut+'\n\n— '+t('partageVia',{app:NOM_APP})+
 function partagerTexte(P){const tout=texteComplet(P),fini=()=>toast(t('partageFin'));
   if(navigator.share)navigator.share({text:tout}).then(fini).catch(()=>{});
   else if(navigator.clipboard)navigator.clipboard.writeText(tout).then(()=>toast(t('copie')+' '+t('partageFin'))).catch(()=>{})}
+// Ne jamais rester sans réponse : si l'écran d'image ne peut pas s'ouvrir, on partage le texte
 function partager(P){
   if(!P)return;if(typeof P==='string')P={tr:P,brut:P};
+  try{ouvrirPartage(P)}catch(e){console.error(e);document.querySelectorAll('dialog.pf').forEach(d=>d.remove());partagerTexte(P)}
+}
+function ouvrirPartage(P){
   const d=document.createElement('dialog');d.className='pf';const O=Object.assign({cle:FONDS[0][0],format:'story',teinte:'noir',force:.75,montre:{ar:true,tr:true,ph:false}},S.partage||{});O.montre={ar:true,tr:true,ph:false,...O.montre};let fichier=null,tour=0;
   if(O.cle&&!FOND_MINI[O.cle])O.cle=FONDS[0][0];
   const PARTS=P.ar?['ar','tr','ph'].filter(k=>k==='ar'||S.langue!=='ar'&&P[k]):[];

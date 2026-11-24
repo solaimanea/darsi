@@ -9,7 +9,11 @@
   if(natif)return;
   const securise=location.protocol==='https:'||location.hostname==='localhost'||location.hostname==='127.0.0.1';
   if('serviceWorker' in navigator&&securise)
-    window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+    window.addEventListener('load',()=>{
+      const t0=Date.now(),deja=!!navigator.serviceWorker.controller;let fait=false;
+      // nouvelle version prête juste après l'ouverture : on recharge une fois (jamais en plein usage)
+      navigator.serviceWorker.addEventListener('controllerchange',()=>{if(deja&&!fait&&Date.now()-t0<8000){fait=true;location.reload()}});
+      navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).catch(()=>{})});
 
   const TXT={
     fr:{ios:"Installe Darsi sur ton iPhone : touche {p} Partager, puis « Sur l'écran d'accueil ».",and:"Installe Darsi sur ton téléphone : elle marchera même sans réseau.",ok:"Installer",non:"Plus tard"},

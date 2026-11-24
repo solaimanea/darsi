@@ -965,3 +965,9 @@ dialog.pf::backdrop{background:rgba(0,0,0,.75)}
 .pf canvas{max-height:44dvh}
 .pf-teintes{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--doux);margin-bottom:6px}.pf-teintes button{width:28px;height:28px;flex:none;border-radius:50%;border:2px solid rgba(255,255,255,.25);padding:0}
 .pf-teintes .on{border-color:var(--or2);box-shadow:0 0 0 2px rgba(247,220,160,.35)}.pf-teintes input{flex:1;min-width:60px;accent-color:var(--or)}
+
+/* 2026-11-24 : carte longue = on défile dedans, sans couper le haut ; Partager dans l'en-tête, toujours atteignable */
+.fc-in{justify-content:flex-start}
+.fc-tete{position:sticky;top:-22px;z-index:2}
+.fc-tete .fc-partage{margin-inline-start:0;background:rgba(3,33,26,.75)}
+.fc-tete .fc-tag+.fc-partage,.fc-tete .fc-tag+.btn-sig{margin-inline-start:auto}

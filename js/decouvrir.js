@@ -120,7 +120,7 @@ function fabriquerCarte(){
 }
 const ICONE_K={perle:'etoile8',savoir:'ampoule',retenir:'cle',eclair:'chrono',vf:'cible',revoir:'pousse',verset:'livre',inv:'doua',rappel:'chemin'};
 function carteHTML(C,k){
-  const tete=`<div class="fc-tete"><span class="fc-tag">${ic(ICONE_K[C.type],'sm')} ${t('k_'+C.type)}</span>${C.cat&&!['verset','inv','rappel','perle'].includes(C.type)?`<span class="fc-cat">${ic(CATS[C.cat],'sm')} ${nomCat(C.cat)}</span>`:''}${C.q?boutonSignaler([C.q.uid]):''}</div>`;
+  const tete=`<div class="fc-tete"><span class="fc-tag">${ic(ICONE_K[C.type],'sm')} ${t('k_'+C.type)}</span>${C.cat&&!['verset','inv','rappel','perle'].includes(C.type)?`<span class="fc-cat">${ic(CATS[C.cat],'sm')} ${nomCat(C.cat)}</span>`:''}${C.q?boutonSignaler([C.q.uid]):''}@@P@@</div>`;
   let corps='',pied='',txt='';
   if(C.type==='savoir'||C.type==='retenir'){
     corps=`<p class="fc-titre">${esc(C.titre)}</p><p class="fc-texte ${C.type==='retenir'?'gros':''}">${esc(C.texte)}</p>`;txt=C.texte;
@@ -147,7 +147,7 @@ function carteHTML(C,k){
   }
   if(txt)FIL.cartes[k].partage=partieCarte(C,txt);
   const share=txt?`<button class="fc-partage" onclick="partager(FIL.cartes[${k}].partage)" aria-label="${t('partager')}">${ic('partage')}</button>`:'';
-  return `<article class="fcarte k-${C.type}" data-k="${k}"><div class="fc-in">${tete}${corps}<div class="fc-pied">${pied}${share}</div></div>
+  return `<article class="fcarte k-${C.type}" data-k="${k}"><div class="fc-in">${tete.replace('@@P@@',()=>share)}${corps}<div class="fc-pied">${pied}</div></div>
     ${k===0?`<div class="fc-glisser">${ic('droite','sm')} ${t('glisser')}</div>`:''}</article>`;
 }
 function ajouterCartes(nb){
@@ -198,7 +198,7 @@ function finirCarteQuestion(k,juste,bonne){
     ${juste?'':`<p class="fc-bonne">${esc(t('bonneRep',{r:q.c[q.b]}))}</p>`}<p>${esc(q.e||'')}</p>${src?`<p class="rap-ref">${esc(src)}</p>`:''}
     <button class="fc-lien" onclick="ouvrirLecon('${C.id}',null,'retourFil()')">${t('voirLecon')} ${ic('droite','sm')}</button>`;
   C.partage={titre:q.q,tr:q.c[q.b]+(q.e?'\n'+q.e:''),ref:src||'',brut:q.q+'\n→ '+q.c[q.b]+(q.e?'\n\n'+q.e:'')};
-  const pied=document.querySelector(`.fcarte[data-k="${k}"] .fc-pied`);
+  const pied=document.querySelector(`.fcarte[data-k="${k}"] .fc-tete`);
   if(pied&&!pied.querySelector('.fc-partage'))pied.insertAdjacentHTML('beforeend',`<button class="fc-partage" onclick="partager(FIL.cartes[${k}].partage)" aria-label="${t('partager')}">${ic('partage')}</button>`);
 }
 function repondreFil(k,o,b){const C=FIL.cartes[k];if(C.compte)return;const juste=o===C.q.b;
