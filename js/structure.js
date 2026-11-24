@@ -14,7 +14,7 @@ const LANGUES=[
 ];
 
 // Thèmes : clé → icône
-const CATS={ramadan:'lune',piliers:'mosquee',coran:'livre',prophetes:'etoile8',histoire:'parchemin'};
+const CATS={foi:'foi',piliers:'mosquee',coran:'livre',prophetes:'etoile8',histoire:'parchemin',comportement:'coeur',ramadan:'lune'};   // 2026-11-24 : foi et comportement ajoutés ; le Ramadan n'est plus en tête
 
 // Leçons : identifiant + thème, dans l'ordre du parcours de chaque thème
 const LECONS=[
@@ -24,13 +24,15 @@ const LECONS=[
   ['c-coran','coran'],['c-sourates','coran'],['c-ikhlas','coran'],
   ['pr-adam','prophetes'],['pr-ibrahim','prophetes'],['pr-yunus','prophetes'],['pr-musa','prophetes'],
   ['pr-isa','prophetes'],['pr-muhammad','prophetes'],['pr-livres','prophetes'],
-  ['h-khadija','histoire'],['h-hegire','histoire'],['h-badr','histoire'],['h-fath','histoire'],['h-califes','histoire']
+  ['h-khadija','histoire'],['h-hegire','histoire'],['h-badr','histoire'],['h-fath','histoire'],['h-califes','histoire'],
+  ['f-iman','foi'],['f-tawhid','foi'],['f-anges','foi'],['f-dernier','foi'],
+  ['m-parents','comportement'],['m-parole','comportement'],['m-autres','comportement'],['m-colere','comportement']
 ].map(([id,cat])=>({id,cat}));
 
 // Ordre de la « leçon du jour » toute l'année (thèmes alternés, ordre interne respecté)
-const ORDRE=['r-bienvenue','p-piliers','c-coran','pr-adam','h-khadija','p-shahada','r-jeuner','pr-ibrahim','h-hegire',
-  'p-priere','c-sourates','r-rompt','pr-yunus','h-badr','p-ablutions','r-suhur','pr-musa','c-ikhlas','h-fath',
-  'p-zakat','r-merites','pr-isa','h-califes','p-hajj','r-nuits','pr-muhammad','r-qadr','pr-livres','r-aid'];
+const ORDRE=['f-iman','p-piliers','m-parents','c-coran','pr-adam','f-tawhid','h-khadija','p-shahada','m-parole','r-bienvenue',
+  'pr-ibrahim','f-anges','h-hegire','p-priere','m-autres','c-sourates','r-jeuner','pr-yunus','f-dernier','h-badr','p-ablutions','m-colere',
+  'r-rompt','pr-musa','c-ikhlas','h-fath','r-suhur','p-zakat','r-merites','pr-isa','h-califes','p-hajj','r-nuits','pr-muhammad','r-qadr','pr-livres','r-aid'];   // 2026-11-24 : la foi d'abord, le Ramadan n'ouvre plus le parcours
 
 // Programme des 29 premiers jours du Ramadan (jour 30 = Grand Quiz)
 const PROG_RAMADAN=['r-bienvenue','r-jeuner','r-rompt','r-suhur','r-merites','p-piliers','p-shahada','p-priere','p-ablutions',
@@ -59,7 +61,13 @@ const HADITHS_REFS={
   inv_detresse:[['bukhari',6346]], inv_tasbih:[['bukhari',6405]], inv_yunus:[['tirmidhi',3505]],
   // Rappels « pourquoi j'apprends » (fil Découvrir, chemin, fin de quiz)
   sav_chemin:[['muslim',2699]], sav_trois:[['muslim',1631]], sav_fiqh:[['bukhari',71],['muslim',1037]], sav_coran:[['bukhari',5027]],
-  sav_indiquer:[['muslim',1893]], sav_appeler:[['muslim',2674]]
+  sav_indiquer:[['muslim',1893]], sav_appeler:[['muslim',2674]],
+  // Foi & comportement (2026-11-24)
+  noms99:[['bukhari',2736],['muslim',2677]], anges_lumiere:[['muslim',2996]], mere:[['bukhari',5971],['muslim',2548]],
+  parler_bien:[['muslim',47],['bukhari',6018]], verite:[['bukhari',6094],['muslim',2607]], ghiba:[['muslim',2589]],
+  voisin:[['muslim',2624],['bukhari',6014]], frere_aime:[['bukhari',13],['muslim',45]], sourire:[['tirmidhi',1956]],
+  misericorde:[['abudawud',4941],['tirmidhi',1924]], caractere:[['tirmidhi',1162],['abudawud',4682]],
+  colere:[['bukhari',6116]], fort:[['bukhari',6114],['muslim',2609]], intention:[['bukhari',1],['muslim',1907]]
 };
 const RECUEILS={bukhari:'Sahih al-Bukhari',muslim:'Sahih Muslim',abudawud:'Sunan Abî Dâwûd',tirmidhi:'Sunan at-Tirmidhî'};
 

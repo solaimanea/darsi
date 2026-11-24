@@ -82,7 +82,7 @@ function rendreSource(cle){
     let lg=S.langue==='ar'?null:(h.txt[S.langue]?S.langue:'en');
     const credit=lg===null?'':lg==='en'&&S.langue!=='en'?t('tradAnglaise',{t:TRAD_HADITHS.en[coll]}):
       t('tradHadith',{t:(TRAD_HADITHS[lg]&&TRAD_HADITHS[lg][coll])||t('tradInconnue')});
-    const texte=lg?h.txt[lg]:'';
+    const texte=lg?(h.txt[lg]||''):'';   // traduction absente : on garde l'arabe et la référence
     const arabe=`<p class="ar petit-ar" lang="ar" dir="rtl">${esc(h.txt.ar||'')}</p>`;
     let corps;
     if(S.langue==='ar') corps=pliable(arabe,(h.txt.ar||'').length>380);
@@ -152,9 +152,14 @@ function commencer(){S.prenom=$('prenom').value.trim();S.demarre=true;sauver();a
 const MAJEURS=['ramadan','aidFitr','arafa','aidAdha','nouvelAn','achoura','dixNuits','dixDhulHijja'];
 function aVenir(){const auj=aujourdhui(),vus=new Set();return evenements().filter(e=>e.d>auj&&!vus.has(e.f.id)&&vus.add(e.f.id))}
 function joursAvant(e){return Math.round((e.d-aujourdhui())/864e5)}
+function carteNiveau(){const N=niveauDe(S.points);
+  return `<div class="carte niveau-carte" onclick="retourFil()"><div class="nv-rond"><b>${N.n}</b><span>${esc(t('niveauMot'))}</span></div>
+    <div class="nv-texte"><div class="surtitre">${ic('etoile8','sm')} ${esc(t('monNiveau'))}</div><div class="barre"><i style="width:${N.p}%"></i></div>
+    <p class="petit">${esc(t('avantNiveau',{n:N.reste,m:N.n+1}))}</p><b class="nv-go">${ic('decouvrir','sm')} ${t('continuerFil')}</b></div></div>`}
 function blocDecompte(){
   const L=aVenir();if(!L.length)return '';
   const M=L.find(e=>MAJEURS.includes(e.f.id))||L[0],n=joursAvant(M),ram=M.f.id==='ramadan';
+  if(n>30)return carteNiveau();   // 2026-11-24 : l'appli ne tourne plus autour du Ramadan (la date reste dans le bandeau et la tuile)
   return `<div class="carte decompte2" onclick="${ram?'ouvrirRamadan()':'ouvrirCalendrier()'}"><div class="illu">${moucharabieh(150)}</div>
       <div class="carre"><b>${n}</b><span>${t('uJours',{n})}</span></div>
       <div class="dc-texte"><div class="surtitre">${ic(M.f.ic,'sm')} ${t('decompteTitre')}</div><h2>${t('cal_'+M.f.id)}${ram?' '+hijriDe(M.d).year:''}</h2>
@@ -279,15 +284,20 @@ function ouvrirLecon(id,ram=null,retour=null){
 let Q=[],qi=0,bonnes=0,PTS=0,CTX={},T=null,reste=0,JOUEUR='moi',ORDRE_CHOIX=[],SEL=new Set(),REP=[],CORR=null,TOT=0,PAIRES=null;
 /* 2026-11-23 : dans une leçon, les questions ne se ressemblent plus : 3 deviennent « vrai ou faux » (une réponse proposée,
    juste ou fausse) et 3 à réponse courte deviennent un écran « relie les paires ». Même nombre de questions, même score. */
+const NB_PAIRES=4;
 const poids=it=>it.paires?it.paires.length:1;
 function varier(qs){
   const simples=qs.filter(q=>!q.m),courtes=melanger(simples.filter(q=>q.c[q.b].length<=42&&q.q.length<=130));
-  const paire=[];for(const q of courtes){if(paire.length<3&&!paire.some(p=>p.c[p.b]===q.c[q.b]))paire.push(q)}
-  const prises=paire.length===3?paire:[];
+  // 2026-11-24 : 4 questions à relier + 4 réponses pièges (une mauvaise réponse de chaque question, donc du même genre :
+  // un nombre parmi des nombres, un nom parmi des noms) → on ne peut plus deviner par élimination
+  const paire=[];for(const q of courtes){if(paire.length<NB_PAIRES&&!paire.some(p=>p.c[p.b]===q.c[q.b]))paire.push(q)}
+  const prises=paire.length>=3?paire:[];
+  let pieces=prises.map((q,k)=>({txt:q.c[q.b],k}));
+  for(const q of prises){const piege=melanger(q.c.filter((c,i)=>i!==q.b&&c.length<=50&&!pieces.some(x=>x.txt===c)))[0];if(piege)pieces.push({txt:piege,k:-1})}
   const vf=melanger(simples.filter(q=>!prises.includes(q))).slice(0,3);
   const out=[];let place=false;
   for(const q of qs){
-    if(prises.includes(q)){if(!place){out.push({paires:prises});place=true}continue}
+    if(prises.includes(q)){if(!place){out.push({paires:prises,pieces});place=true}continue}
     out.push(vf.includes(q)?{...q,vf:Math.random()<.5?q.b:melanger([0,1,2,3].filter(k=>k!==q.b))[0]}:q);
   }
   return out;
@@ -318,8 +328,8 @@ function lancerRevision(){
   const faites=LECONS.filter(l=>fait(l.id)).flatMap(l=>questionsDe(l.id));
   const base=faites.length>=NB_REVISION?faites:LECONS.flatMap(l=>questionsDe(l.id));
   const faibles=Object.keys(CATS).filter(k=>pct('moi',k)!==null).sort((a,b)=>pct('moi',a)-pct('moi',b)).slice(0,2);
-  const prio=melanger(base.filter(q=>faibles.includes(q.cat))).slice(0,3);
-  lancerQuiz(melanger(prio.concat(melanger(base.filter(q=>!prio.includes(q))).slice(0,NB_REVISION-prio.length))),t('revision'),{mode:'revision'});
+  const prio=moinsVues(base.filter(q=>faibles.includes(q.cat))).slice(0,3);
+  lancerQuiz(melanger(prio.concat(moinsVues(base.filter(q=>!prio.includes(q))).slice(0,NB_REVISION-prio.length))),t('revision'),{mode:'revision'});
 }
 function afficherQuestion(){
   const q=Q[qi],pos=Q.slice(0,qi).reduce((a,it)=>a+poids(it),0);
@@ -349,31 +359,29 @@ function choisir(i,b,multi){
 }
 function afficherVF(q){
   $('q-texte').textContent='';$('q-consigne').textContent=t('consigneVF');SEL=new Set();
-  // Une carte (question + réponse proposée) à balayer : droite = Vrai, gauche = Faux (boutons dans le même ordre)
+  // Une carte (question + réponse proposée), puis Faux / Vrai à toucher (balayage retiré le 2026-11-24 à la demande)
   $('q-choix').innerHTML=`<div class="vf-carte arrive"><p class="vf-q"></p><div class="vf-prop"><span>${t('propose')}</span><b></b></div></div>
-    <p class="vf-indice" dir="ltr">${ic('gauche','sm')} ${t('faux')} · ${t('vrai')} ${ic('droite','sm')}</p>
     <div class="vf-boutons" dir="ltr"><button class="choix vf-b" data-v="f">${ic('croix')} ${t('faux')}</button><button class="choix vf-b" data-v="v">${ic('check')} ${t('vrai')}</button></div>`;
   $('q-choix').querySelector('.vf-q').textContent=q.q;
   $('q-choix').querySelector('.vf-prop b').textContent=q.c[q.vf];
   $('q-choix').querySelectorAll('.vf-b').forEach(b=>b.onclick=()=>{SEL=new Set([b.dataset.v]);
     $('q-choix').querySelectorAll('.vf-b').forEach(x=>x.classList.toggle('sel',x===b));$('q-suivant').disabled=false;vibrer(10)});
   $('q-suivant').disabled=true;
-  balayage($('q-choix').querySelector('.vf-carte'),dit=>{SEL=new Set([dit?'v':'f']);enregistrer()});
 }
 function afficherPaires(it){
   $('q-texte').textContent='';$('q-consigne').textContent=t('consignePaires');
-  PAIRES={sel:0,lien:{},ordre:melanger(it.paires.map((_,k)=>k))};dessinerPaires(it);
+  PAIRES={sel:0,lien:{},ordre:melanger(it.pieces.map((_,i)=>i))};dessinerPaires(it);
 }
 function dessinerPaires(it){
-  const P=PAIRES,coul=k=>COULEURS[[1,2,3][k]];
+  const P=PAIRES,coul=k=>COULEURS[[1,2,3,4][k]];
   const pris=r=>Object.keys(P.lien).find(k=>P.lien[k]===r);
   $('q-choix').innerHTML=`<div class="paires-q">${it.paires.map((q,k)=>`<button class="paire-q ${P.sel===k?'sel':''} ${P.lien[k]!==undefined?'liee':''}" data-k="${k}" style="--pc:${coul(k)}">
       <span class="pq-pt"></span><span class="pq-txt"></span>${P.lien[k]!==undefined?`<span class="pq-rep"></span>`:''}</button>`).join('')}</div>
     <div class="paires-r">${P.ordre.map(r=>{const k=pris(r);return `<button class="paire-r ${k!==undefined?'prise':''}" data-r="${r}" ${k!==undefined?`style="--pc:${coul(+k)}"`:''}><span></span></button>`}).join('')}</div>`;
   $('q-choix').querySelectorAll('.paire-q').forEach(b=>{const k=+b.dataset.k,q=it.paires[k];b.querySelector('.pq-txt').textContent=q.q;
-    if(P.lien[k]!==undefined){const a=it.paires[P.lien[k]];b.querySelector('.pq-rep').textContent=a.c[a.b]}
+    if(P.lien[k]!==undefined)b.querySelector('.pq-rep').textContent=it.pieces[P.lien[k]].txt;
     b.onclick=()=>{P.sel=k;dessinerPaires(it)}});
-  $('q-choix').querySelectorAll('.paire-r').forEach(b=>{const r=+b.dataset.r,a=it.paires[r];b.firstChild.textContent=a.c[a.b];
+  $('q-choix').querySelectorAll('.paire-r').forEach(b=>{const r=+b.dataset.r;b.firstChild.textContent=it.pieces[r].txt;
     b.onclick=()=>{if(P.sel===null)P.sel=it.paires.findIndex((_,k)=>P.lien[k]===undefined);if(P.sel<0)return;
       for(const k of Object.keys(P.lien))if(P.lien[k]===r)delete P.lien[k];
       P.lien[P.sel]=r;vibrer(10);const libre=it.paires.findIndex((_,k)=>P.lien[k]===undefined);P.sel=libre<0?null:libre;dessinerPaires(it)}});
@@ -382,8 +390,8 @@ function dessinerPaires(it){
 function enregistrer(){
   clearInterval(T);
   if(Q[qi].paires){const it=Q[qi];
-    it.paires.forEach((q,k)=>{const r=PAIRES.lien[k],juste=r===k;if(juste){bonnes++;PTS++}if(q.cat)noter(JOUEUR,q.cat,juste);
-      REP.push({q,choisis:juste?[q.b]:[],juste,paire:juste?null:(r!==undefined?it.paires[r].c[it.paires[r].b]:'')})});
+    it.paires.forEach((q,k)=>{const r=PAIRES.lien[k],juste=r!==undefined&&it.pieces[r].k===k;if(juste){bonnes++;PTS++}if(q.cat)noter(JOUEUR,q.cat,juste);
+      REP.push({q,choisis:juste?[q.b]:[],juste,paire:juste?null:(r!==undefined?it.pieces[r].txt:'')})});
     qi++;if(qi<Q.length){afficherQuestion();scrollTo({top:0,behavior:'smooth'})}else finir();return}
   if(Q[qi].vf!==undefined){const q=Q[qi],dit=[...SEL][0],juste=(dit==='v')===(q.vf===q.b);
     if(juste){bonnes++;PTS++}if(q.cat)noter(JOUEUR,q.cat,juste);
@@ -406,7 +414,7 @@ function activite(){
 function finir(){
   $('q-barre').style.width='100%';
   if(CTX.mode==='defi'){DEFI.rep=DEFI.rep.concat(REP);sauver();finTour();return}
-  REP.forEach(x=>noterErreur(x.q,x.juste));   // erreurs à revoir dans Découvrir
+  REP.forEach(x=>{noterErreur(x.q,x.juste);vue(x.q)});   // erreurs à revoir dans Découvrir
   const r=bonnes/TOT,titreRes=r===1?t('resParfait'):r>=.5?t('resBravo'):t('resProgres');
   if(CTX.mode==='bilan'){sauver();montrerResultat(bonnes,TOT,titreRes,'',"RETOUR='accueil';afficherBilan('moi')",REP);return}
   let gagnes=0,texte='',suite="aller('accueil')";const gainTxt=()=>t('gain',{p:gagnes,j:t('jours',{n:S.serie})});

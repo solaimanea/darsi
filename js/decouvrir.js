@@ -20,12 +20,51 @@ function apprendre(){
 }
 
 /* ---------- Erreurs à revoir (répétition espacée simple) ---------- */
+// Une question ratée revient 2 fois au plus dans le fil, puis on passe à autre chose (2026-11-24)
+const RETOURS_ERREUR=2;
 function noterErreur(q,juste){
   if(!q||!q.uid)return;const E=S.erreurs=S.erreurs||{};
-  if(juste)delete E[q.uid];else E[q.uid]=dateCle();
+  if(juste)delete E[q.uid];else if(!E[q.uid]&&nbVues(q)<5)E[q.uid]={r:RETOURS_ERREUR};
 }
+function consommerErreur(uid){const E=S.erreurs||{},e=E[uid];if(!e)return;const r=(typeof e==='object'?e.r:RETOURS_ERREUR)-1;if(r<=0)delete E[uid];else E[uid]={r}}
+// Nombre de fois qu'une question a été posée : on choisit toujours parmi les moins vues → pas de répétition avant d'avoir tout vu
+function vue(q){if(!q||!q.uid)return;const V=S.vus=S.vus||{};V[q.uid]=(V[q.uid]||0)+1}
+const nbVues=q=>((S.vus||{})[q.uid]||0);
+function moinsVues(liste){return melanger(liste).sort((a,b)=>nbVues(a)-nbVues(b))}
 function questionParUid(uid){const id=uid.split('#')[0];if(!LECONS.some(l=>l.id===id))return null;return questionsDe(id).find(q=>q.uid===uid)||null}
-function aRevoir(){return Object.keys(S.erreurs||{}).map(questionParUid).filter(q=>q&&!q.m)}
+function aRevoir(){return Object.keys(S.erreurs||{}).map(questionParUid).filter(q=>q&&!q.m&&!FIL.vus.has(q.uid))}
+
+/* ---------- Récompenses : points, niveaux, séries de bonnes réponses, perles rares, sons ---------- */
+const GAIN_BONNE=10,GAIN_COMBO=5,GAIN_LECTURE=2,GAIN_PERLE=50,PERLE_CHANCE=.1;
+let COMBO=0;
+// Niveau n atteint à 50·n·(n−1) points : 100, 300, 600, 1000, 1500…
+function niveauDe(p){let n=1;while(50*(n+1)*n<=p)n++;const a=50*n*(n-1),b=50*(n+1)*n;return {n,p:Math.round((p-a)/(b-a)*100),reste:b-p}}
+function gagner(n,el){
+  const avant=niveauDe(S.points).n;S.points+=n;sauver();
+  if(el&&n>=5){const r=el.getBoundingClientRect(),f=document.createElement('div');f.className='gain-vol';f.textContent='+'+n;
+    f.style.left=(r.left+r.width/2)+'px';f.style.top=(r.top+8)+'px';document.body.appendChild(f);setTimeout(()=>f.remove(),1100)}
+  const apres=niveauDe(S.points).n;
+  if(apres>avant){son('niveau');pluie();vibrer([40,60,40,60,80]);celebrerNiveau(apres)}
+  majTeteFil();
+}
+function celebrerNiveau(n){const z=document.createElement('div');z.className='niveau-up';
+  z.innerHTML=`<div>${ic('etoile8','lg')}<b>${esc(t('niveauAtteint',{n}))}</b><span>${esc(t('rappelPas'))}</span></div>`;
+  z.onclick=()=>z.remove();document.body.appendChild(z);setTimeout(()=>z.classList.add('fin'),2600);setTimeout(()=>z.remove(),3200)}
+function montrerCombo(carte){if(COMBO<2||!carte)return;const old=carte.querySelector('.combo');if(old)old.remove();
+  carte.insertAdjacentHTML('afterbegin',`<div class="combo c${Math.min(COMBO,6)}">${ic('flamme','sm')} ${esc(t('combo',{n:COMBO}))}</div>`)}
+// Petits sons synthétisés (aucun fichier) : la note monte avec la série
+const SON={};
+function son(type,n=1){
+  if(S.son===false)return;
+  try{const A=SON.ctx||(SON.ctx=new (window.AudioContext||window.webkitAudioContext)());if(A.state==='suspended')A.resume();const t0=A.currentTime;
+    const note=(f,d0,d,vol=.11,forme='sine')=>{const o=A.createOscillator(),g=A.createGain();o.type=forme;o.frequency.value=f;
+      g.gain.setValueAtTime(0,t0+d0);g.gain.linearRampToValueAtTime(vol,t0+d0+.012);g.gain.exponentialRampToValueAtTime(.0008,t0+d0+d);
+      o.connect(g);g.connect(A.destination);o.start(t0+d0);o.stop(t0+d0+d+.05)};
+    if(type==='bon'){const b=587*Math.pow(2,Math.min(n-1,8)/12);note(b,0,.16);note(b*1.5,.07,.32)}
+    else if(type==='faux')note(185,0,.28,.09,'triangle');
+    else [523,659,784,1047,1319].slice(0,type==='perle'?4:5).forEach((f,i)=>note(f,i*.085,.4,.1));
+  }catch(e){}
+}
 
 /* ---------- Rappels (hadiths et versets sur le savoir) ---------- */
 function phVerset(cle){const v=QURAN[cle.slice(2)];return v?(S.langue==='tr'?v.tl.tr:v.tl.en):''}
@@ -62,25 +101,32 @@ function versetsLecons(){
   return FIL.versets=[...k].filter(x=>QURAN[x.slice(2)]);
 }
 // Tire un élément pas encore montré dans cette session (sinon accepte une répétition)
-function neuf(cle,tirer){for(let i=0;i<12;i++){const x=tirer();if(x&&!FIL.vus.has(cle(x))){FIL.vus.add(cle(x));return x}}return tirer()}
+function neuf(cle,tirer){for(let i=0;i<12;i++){const x=tirer();if(x!==undefined&&!FIL.vus.has(cle(x))){FIL.vus.add(cle(x));return x}}return tirer()}
 function fabriquerCarte(){
   const n=FIL.n++;let type=MOTIF_FIL[n%MOTIF_FIL.length];
   const rev=aRevoir();if(n%4===3&&rev.length)type='revoir';
-  const id=n===0?(prochaineLecon()||hasard(LECONS).id):hasard(LECONS).id,L=lecon(id),m=LECONS.find(l=>l.id===id);
+  if((type==='savoir'||type==='rappel')&&n>2&&Math.random()<PERLE_CHANCE)type='perle';
+  // un thème au hasard (tous à égalité), puis une leçon de ce thème : le fil parle de toute la religion
+  const cat=hasard(Object.keys(CATS));
+  let id=n===0?(prochaineLecon()||hasard(parTheme(cat)).id):hasard(parTheme(cat)).id;
+  if(type==='eclair'||type==='vf'){const pool=parTheme(cat).flatMap(l=>questionsDe(l.id)).filter(x=>!x.m&&!FIL.vus.has(x.uid));
+    if(pool.length){const q=moinsVues(pool)[0];id=q.uid.split('#')[0]}}
+  const L=lecon(id),m=LECONS.find(l=>l.id===id);
   const C={type,id,cat:m.cat};
   if(type==='savoir'){const p=neuf(x=>id+'§'+x,()=>hasard(L.texte.map((_,i)=>i)));C.texte=L.texte[p];C.titre=L.titre}
   else if(type==='retenir'){C.texte=L.retenir;C.titre=L.titre}
-  else if(type==='eclair'||type==='vf'){const q=neuf(x=>x.uid,()=>hasard(questionsDe(id).filter(x=>!x.m)));C.q=q;
+  else if(type==='eclair'||type==='vf'){const q=moinsVues(questionsDe(id).filter(x=>!x.m&&!FIL.vus.has(x.uid)))[0]||hasard(questionsDe(id).filter(x=>!x.m));FIL.vus.add(q.uid);C.q=q;
     if(type==='vf')C.prop=Math.random()<.5?q.b:hasard([0,1,2,3].filter(k=>k!==q.b))}
-  else if(type==='revoir'){C.q=hasard(rev);C.id=C.q.uid.split('#')[0];C.cat=C.q.cat}
+  else if(type==='revoir'){C.q=hasard(rev);FIL.vus.add(C.q.uid);consommerErreur(C.q.uid);C.id=C.q.uid.split('#')[0];C.cat=C.q.cat}
+  else if(type==='perle'){C.r=hasard(RAPPELS)}
   else if(type==='verset'){C.v=neuf(x=>x,()=>hasard(versetsLecons()))}
   else if(type==='inv'){C.d=neuf(x=>x.id,()=>hasard(listeInv()))}
   else if(type==='rappel'){C.r=RAPPELS[(n/MOTIF_FIL.length|0)%RAPPELS.length]}
   return C;
 }
-const ICONE_K={savoir:'ampoule',retenir:'cle',eclair:'chrono',vf:'cible',revoir:'pousse',verset:'livre',inv:'doua',rappel:'chemin'};
+const ICONE_K={perle:'etoile8',savoir:'ampoule',retenir:'cle',eclair:'chrono',vf:'cible',revoir:'pousse',verset:'livre',inv:'doua',rappel:'chemin'};
 function carteHTML(C,k){
-  const tete=`<div class="fc-tete"><span class="fc-tag">${ic(ICONE_K[C.type],'sm')} ${t('k_'+C.type)}</span>${C.cat&&!['verset','inv','rappel'].includes(C.type)?`<span class="fc-cat">${ic(CATS[C.cat],'sm')} ${nomCat(C.cat)}</span>`:''}</div>`;
+  const tete=`<div class="fc-tete"><span class="fc-tag">${ic(ICONE_K[C.type],'sm')} ${t('k_'+C.type)}</span>${C.cat&&!['verset','inv','rappel','perle'].includes(C.type)?`<span class="fc-cat">${ic(CATS[C.cat],'sm')} ${nomCat(C.cat)}</span>`:''}</div>`;
   let corps='',pied='',txt='';
   if(C.type==='savoir'||C.type==='retenir'){
     corps=`<p class="fc-titre">${esc(C.titre)}</p><p class="fc-texte ${C.type==='retenir'?'gros':''}">${esc(C.texte)}</p>`;txt=C.texte;
@@ -89,7 +135,7 @@ function carteHTML(C,k){
     const ordre=melanger([0,1,2,3]);
     corps=`<p class="fc-q">${esc(C.q.q)}</p><div class="fc-choix">${ordre.map(o=>`<button class="choix" data-o="${o}" onclick="repondreFil(${k},${o},this)"><span></span></button>`).join('')}</div><div class="fc-explic" id="fx-${k}"></div>`;
   }else if(C.type==='vf'){
-    corps=`<p class="fc-q">${esc(C.q.q)}</p><div class="vf-prop"><span>${t('propose')}</span><b></b></div><p class="vf-indice" dir="ltr">${ic('gauche','sm')} ${t('faux')} · ${t('vrai')} ${ic('droite','sm')}</p>
+    corps=`<p class="fc-q">${esc(C.q.q)}</p><div class="vf-prop"><span>${t('propose')}</span><b></b></div>
       <div class="vf-boutons" dir="ltr"><button class="choix vf-b" data-v="f" onclick="repondreVF(${k},false,this)">${ic('croix')} ${t('faux')}</button><button class="choix vf-b" data-v="v" onclick="repondreVF(${k},true,this)">${ic('check')} ${t('vrai')}</button></div><div class="fc-explic" id="fx-${k}"></div>`;
   }else if(C.type==='verset'){const v=QURAN[C.v.slice(2)];
     corps=`<p class="ar fc-ar" lang="ar" dir="rtl">${esc(v.ar)}</p>${phHTML(phVerset(C.v))}${S.langue!=='ar'?`<p class="fc-texte">${esc(v.tr[S.langue]||v.tr.en)}</p>`:''}<p class="rap-ref">${esc(refCourte(C.v))}</p>`;
@@ -98,6 +144,9 @@ function carteHTML(C,k){
     corps=`<p class="fc-titre">${esc(d.titre)}</p><p class="ar fc-ar" lang="ar" dir="rtl">${esc(ar).replace(/\n/g,'<br>')}</p>${phHTML(ph)}${S.langue!=='ar'?`<p class="fc-texte">${esc(sensDe(d))}</p>`:''}`;
     txt=d.titre+'\n\n'+ar+(S.langue!=='ar'&&ph?'\n('+ph+')':'')+(S.langue!=='ar'?'\n\n'+sensDe(d):'');
     pied=`<button class="fc-lien" onclick="INV_RETOUR='retourFil()';ouvrirInvocation('${d.id}')">${t('ouvrirInv')} ${ic('droite','sm')}</button>`;
+  }else if(C.type==='perle'){
+    corps=`<div class="perle-eclat">${ic('etoile8','lg')}</div><div class="fc-rappel">${rappelHTML(C.r)}</div><p class="perle-gain">+${GAIN_PERLE} ${t('points')}</p>`;
+    txt=(C.r.v?QURAN[C.r.v.slice(2)].ar:C.r.ar)+'\n\n'+(C.r.v?(QURAN[C.r.v.slice(2)].tr[S.langue]||''):sensRappel(C.r))+'\n'+refCourte(C.r.v||C.r.src);
   }else if(C.type==='rappel'){
     corps=`<div class="fc-rappel">${rappelHTML(C.r)}</div><p class="fc-pas">${t('rappelPas')}</p><p class="fc-total">${ic('ampoule','sm')} <b>${apprisTotal()}</b> ${t('appris',{n:apprisTotal()})}</p>`;
     txt=(C.r.v?QURAN[C.r.v.slice(2)].ar:C.r.ar)+'\n\n'+(C.r.v?(QURAN[C.r.v.slice(2)].tr[S.langue]||''):sensRappel(C.r))+'\n'+refCourte(C.r.v||C.r.src);
@@ -114,7 +163,7 @@ function ajouterCartes(nb){
     // textes des choix posés en textContent (pas d'HTML dans les réponses)
     if(C.q){el.querySelectorAll('.fc-choix .choix').forEach(b=>b.firstChild.textContent=C.q.c[+b.dataset.o]);
       if(C.type==='vf'){const pr=el.querySelector('.vf-prop');pr.querySelector('b').textContent=C.q.c[C.prop];
-        balayage(el.querySelector('.fc-in'),dit=>repondreVF(k,dit,el.querySelector(`.vf-b[data-v="${dit?'v':'f'}"]`)),true)}}
+}}
     FIL.obs.observe(el);}
 }
 // Retour au fil : on retrouve la carte où l'on était (sinon on ouvre un fil neuf)
@@ -131,17 +180,25 @@ function ouvrirDecouvrir(){
     if(e.isIntersecting){
       if(k>=FIL.n-3)ajouterCartes(5);
       // carte à lire : comptée « apprise » après 2,5 s à l'écran
-      if(!C.compte&&!C.q)minut[k]=setTimeout(()=>{if(!C.compte){C.compte=true;apprendre()}},2500);
+      if(!C.compte&&!C.q)minut[k]=setTimeout(()=>{if(C.compte)return;C.compte=true;
+        if(C.type==='perle'){S.perles=(S.perles||0)+1;son('perle');pluie();toast(t('perleTrouvee',{n:S.perles}));gagner(GAIN_PERLE,e.target.querySelector('.perle-gain'))}
+        else gagner(GAIN_LECTURE);apprendre()},C.type==='perle'?1200:2500);
     }else clearTimeout(minut[k]);
   }),{threshold:.6});
   aller('decouvrir');ajouterCartes(6);majTeteFil();
 }
-function majTeteFil(){const z=$('fil-tete');if(!z)return;const n=apprisDuJour(),p=Math.min(100,n/OBJECTIF_JOUR*100);
-  z.innerHTML=`<span>${ic('ampoule','sm')} ${t('filCompteur',{n})}</span><span class="fil-obj ${n>=OBJECTIF_JOUR?'ok':''}"><i style="width:${p}%"></i></span>`}
+function majTeteFil(){const z=$('fil-tete');if(!z)return;const n=apprisDuJour(),N=niveauDe(S.points);
+  z.innerHTML=`<span class="ft-niv">${t('niveauCourt',{n:N.n})}</span><span class="ft-barre"><i style="width:${N.p}%"></i></span>
+    <span class="ft-jour ${n>=OBJECTIF_JOUR?'ok':''}">${ic('ampoule','sm')} ${n}/${OBJECTIF_JOUR}</span>
+    <button class="ft-son" onclick="S.son=S.son===false;sauver();majTeteFil()" aria-label="${t('son')}">${ic(S.son===false?'muet':'son','sm')}</button>`}
 function finirCarteQuestion(k,juste,bonne){
   const C=FIL.cartes[k],q=C.q;if(C.compte)return;C.compte=true;
-  noter('moi',q.cat,juste);noterErreur(q,juste);if(juste)S.points+=2;
-  apprendre();vibrer(juste?[20,30,20]:40);
+  noter('moi',q.cat,juste);if(juste||C.type!=='revoir')noterErreur(q,juste);vue(q);   // une question déjà « à revoir » n'est pas remise dans la file
+  const carte=document.querySelector(`.fcarte[data-k="${k}"] .fc-in`);
+  if(juste){COMBO++;const g=GAIN_BONNE+GAIN_COMBO*Math.min(COMBO-1,5);son('bon',COMBO);gagner(g,bonne||carte);montrerCombo(carte);
+    if(COMBO===5||COMBO===10||COMBO%15===0){pluie();vibrer([30,40,60])}else vibrer([20,30,20])}
+  else{COMBO=0;son('faux');vibrer(40)}
+  apprendre();
   const src=(q.s||[]).map(refCourte).filter(Boolean)[0];
   $('fx-'+k).innerHTML=`<b class="${juste?'vert':'rouge'}">${ic(juste?'ok':'ko','sm')} ${juste?t('bienVu'):t('pasToutFil')}</b>
     ${juste?'':`<p class="fc-bonne">${esc(t('bonneRep',{r:q.c[q.b]}))}</p>`}<p>${esc(q.e||'')}</p>${src?`<p class="rap-ref">${esc(src)}</p>`:''}
@@ -152,35 +209,11 @@ function finirCarteQuestion(k,juste,bonne){
 }
 function repondreFil(k,o,b){const C=FIL.cartes[k];if(C.compte)return;const juste=o===C.q.b;
   b.parentNode.querySelectorAll('.choix').forEach(x=>{x.disabled=true;if(+x.dataset.o===C.q.b)x.classList.add('bon')});
-  if(!juste)b.classList.add('faux');finirCarteQuestion(k,juste)}
+  if(!juste)b.classList.add('faux');finirCarteQuestion(k,juste,b)}
 function repondreVF(k,dit,b){const C=FIL.cartes[k];if(C.compte)return;const vrai=C.prop===C.q.b,juste=dit===vrai;
-  b.parentNode.querySelectorAll('.choix').forEach(x=>x.disabled=true);b.classList.add(juste?'bon':'faux');finirCarteQuestion(k,juste)}
+  b.parentNode.querySelectorAll('.choix').forEach(x=>x.disabled=true);b.classList.add(juste?'bon':'faux');finirCarteQuestion(k,juste,b)}
 
-/* ---------- Vrai ou faux : balayer la carte (droite = Vrai, gauche = Faux), à la souris ou au doigt ---------- */
-// Toute la carte se balaie. Pendant le geste, seule l'étiquette VRAI / FAUX apparaît (couleur neutre) : la correction
-// n'est jamais donnée avant que la réponse soit verrouillée. Au-delà du seuil, la réponse est définitive.
-// revient=true (fil) : la carte part puis revient avec la correction ; sinon (leçon) on passe à la question suivante.
-function balayage(el,choix,revient=false){
-  if(!el)return;el.classList.add('balayable');
-  let x0=null,y0=0,dx=0,glisse=false,fini=false;
-  const pose=(x,anim,op=1)=>{el.style.transition=anim?'transform .3s ease,opacity .3s ease':'none';el.style.transform=x?`translateX(${x}px) rotate(${x/22}deg)`:'';el.style.opacity=op};
-  el.addEventListener('pointerdown',e=>{if(fini||e.target.closest('button'))return;x0=e.clientX;y0=e.clientY;dx=0;glisse=false});
-  el.addEventListener('pointermove',e=>{if(x0===null||fini)return;dx=e.clientX-x0;const dy=e.clientY-y0;
-    if(!glisse&&Math.abs(dx)>10&&Math.abs(dx)>Math.abs(dy)){glisse=true;try{el.setPointerCapture(e.pointerId)}catch(_){}}
-    if(!glisse)return;pose(dx);
-    el.classList.toggle('vers-d',dx>50);el.classList.toggle('vers-g',dx<-50);
-    el.dataset.etiquette=dx>50?t('vrai'):dx<-50?t('faux'):''});
-  const fin=()=>{if(x0===null)return;x0=null;if(!glisse)return;
-    el.classList.remove('vers-d','vers-g');el.dataset.etiquette='';
-    if(Math.abs(dx)<=90){pose(0,true);return}
-    fini=true;el.classList.remove('balayable');const dit=dx>0;vibrer(15);
-    pose((dit?1:-1)*innerWidth,true,0);   // la carte s'envole du côté choisi
-    setTimeout(()=>{if(!revient){choix(dit);return}
-      pose(0,false,0);choix(dit);setTimeout(()=>pose(0,true,1),30)},300)};
-  el.addEventListener('pointerup',fin);el.addEventListener('pointercancel',fin);
-}
-
-/* ---------- Mon chemin : 29 étapes, au bout le jardin ---------- */
+/* ---------- Mon chemin : une étape par leçon, au bout le jardin ---------- */
 function ouvrirChemin(){
   const N=ORDRE.length,proch=prochaineLecon(),pas=74,H=N*pas+40,W=340;
   const P=ORDRE.map((id,i)=>({id,x:W/2+105*Math.sin(i*.85),y:40+i*pas}));
