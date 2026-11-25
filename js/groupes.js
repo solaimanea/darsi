@@ -8,7 +8,7 @@ Object.assign(I18N.fr,{
  gl_code:"Code d'invitation",gl_pseudo:"Ton pseudo",gl_pseudoInfo:"Visible par le groupe. Un pseudo suffit, pas besoin de ton vrai nom.",gl_nom:"Nom du groupe",gl_inviter:"Inviter sur WhatsApp",gl_copier:"Copier le lien",gl_copie:"Lien copié",
  gl_jouer:"Jouer le quiz du jour",gl_fait:"Quiz du jour terminé. Reviens demain, in shâ' Allâh.",gl_jour:"Aujourd'hui",gl_semaine:"7 jours",gl_total:"Total",gl_pasJoue:"Pas encore joué",
  gl_quitter:"Quitter le groupe",gl_quitterOk:"Quitter le groupe ? Ton pseudo et tes scores y seront effacés.",gl_exclure:"Retirer",gl_exclureOk:"Retirer {n} du groupe ? Le code changera.",gl_nouveau:"Changer le code",
- gl_msg:"Rejoins notre quiz sur Darsi ! Code : {c}\n{l}",gl_membres:"{n} / {m} joueurs",gl_actualiser:"Actualiser",gl_enAttente:"Score gardé sur ton téléphone : il partira dès que tu auras du réseau, aujourd'hui seulement.",gl_perdu:"Le score d'un jour passé n'a pas pu être envoyé.",gl_envoye:"Score envoyé au groupe",gl_dejaEnvoye:"Ton premier score du jour est déjà enregistré",
+ gl_msg:"Rejoins notre quiz sur Darsi ! Touche ce lien :\n{l}",gl_membres:"{n} / {m} joueurs",gl_actualiser:"Actualiser",gl_enAttente:"Score gardé sur ton téléphone : il partira dès que tu auras du réseau, aujourd'hui seulement.",gl_perdu:"Le score d'un jour passé n'a pas pu être envoyé.",gl_envoye:"Score envoyé au groupe",gl_dejaEnvoye:"Ton premier score du jour est déjà enregistré",
  gl_garder:"Garder mon accès",gl_garderInfo:"Un nouveau téléphone, ou l'appli effacée ? Ce texte secret te rend ta place. Garde-le pour toi : qui l'a peut jouer, retirer des joueurs ou quitter à ta place.",gl_copierAcces:"Copier mon accès secret",gl_accesCopie:"Accès copié. Garde-le dans un endroit sûr.",
  gl_retrouver:"Retrouver ma place",gl_collerAcces:"Colle ton accès secret",gl_e_acces:"Cet accès ne marche pas. Vérifie que tu as tout copié.",
  gl_ontJoue:["{n} joueur sur {m} a joué aujourd'hui","{n} joueurs sur {m} ont joué aujourd'hui"],gl_tonRang:"Tu es {r} sur {m} pour l'instant",gl_seul:"Tu es la première personne à jouer aujourd'hui. Le classement bougera quand les autres auront joué.",gl_mesRep:"Voir mes réponses",gl_egalite:"Égalité",
@@ -23,7 +23,7 @@ Object.assign(I18N.fr,{
  fq_grp:"Crée ou rejoins un groupe pour écrire tes questions.",gl_e_donnees:"Remplis la question et quatre réponses différentes.",gl_e_question:"Cette question n'existe plus.",gl_e_bientot:"Bientôt disponible.",
  gl_e_hors_ligne:"Pas de connexion à Internet.",gl_e_code:"Code inconnu. Vérifie-le avec la personne qui t'a invité.",gl_e_plein:"Ce groupe est complet.",gl_e_pseudo:"Ce pseudo est déjà pris dans le groupe.",gl_e_champs:"Écris au moins 2 lettres.",gl_e_jeton:"Tu ne fais plus partie de ce groupe.",gl_e_trop:"Trop de demandes. Réessaie plus tard.",gl_e_maj:"Mets Darsi à jour pour jouer ce quiz.",gl_e_autre:"Ça n'a pas marché. Réessaie.",
 });
-const glErreur=e=>{const k='gl_e_'+e.code;toast(t(I18N.fr[k]?k:'gl_e_autre'))};
+const glErreur=e=>{if(e.code==='code'&&S.invite)invMontrerCode();const k='gl_e_'+e.code;toast(t(I18N.fr[k]?k:'gl_e_autre'))};
 const GL_FAITES=new Set();   // évite un double appui pendant un envoi
 async function glFaire(nom,f){if(GL_FAITES.has(nom))return;GL_FAITES.add(nom);try{return await f()}catch(e){if(e.code==='jeton'){S.gl=null;GL=null;FQ=null;sauver();if(famActive())glFormulaire('choix')}if(nom==='voir'&&e.code==='hors_ligne'){if(famActive())glHorsLigne()}else glErreur(e)}finally{GL_FAITES.delete(nom)}}
 /* 2026-11-25 : l'onglet Famille EST le quiz à distance (plus de groupe sur un seul téléphone ; les anciennes données S.groupe restent gardées). */
@@ -49,7 +49,7 @@ function glFormulaire(mode){
     <button class="btn" id="gl-ok" onclick="glRetrouver()">${t('gl_retrouver')}</button>`;
   else z.innerHTML=tete+`<h2>${t('gl_'+mode)}</h2>
     ${mode==='creer'?`<label for="gl-nom">${t('gl_nom')}</label><input id="gl-nom" maxlength="30" autocomplete="off" placeholder="${t('maFamilleDefaut')}">`
-      :`<label for="gl-code">${t('gl_code')}</label><input id="gl-code" class="fam-code" maxlength="12" autocomplete="off" autocapitalize="characters" dir="ltr" placeholder="XXXX-XXXX" value="${esc(S.invite||'')}">`}
+      :`${S.invite?`<p class="doux" id="inv-ok">${t('inv_ok')}</p>`:''}<div id="gl-code-zone"${S.invite?' hidden':''}><label for="gl-code">${t('gl_code')}</label><input id="gl-code" class="fam-code" maxlength="12" autocomplete="off" autocapitalize="characters" dir="ltr" placeholder="XXXX-XXXX" value="${esc(S.invite||'')}"></div>${S.invite?`<button class="fam-lien" id="inv-autre" onclick="invMontrerCode()">${t('inv_autre')}</button>`:''}`}
     <label for="gl-pseudo">${t('gl_pseudo')}</label><input id="gl-pseudo" maxlength="20" autocomplete="off" value="${esc(S.prenom)}"><p class="petit">${t('gl_pseudoInfo')}</p>
     <button class="btn" id="gl-ok" onclick="glValider('${mode}')">${t('gl_'+mode)}</button>`;
   aller('famille');
@@ -127,7 +127,7 @@ function glDessiner(tri){
     ${carteQuestions()}<div class="carte">${carteImam()}</div>`;
   $('e-famille').querySelectorAll('[data-exclure]').forEach(b=>b.onclick=()=>glExclure(b.dataset.exclure));
 }
-const glLienWA=()=>'https://wa.me/?text='+encodeURIComponent(t('gl_msg',{c:GL.code,l:LIEN_GROUPE+GL.code}));
+const glLienWA=()=>'https://wa.me/?text='+encodeURIComponent(t('gl_msg',{l:LIEN_GROUPE+GL.code}));
 function glCopier(){const l=LIEN_GROUPE+GL.code;(navigator.clipboard?navigator.clipboard.writeText(l):Promise.reject()).then(()=>toast(t('gl_copie')),()=>prompt(t('gl_copier'),l))}
 function glExclure(id){const m=GL.membres.find(x=>x.id===id);if(confirm(t('gl_exclureOk',{n:m.pseudo})))glFaire('exclure',async()=>{await rpc('dz_g_exclure',{p_jeton:S.gl.jeton,p_membre:id});await glVoir()})}
 function glNouveau(){glFaire('code',async()=>{await rpc('dz_g_nouveau_code',{p_jeton:S.gl.jeton});await glVoir()})}
@@ -236,13 +236,4 @@ async function glEnvoi(){
 }
 addEventListener('online',()=>{glEnvoyer().catch(()=>{})});
 glEnvoyer().catch(()=>{});
-
-// Lien d'invitation ?groupe=CODE : proposé dès l'accueil (après l'écran de bienvenue pour un nouveau joueur)
-(function(){
-  const c=(new URLSearchParams(location.search).get('groupe')||'').toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,8);
-  if(c){S.invite=c;sauver();history.replaceState(null,'',location.pathname)}
-  if(!S.invite||!enLigneOk())return;
-  if(S.gl){delete S.invite;sauver();return}
-  if(S.demarre||S.prenom){glFormulaire('rejoindre');return}
-  const _commencer=commencer;commencer=function(){_commencer();if(S.invite)glFormulaire('rejoindre')};
-})();
+// Lien d'invitation ?groupe=CODE : js/invitation.js

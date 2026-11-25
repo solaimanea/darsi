@@ -178,7 +178,7 @@ html[data-theme="terre"] .pod2 .pod-marche{background:linear-gradient(rgb(235,21
 html[data-theme="terre"] .pod3 .pod-marche{background:linear-gradient(rgb(242,225,202), rgb(110, 69, 38));color:rgb(37, 20, 10)}
 html[data-theme="terre"] #tuto{background:rgba(109,50,31, 0.97)}
 
-html[data-theme="terre"]{color-scheme:dark;--j0:#f2e1ca;--j1:#f2e1ca;--j2:#f2e1ca;--j3:#d6ba9a;--j4:#743621;--j5:#703420;--q-or:#f3dfc2;--q-em:#4cc7a0;--q-ar:#dfe6ea;--q-ro:#eaa3b8;--q-az:#8fb8ff;--nuit:#7c3219;--nuit-haut:#6a2913;--or:#f3dfc2;--or2:#fbeedd;--or-fonce:#b98d3e;--texte:#f6efe2;--doux:#f0d6be;--vert:#7fe0ad;--rouge:#ff9c96;--ivoire:#6b2a14;--bord:rgba(232,200,140,.2);--verre:rgba(255,236,200,.055)}
+html[data-theme="terre"]{color-scheme:dark;--j0:#f2e1ca;--j1:#f2e1ca;--j2:#f2e1ca;--j3:#d6ba9a;--j4:#743621;--j5:#703420;--q-or:#f3dfc2;--q-em:#4cc7a0;--q-ar:#dfe6ea;--q-ro:#eaa3b8;--q-az:#8fb8ff;--nuit:#7c3219;--nuit-haut:#6a2913;--or:#faead2;--or2:#fbeedd;--or-fonce:#b98d3e;--texte:#f6efe2;--doux:#fae8d6;--vert:#7fe0ad;--rouge:#ff9c96;--ivoire:#6b2a14;--bord:rgba(232,200,140,.2);--verre:rgba(255,236,200,.055)}
 html[data-theme="terre"] .motif{opacity:.1}html[data-theme="terre"] #haut{display:none!important}html[data-theme="terre"] .ciel circle,html[data-theme="terre"] .scintille{opacity:.4!important}
 html[data-theme="terre"] .marque .lunette svg,html[data-theme="terre"] #e-bienvenue .illu svg,html[data-theme="terre"] #e-bienvenue .heros svg{filter:none;opacity:1}
 html[data-theme="terre"] .btn:not(.sec):not(.danger):not(.secondaire),html[data-theme="terre"] .filtre.actif,html[data-theme="terre"] .jouer,html[data-theme="terre"] .jour-court .jouer{background:linear-gradient(180deg,#fbeedd,#ecd7b8)!important;color:#6b2a14!important}
