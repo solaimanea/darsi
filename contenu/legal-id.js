@@ -18,7 +18,7 @@ methode:{titre:"Sumber dan metode",maj:"2026-11-19",sections:[
  {h:"Pelajaran dan soal",p:["Pelajaran dan soal disusun oleh tim {APP} berdasarkan sumber-sumber tersebut, dengan berpegang pada hal-hal yang disepakati para ulama.",
      "[Perlu dilengkapi: nama dan kedudukan orang atau lembaga yang telah meninjau dan memvalidasi konten keagamaan.]"]},
  {h:"Tanggal",p:["Tanggal Hijriah yang ditampilkan dihitung menurut kalender Umm al-Qura. Tanggal ini bisa berbeda satu hari dari tanggal yang diumumkan di daerahmu, yang bergantung pada rukyat hilal. Tanggal Ramadan adalah perkiraan dan tidak menggantikan pengumuman dari masjid atau pemerintah di negaramu."]},
-  {h:"Laporkan kesalahan",p:["Menemukan kesalahan, sumber yang perlu diperjelas, atau terjemahan yang bisa diperbaiki? Tulislah kepada kami: [alamat e-mail kontak perlu dilengkapi]. Setiap laporan akan diperiksa."]}
+  {h:"Laporkan kesalahan",p:["Menemukan kesalahan, sumber yang perlu diperjelas, atau terjemahan yang bisa diperbaiki? Tulislah kepada kami: jinastudios.support@gmail.com. Setiap laporan akan diperiksa."]}
 ]},
 cgu:{titre:"Syarat dan ketentuan penggunaan",maj:"2026-11-18",sections:[
  {h:"1. Tujuan",p:["Syarat dan ketentuan ini mengatur penggunaan aplikasi {APP}, yang diterbitkan oleh JINA Studios (selanjutnya disebut “Penerbit”). Dengan menggunakan aplikasi ini, kamu dianggap menerima syarat dan ketentuan ini."]},
@@ -32,18 +32,18 @@ cgu:{titre:"Syarat dan ketentuan penggunaan",maj:"2026-11-18",sections:[
  {h:"8. Kuis Akbar dan hadiah",p:["Keikutsertaan dalam Kuis Akbar Ramadan gratis dan tanpa kewajiban membeli apa pun. Jika hadiah ditawarkan, ketentuannya diatur dalam peraturan yang tersedia di dalam aplikasi."]},
  {h:"9. Perubahan dan hukum yang berlaku",p:["Syarat dan ketentuan ini dapat berubah; tanggal pembaruan tercantum di bagian atas halaman ini. Syarat dan ketentuan ini tunduk pada hukum Prancis. [Perlu dilengkapi: pengadilan yang berwenang.]"]}
 ]},
-confidentialite:{titre:"Kebijakan privasi",maj:"2026-11-19",sections:[
+confidentialite:{titre:"Kebijakan privasi",maj:"2026-11-25",sections:[
  {h:"Secara singkat",p:["{APP} tidak meminta akun, e-mail, maupun nomor telepon. Kemajuan belajarmu tetap tersimpan di perangkatmu. Kami tidak menjual data apa pun dan aplikasi ini tidak berisi iklan."]},
- {h:"Data yang disimpan di perangkatmu",p:["Nama depanmu (opsional), bahasa yang dipilih, skormu, rangkaian harimu, statistikmu per tema, dan jika kamu menggunakannya, grup keluargamu (nama depan, warna, dan pertanyaan yang ditulis). Data ini hanya disimpan di memori perangkatmu dan tidak dikirimkan kepada kami."]},
+ {h:"Data yang disimpan di perangkatmu",p:["Nama depanmu (opsional), bahasa yang dipilih, skormu, rangkaian harimu, statistikmu per tema, dan jika kamu menggunakannya, grup keluargamu (nama depan, warna, dan pertanyaan yang ditulis). Selain kuis jarak jauh dan laporan, data ini tetap di perangkatmu."]},
  {h:"Lokasi (kiblat)",p:["Jika kamu menekan “Gunakan lokasiku”, aplikasi akan meminta akses ke lokasimu untuk menghitung arah Mekah. Perhitungan ini dilakukan di perangkatmu. Lokasi, yang dibulatkan hingga sekitar 1 km, hanya disimpan di ponselmu dan tidak pernah dikirimkan. Kamu juga bisa memilih kota dari daftar, tanpa membagikan lokasimu.","Kompas menggunakan sensor orientasi ponsel, dengan persetujuanmu; tidak ada data yang disimpan."]},
  {h:"Hak-hakmu",p:["Kamu dapat mengubah nama depanmu kapan saja di Pengaturan, dan menghapus seluruh kemajuan belajarmu dengan tombol “Atur ulang kemajuanku”. Menghapus aplikasi juga akan menghapus semua data tersebut."]},
- {h:"Layanan pihak ketiga",p:["Dalam versi ini, fon dimuat dari Google Fonts, sehingga alamat IP-mu dikirimkan ke Google. Fon tersebut akan disertakan langsung di dalam aplikasi pada versi yang dipublikasikan, sehingga tidak ada lagi data yang dikirimkan."]},
- {h:"Perubahan",p:["Jika fitur daring ditambahkan (grup jarak jauh, papan peringkat), kebijakan ini akan diperbarui sebelum fitur tersebut diluncurkan, dan persetujuanmu akan diminta jika diwajibkan oleh hukum."]},
+ {h:"Layanan pihak ketiga",p:["Fon sudah disertakan dalam aplikasi: tidak ada yang diminta dari Google. Fitur daring menggunakan Supabase. Undangan membuka WhatsApp hanya jika kamu menekan tombolnya."]},
+ {h:"Kuis jarak jauh",p:["Jika kamu membuat atau bergabung dengan grup, server kami (dihosting oleh Supabase) menyimpan nama grup, nama samaranmu, sebuah warna, dan skormu. Anggota grup dapat melihatnya. Nama samaran sudah cukup: jangan gunakan nama lengkapmu. Seperti layanan daring lainnya, alamat IP-mu dikirim ke server saat terhubung. Keluar dari grup menghapus nama samaran dan skormu dari grup. Mengatur ulang atau menghapus aplikasi tidak menghapusnya: keluarlah dari grup dahulu."]},
  {h:"Melaporkan pertanyaan",p:["Jika Anda melaporkan pertanyaan, kami menerima nomor, teks, bahasa, alasan, dan komentar Anda. Tergantung versinya, laporan dikirim lewat aplikasi email Anda (alamat Anda terlihat oleh kami) atau server kami, tanpa nama atau akun. Informasi ini hanya untuk memperbaiki konten. Jangan menulis data pribadi."]},
- {h:"Kontak",p:["Pengendali data: JINA Studios, [alamat perlu dilengkapi]. Kontak: [alamat e-mail perlu dilengkapi]. Kamu juga dapat mengajukan pengaduan kepada CNIL (cnil.fr), otoritas perlindungan data Prancis."]}
+ {h:"Kontak",p:["Pengendali data: JINA Studios, [alamat perlu dilengkapi]. Kontak: jinastudios.support@gmail.com. Kamu juga dapat mengajukan pengaduan kepada CNIL (cnil.fr), otoritas perlindungan data Prancis."]}
 ]},
 mentions:{titre:"Informasi hukum",maj:"2026-11-18",sections:[
- {h:"Penerbit",p:["JINA Studios — [bentuk badan hukum, alamat, nomor SIREN/SIRET perlu dilengkapi].","Penanggung jawab publikasi: [nama perlu dilengkapi].","Kontak: [alamat e-mail perlu dilengkapi]."]},
+ {h:"Penerbit",p:["JINA Studios — [bentuk badan hukum, alamat, nomor SIREN/SIRET perlu dilengkapi].","Penanggung jawab publikasi: [nama perlu dilengkapi].","Kontak: jinastudios.support@gmail.com."]},
  {h:"Hosting dan distribusi",p:["Aplikasi didistribusikan melalui App Store (Apple) dan Google Play (Google). [Perlu dilengkapi: penyedia hosting, jika fitur daring ditambahkan.]"]}
 ]},
 reglement:{titre:"Peraturan Kuis Akbar",maj:"2026-11-18",sections:[

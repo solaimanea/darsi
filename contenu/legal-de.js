@@ -19,7 +19,7 @@ methode:{titre:"Quellen und Methode",maj:"2026-11-19",sections:[
  {h:"Die Lektionen und die Fragen",p:["Die Lektionen und die Fragen werden vom Team von {APP} auf Grundlage dieser Quellen verfasst, wobei man sich an die Punkte hält, über die Konsens besteht.",
      "[Zu ergänzen: Name und Qualifikation der Person oder Institution, die den religiösen Inhalt geprüft und freigegeben hat.]"]},
  {h:"Die Daten",p:["Das angezeigte Hidschri-Datum wird nach dem Umm-al-Qura-Kalender berechnet. Es kann um einen Tag von dem vor Ort verkündeten Datum abweichen, das von der Sichtung der Mondsichel abhängt. Die Ramadandaten sind Schätzungen und ersetzen nicht die Bekanntgabe deiner Moschee oder deines Landes."]},
-  {h:"Einen Fehler melden",p:["Ein Fehler, eine Quelle, die präzisiert werden sollte, eine Übersetzung, die verbessert werden kann? Schreib uns: [Kontakt-E-Mail-Adresse zu ergänzen]. Jede Meldung wird überprüft."]}
+  {h:"Einen Fehler melden",p:["Ein Fehler, eine Quelle, die präzisiert werden sollte, eine Übersetzung, die verbessert werden kann? Schreib uns: jinastudios.support@gmail.com. Jede Meldung wird überprüft."]}
 ]},
 cgu:{titre:"Allgemeine Nutzungsbedingungen",maj:"2026-11-18",sections:[
  {h:"1. Gegenstand",p:["Diese Bedingungen regeln die Nutzung der App {APP}, herausgegeben von JINA Studios (im Folgenden „der Herausgeber“). Mit der Nutzung der App akzeptierst du diese Bedingungen."]},
@@ -33,18 +33,18 @@ cgu:{titre:"Allgemeine Nutzungsbedingungen",maj:"2026-11-18",sections:[
  {h:"8. Großes Quiz und Belohnungen",p:["Die Teilnahme am großen Ramadan-Quiz ist kostenlos und ohne Kaufverpflichtung. Wenn Belohnungen angeboten werden, sind die Einzelheiten in Teilnahmebedingungen festgelegt, die in der App verfügbar sind."]},
  {h:"9. Änderungen und anwendbares Recht",p:["Diese Bedingungen können sich ändern; das Datum der Aktualisierung steht oben auf dieser Seite. Sie unterliegen französischem Recht. [Zu ergänzen: zuständiges Gericht.]"]}
 ]},
-confidentialite:{titre:"Datenschutzerklärung",maj:"2026-11-19",sections:[
+confidentialite:{titre:"Datenschutzerklärung",maj:"2026-11-25",sections:[
  {h:"Kurz gesagt",p:["{APP} verlangt weder ein Konto noch eine E-Mail-Adresse noch eine Telefonnummer. Dein Fortschritt bleibt auf deinem Gerät. Wir verkaufen keine Daten, und die App enthält keine Werbung."]},
- {h:"Auf deinem Gerät gespeicherte Daten",p:["Dein Vorname (optional), die gewählte Sprache, deine Punktzahlen, deine Tagesserie, deine Statistiken nach Thema und, falls du sie nutzt, deine Familiengruppe (Vornamen, Farben und geschriebene Fragen). Diese Daten werden ausschließlich im Speicher deines Geräts abgelegt und nicht an uns übermittelt."]},
+ {h:"Auf deinem Gerät gespeicherte Daten",p:["Dein Vorname (optional), die gewählte Sprache, deine Punktzahlen, deine Tagesserie, deine Statistiken nach Thema und, falls du sie nutzt, deine Familiengruppe (Vornamen, Farben und geschriebene Fragen). Außer beim Quiz aus der Ferne und bei Meldungen bleiben diese Daten auf deinem Gerät."]},
  {h:"Standort (Qibla)",p:["Wenn du auf „Meinen Standort verwenden“ tippst, fragt die App nach Zugriff auf deinen Standort, um die Richtung nach Mekka zu berechnen. Diese Berechnung erfolgt auf deinem Gerät. Der Standort, auf etwa 1 km gerundet, wird ausschließlich auf deinem Telefon gespeichert und nie übermittelt. Du kannst auch eine Stadt aus der Liste wählen, ohne deinen Standort zu teilen.","Der Kompass verwendet mit deiner Zustimmung den Lagesensor des Telefons; es werden keine Daten gespeichert."]},
  {h:"Deine Rechte",p:["Du kannst deinen Vornamen jederzeit in den Einstellungen ändern und deinen gesamten Fortschritt mit der Schaltfläche „Meinen Fortschritt zurücksetzen“ löschen. Das Löschen der App entfernt ebenfalls alle diese Daten."]},
- {h:"Dienste Dritter",p:["In dieser Version werden die Schriftarten von Google Fonts geladen, wodurch deine IP-Adresse an Google übermittelt wird. In der veröffentlichten Version werden sie in die App integriert, damit nichts mehr übermittelt wird."]},
- {h:"Weiterentwicklungen",p:["Wenn Online-Funktionen hinzukommen (Gruppen aus der Ferne, Rangliste), wird diese Erklärung vor ihrem Start aktualisiert, und deine Zustimmung wird eingeholt, wenn das Gesetz es verlangt."]},
+ {h:"Dienste Dritter",p:["Die Schriftarten sind in der App enthalten: Es wird nichts von Google abgerufen. Onlinefunktionen nutzen Supabase. Die Einladung öffnet WhatsApp nur, wenn du auf die Schaltfläche tippst."]},
+ {h:"Quiz aus der Ferne",p:["Wenn du eine Gruppe erstellst oder ihr beitrittst, speichert unser Server (gehostet von Supabase) den Gruppennamen, deinen Spitznamen, eine Farbe und deine Punktzahlen. Die Gruppenmitglieder sehen sie. Ein Spitzname genügt: Verwende nicht deinen vollen Namen. Wie bei jedem Onlinedienst wird beim Verbinden deine IP-Adresse an den Server übermittelt. Das Verlassen der Gruppe löscht deinen Spitznamen und deine Punkte aus der Gruppe. Zurücksetzen oder Löschen der App löscht sie nicht: Verlasse zuerst die Gruppe."]},
  {h:"Frage melden",p:["Wenn Sie eine Frage melden, erhalten wir ihre Nummer, den Text, die Sprache, den Grund und Ihren Kommentar. Je nach Version erfolgt der Versand über Ihre E-Mail-App (Ihre Adresse ist für uns sichtbar) oder über unseren Server ohne Namen und Konto. Dies dient nur der Korrektur der Inhalte. Schreiben Sie keine personenbezogenen Daten."]},
- {h:"Kontakt",p:["Verantwortlicher für die Verarbeitung: JINA Studios, [Adresse zu ergänzen]. Kontakt: [E-Mail-Adresse zu ergänzen]. Du kannst dich auch an die CNIL (cnil.fr) wenden."]}
+ {h:"Kontakt",p:["Verantwortlicher für die Verarbeitung: JINA Studios, [Adresse zu ergänzen]. Kontakt: jinastudios.support@gmail.com. Du kannst dich auch an die CNIL (cnil.fr) wenden."]}
 ]},
 mentions:{titre:"Impressum",maj:"2026-11-18",sections:[
- {h:"Herausgeber",p:["JINA Studios – [Rechtsform, Adresse, SIREN/SIRET-Nummer zu ergänzen].","Verantwortlich für die Veröffentlichung: [Name zu ergänzen].","Kontakt: [E-Mail-Adresse zu ergänzen]."]},
+ {h:"Herausgeber",p:["JINA Studios – [Rechtsform, Adresse, SIREN/SIRET-Nummer zu ergänzen].","Verantwortlich für die Veröffentlichung: [Name zu ergänzen].","Kontakt: jinastudios.support@gmail.com."]},
  {h:"Hosting und Vertrieb",p:["App vertrieben über den App Store (Apple) und Google Play (Google). [Zu ergänzen: Hosting-Anbieter, falls Online-Funktionen hinzukommen.]"]}
 ]},
 reglement:{titre:"Teilnahmebedingungen des großen Quiz",maj:"2026-11-18",sections:[

@@ -4,8 +4,8 @@
    Tant que url et key sont vides, l'écran « Demander à l'imam » affiche « bientôt disponible ». */
 'use strict';
 const DARSI_EN_LIGNE={
-  url:'',   // ex. 'https://xxxxxxxx.supabase.co'
-  key:'',   // ex. 'sb_publishable_…'
+  url:'https://mffqhkvibpfwflaaqzcc.supabase.co',
+  key:'sb_publishable_uoVXFedKJXlkDXdtrUWFaQ_ape6kGnQ',
 };
 const enLigneOk=()=>!!(DARSI_EN_LIGNE.url&&DARSI_EN_LIGNE.key);
 

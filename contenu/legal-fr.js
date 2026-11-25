@@ -20,7 +20,7 @@ methode:{titre:"Sources et méthode",maj:"2026-11-19",sections:[
  {h:"Les leçons et les questions",p:["Les leçons et les questions sont rédigées par l'équipe de {APP} à partir de ces sources, en s'en tenant aux points qui font consensus.",
      "[À compléter : nom et qualité de la personne ou de l'institution qui a relu et validé le contenu religieux.]"]},
  {h:"Les dates",p:["La date hégirienne affichée est calculée selon le calendrier Umm al-Qura. Elle peut différer d'un jour de la date annoncée localement, qui dépend de l'observation du croissant. Les dates du Ramadan sont des estimations et ne remplacent pas l'annonce de votre mosquée ou de votre pays."]},
-  {h:"Signaler une erreur",p:["Une erreur, une source à préciser, une traduction à améliorer ? Écrivez-nous : [adresse e-mail de contact à compléter]. Chaque signalement est vérifié."]}
+  {h:"Signaler une erreur",p:["Une erreur, une source à préciser, une traduction à améliorer ? Écrivez-nous : jinastudios.support@gmail.com. Chaque signalement est vérifié."]}
 ]},
 cgu:{titre:"Conditions générales d'utilisation",maj:"2026-11-18",sections:[
  {h:"1. Objet",p:["Les présentes conditions encadrent l'utilisation de l'application {APP}, éditée par JINA Studios (ci-après « l'Éditeur »). Utiliser l'application vaut acceptation de ces conditions."]},
@@ -34,18 +34,18 @@ cgu:{titre:"Conditions générales d'utilisation",maj:"2026-11-18",sections:[
  {h:"8. Grand Quiz et récompenses",p:["La participation au Grand Quiz du Ramadan est gratuite et sans obligation d'achat. Lorsque des récompenses sont proposées, les modalités sont fixées par un règlement disponible dans l'application."]},
  {h:"9. Modification et droit applicable",p:["Ces conditions peuvent évoluer ; la date de mise à jour figure en haut de cette page. Elles sont soumises au droit français. [À compléter : juridiction compétente.]"]}
 ]},
-confidentialite:{titre:"Politique de confidentialité",maj:"2026-11-19",sections:[
+confidentialite:{titre:"Politique de confidentialité",maj:"2026-11-25",sections:[
  {h:"En bref",p:["{APP} ne demande ni compte, ni e-mail, ni numéro de téléphone. Votre progression reste sur votre appareil. Nous ne vendons aucune donnée et l'application ne contient pas de publicité."]},
- {h:"Données enregistrées sur votre appareil",p:["Votre prénom (facultatif), la langue choisie, vos scores, votre série de jours, vos statistiques par thème et, si vous l'utilisez, votre groupe familial (prénoms, couleurs et questions écrites). Ces données sont stockées uniquement dans la mémoire de votre appareil et ne nous sont pas transmises."]},
- {h:"Position (Qibla)",p:["Si vous touchez « Utiliser ma position », l'application demande l'accès à votre position pour calculer la direction de La Mecque. Ce calcul se fait sur votre appareil. La position, arrondie à environ 1 km, est enregistrée uniquement sur votre téléphone et n'est jamais transmise. Vous pouvez aussi choisir une ville dans la liste, sans partager votre position.","La boussole utilise le capteur d'orientation du téléphone, avec votre accord ; aucune donnée n'est enregistrée."]},
+ {h:"Données enregistrées sur votre appareil",p:["Votre prénom (facultatif), la langue choisie, vos scores, votre série de jours, vos statistiques par thème et, si vous l'utilisez, votre groupe familial (prénoms, couleurs et questions écrites). Hors quiz à distance et signalements, ces données restent sur votre appareil."]},
+ {h:"Position (Qibla)",p:["À l'ouverture de l'écran Qibla, l'application demande l'accès à votre position. Le calcul se fait sur votre appareil. La position, arrondie à environ 1 km, est enregistrée uniquement sur votre téléphone et n'est pas transmise. Si vous refusez, une position approximative est déduite du fuseau horaire.","La boussole utilise le capteur d'orientation du téléphone, avec votre accord ; aucune donnée n'est enregistrée."]},
  {h:"Vos droits",p:["Vous pouvez modifier votre prénom à tout moment dans les Paramètres, et effacer toute votre progression avec le bouton « Réinitialiser ma progression ». Supprimer l'application efface aussi toutes ces données."]},
- {h:"Services tiers",p:["Dans cette version, les polices de caractères sont chargées depuis Google Fonts, ce qui transmet votre adresse IP à Google. Elles seront intégrées à l'application dans la version publiée, afin que plus rien ne soit transmis."]},
- {h:"Évolutions",p:["Si des fonctions en ligne sont ajoutées (groupes à distance, classement), cette politique sera mise à jour avant leur lancement et votre accord sera demandé lorsque la loi l'exige."]},
+ {h:"Services tiers",p:["Les polices sont intégrées à l'application : rien n'est demandé à Google. Les fonctions en ligne utilisent Supabase. L'invitation ouvre WhatsApp seulement si vous touchez le bouton."]},
+ {h:"Quiz à distance",p:["Si vous créez ou rejoignez un groupe, notre serveur (hébergé par Supabase) enregistre le nom du groupe, votre pseudo, une couleur et vos scores. Les membres du groupe les voient. Un pseudo suffit : n'utilisez pas votre nom complet. Comme pour tout service en ligne, votre adresse IP est transmise au serveur lors de la connexion. « Quitter le groupe » efface votre pseudo et vos scores du groupe. Réinitialiser ou supprimer l'application ne les efface pas : quittez d'abord le groupe."]},
  {h:"Signalement d'une question",p:["Si vous signalez une question, nous recevons son numéro, son texte, la langue, le motif et votre commentaire. Selon la version, l'envoi se fait par votre application e-mail (votre adresse nous est alors visible) ou par notre serveur, sans nom ni compte. Ces informations servent uniquement à corriger le contenu. N'y écrivez pas de données personnelles."]},
- {h:"Contact",p:["Responsable du traitement : JINA Studios, [adresse à compléter]. Contact : [adresse e-mail à compléter]. Vous pouvez aussi saisir la CNIL (cnil.fr)."]}
+ {h:"Contact",p:["Responsable du traitement : JINA Studios, [adresse à compléter]. Contact : jinastudios.support@gmail.com. Vous pouvez aussi saisir la CNIL (cnil.fr)."]}
 ]},
 mentions:{titre:"Mentions légales",maj:"2026-11-18",sections:[
- {h:"Éditeur",p:["JINA Studios — [forme juridique, adresse, numéro SIREN/SIRET à compléter].","Directeur de la publication : [nom à compléter].","Contact : [adresse e-mail à compléter]."]},
+ {h:"Éditeur",p:["JINA Studios — [forme juridique, adresse, numéro SIREN/SIRET à compléter].","Directeur de la publication : [nom à compléter].","Contact : jinastudios.support@gmail.com."]},
  {h:"Hébergement et distribution",p:["Application distribuée via l'App Store (Apple) et Google Play (Google). [À compléter : hébergeur, si des fonctions en ligne sont ajoutées.]"]}
 ]},
 reglement:{titre:"Règlement du Grand Quiz",maj:"2026-11-18",sections:[

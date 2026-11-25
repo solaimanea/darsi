@@ -19,7 +19,7 @@ methode:{titre:"Sources and method",maj:"2026-11-19",sections:[
  {h:"The lessons and questions",p:["The lessons and questions are written by the {APP} team based on these sources, sticking to points on which there is consensus.",
      "[To be completed: name and credentials of the person or institution that reviewed and approved the religious content.]"]},
  {h:"Dates",p:["The Hijri date shown is calculated according to the Umm al-Qura calendar. It may differ by one day from the date announced locally, which depends on sighting the crescent moon. Ramadan dates are estimates and do not replace the announcement of your mosque or your country."]},
-  {h:"Report an error",p:["Found an error, a source that needs clarifying, or a translation that could be improved? Write to us: [contact email address to be completed]. Every report is checked."]}
+  {h:"Report an error",p:["Found an error, a source that needs clarifying, or a translation that could be improved? Write to us: jinastudios.support@gmail.com. Every report is checked."]}
 ]},
 cgu:{titre:"Terms of use",maj:"2026-11-18",sections:[
  {h:"1. Purpose",p:["These terms govern the use of the {APP} app, published by JINA Studios (hereinafter “the Publisher”). Using the app means you accept these terms."]},
@@ -33,18 +33,18 @@ cgu:{titre:"Terms of use",maj:"2026-11-18",sections:[
  {h:"8. Grand Quiz and rewards",p:["Taking part in the Ramadan Grand Quiz is free and requires no purchase. When rewards are offered, the terms are set out in rules available in the app."]},
  {h:"9. Changes and applicable law",p:["These terms may change; the date of the last update is shown at the top of this page. They are governed by French law. [To be completed: competent jurisdiction.]"]}
 ]},
-confidentialite:{titre:"Privacy policy",maj:"2026-11-19",sections:[
+confidentialite:{titre:"Privacy policy",maj:"2026-11-25",sections:[
  {h:"In short",p:["{APP} does not ask for an account, an email address or a phone number. Your progress stays on your device. We do not sell any data and the app contains no advertising."]},
- {h:"Data stored on your device",p:["Your first name (optional), the language you chose, your scores, your day streak, your statistics by topic and, if you use it, your family group (first names, colours and written questions). This data is stored only in your device's memory and is not sent to us."]},
+ {h:"Data stored on your device",p:["Your first name (optional), the language you chose, your scores, your day streak, your statistics by topic and, if you use it, your family group (first names, colours and written questions). Apart from remote quizzes and reports, this data stays on your device."]},
  {h:"Location (Qibla)",p:["If you tap “Use my location”, the app asks for access to your location to calculate the direction of Mecca. This calculation is done on your device. Your location, rounded to about 1 km, is saved only on your phone and is never sent anywhere. You can also choose a city from the list, without sharing your location.","The compass uses the phone's orientation sensor, with your consent; no data is saved."]},
  {h:"Your rights",p:["You can change your first name at any time in Settings, and erase all your progress with the “Reset my progress” button. Deleting the app also erases all this data."]},
- {h:"Third-party services",p:["In this version, fonts are loaded from Google Fonts, which sends your IP address to Google. They will be built into the app in the published version, so that nothing is sent any more."]},
- {h:"Changes",p:["If online features are added (remote groups, leaderboard), this policy will be updated before they launch and your consent will be requested where the law requires it."]},
+ {h:"Third-party services",p:["Fonts are built into the app: nothing is requested from Google. Online features use Supabase. The invitation opens WhatsApp only if you tap the button."]},
+ {h:"Remote quiz",p:["If you create or join a group, our server (hosted by Supabase) stores the group name, your nickname, a colour and your scores. Group members can see them. A nickname is enough: do not use your full name. As with any online service, your IP address is sent to the server when you connect. “Leave the group” erases your nickname and scores from the group. Resetting or deleting the app does not erase them: leave the group first."]},
  {h:"Reporting a question",p:["If you report a question, we receive its number, text, language, reason and your comment. Depending on the version, it is sent through your email app (we then see your address) or through our server, without name or account. This is used only to correct content. Do not include personal data."]},
- {h:"Contact",p:["Data controller: JINA Studios, [address to be completed]. Contact: [email address to be completed]. You can also contact the CNIL, the French data protection authority (cnil.fr)."]}
+ {h:"Contact",p:["Data controller: JINA Studios, [address to be completed]. Contact: jinastudios.support@gmail.com. You can also contact the CNIL, the French data protection authority (cnil.fr)."]}
 ]},
 mentions:{titre:"Legal notice",maj:"2026-11-18",sections:[
- {h:"Publisher",p:["JINA Studios — [legal form, address, SIREN/SIRET number to be completed].","Publication director: [name to be completed].","Contact: [email address to be completed]."]},
+ {h:"Publisher",p:["JINA Studios — [legal form, address, SIREN/SIRET number to be completed].","Publication director: [name to be completed].","Contact: jinastudios.support@gmail.com."]},
  {h:"Hosting and distribution",p:["App distributed via the App Store (Apple) and Google Play (Google). [To be completed: hosting provider, if online features are added.]"]}
 ]},
 reglement:{titre:"Grand Quiz rules",maj:"2026-11-18",sections:[

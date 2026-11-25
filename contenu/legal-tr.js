@@ -12,7 +12,7 @@ methode:{titre:"Kaynaklar ve yöntem",maj:"2026-11-19",sections:[
  {h:"Dualar",p:["Her duanın Arapça metni, belirtilen hadisten veya âyetten kelimesi kelimesine aktarılır, ardından otomatik olarak kontrol edilir. Âyetler için çeviri, yukarıda belirtilen kabul görmüş meâldir. Hadisler için anlam çevirisi {APP} ekibi tarafından yazılmış ve bu şekilde işaretlenmiştir; gözden geçirilmesi beklenmektedir. Hadisin metni ve referans çevirisi \"Kaynağı gör\" bölümünden erişilebilir durumda kalır."]},
  {h:"Dersler ve sorular",p:["Dersler ve sorular, {APP} ekibi tarafından bu kaynaklardan yola çıkarak, üzerinde görüş birliği bulunan konularla sınırlı kalınarak yazılmıştır.","[Doldurulacak: dinî içeriği gözden geçirip onaylayan kişinin veya kurumun adı ve unvanı.]"]},
  {h:"Tarihler",p:["Gösterilen Hicri tarih, Ümmü'l-Kurâ takvimine göre hesaplanır. Hilalin gözlenmesine bağlı olarak yerel olarak ilan edilen tarihten bir gün farklı olabilir. Ramazan tarihleri tahminidir ve camisinin ya da ülkenin yaptığı duyurunun yerini tutmaz."]},
-  {h:"Hata bildir",p:["Bir hata, netleştirilmesi gereken bir kaynak, iyileştirilmesi gereken bir çeviri mi var? Bize yaz: [iletişim e-posta adresi doldurulacak]. Her bildirim kontrol edilir."]}
+  {h:"Hata bildir",p:["Bir hata, netleştirilmesi gereken bir kaynak, iyileştirilmesi gereken bir çeviri mi var? Bize yaz: jinastudios.support@gmail.com. Her bildirim kontrol edilir."]}
 ]},
 cgu:{titre:"Kullanım koşulları",maj:"2026-11-18",sections:[
  {h:"1. Konu",p:["Bu koşullar, JINA Studios (bundan sonra \"Yayıncı\") tarafından yayımlanan {APP} uygulamasının kullanımını düzenler. Uygulamayı kullanmak, bu koşulların kabulü anlamına gelir."]},
@@ -25,18 +25,18 @@ cgu:{titre:"Kullanım koşulları",maj:"2026-11-18",sections:[
  {h:"8. Büyük Yarışma ve ödüller",p:["Ramazan Büyük Yarışması'na katılım ücretsizdir ve satın alma zorunluluğu yoktur. Ödül sunulduğunda, koşullar uygulamada bulunan bir yönetmelikle belirlenir."]},
  {h:"9. Değişiklik ve uygulanacak hukuk",p:["Bu koşullar değişebilir; güncelleme tarihi bu sayfanın üst kısmında yer alır. Koşullar Fransız hukukuna tabidir. [Doldurulacak: yetkili mahkeme.]"]}
 ]},
-confidentialite:{titre:"Gizlilik politikası",maj:"2026-11-19",sections:[
+confidentialite:{titre:"Gizlilik politikası",maj:"2026-11-25",sections:[
  {h:"Kısaca",p:["{APP} ne hesap, ne e-posta, ne de telefon numarası ister. İlerlemen cihazında kalır. Hiçbir veri satmıyoruz ve uygulamada reklam yoktur."]},
- {h:"Cihazında kaydedilen veriler",p:["Adın (isteğe bağlı), seçilen dil, puanların, gün serin, konulara göre istatistiklerin ve kullanıyorsan aile grubun (isimler, renkler ve yazılan sorular). Bu veriler yalnızca cihazının hafızasında saklanır ve bize iletilmez."]},
+ {h:"Cihazında kaydedilen veriler",p:["Adın (isteğe bağlı), seçilen dil, puanların, gün serin, konulara göre istatistiklerin ve kullanıyorsan aile grubun (isimler, renkler ve yazılan sorular). Uzaktan yarışma ve bildirimler dışında bu veriler cihazında kalır."]},
  {h:"Konum (kıble)",p:["\"Konumumu kullan\"a dokunursan uygulama, Mekke'nin yönünü hesaplamak için konumuna erişim ister. Bu hesaplama cihazında yapılır. Yaklaşık 1 km'ye yuvarlanan konum yalnızca telefonunda kaydedilir ve asla iletilmez. Konumunu paylaşmadan listeden bir şehir de seçebilirsin.","Pusula, iznin olduğunda telefonun yön sensörünü kullanır; hiçbir veri kaydedilmez."]},
  {h:"Hakların",p:["Adını istediğin zaman Ayarlar'dan değiştirebilir ve \"İlerlememi sıfırla\" düğmesiyle bütün ilerlemeni silebilirsin. Uygulamayı silmek de bütün bu verileri siler."]},
- {h:"Üçüncü taraf hizmetleri",p:["Bu sürümde yazı tipleri Google Fonts'tan yüklenir; bu da IP adresini Google'a iletir. Yayımlanacak sürümde yazı tipleri uygulamaya dahil edilecek, böylece artık hiçbir şey iletilmeyecektir."]},
- {h:"Değişiklikler",p:["Çevrim içi işlevler eklenirse (uzaktan gruplar, sıralama), bu politika bunlar kullanıma sunulmadan önce güncellenecek ve yasanın gerektirdiği durumlarda onayın istenecektir."]},
+ {h:"Üçüncü taraf hizmetleri",p:["Yazı tipleri uygulamaya dahildir: Google'dan hiçbir şey istenmez. Çevrim içi işlevler Supabase kullanır. Davet, yalnızca düğmeye dokunursan WhatsApp'ı açar."]},
+ {h:"Uzaktan yarışma",p:["Bir grup kurar veya bir gruba katılırsan, sunucumuz (Supabase'de barındırılır) grup adını, takma adını, bir rengi ve puanlarını kaydeder. Grup üyeleri bunları görür. Takma ad yeterlidir: tam adını kullanma. Her çevrim içi hizmette olduğu gibi, bağlanırken IP adresin sunucuya iletilir. Gruptan ayrılmak takma adını ve puanlarını gruptan siler. Uygulamayı sıfırlamak veya silmek bunları silmez: önce gruptan ayrıl."]},
  {h:"Soru bildirme",p:["Bir soruyu bildirdiğinizde numarasını, metnini, dilini, nedenini ve yorumunuzu alırız. Sürüme göre bildirim e-posta uygulamanızla (adresinizi görürüz) ya da sunucumuzla, ad ve hesap olmadan gönderilir. Bu bilgiler yalnızca içeriği düzeltmek için kullanılır. Kişisel veri yazmayın."]},
- {h:"İletişim",p:["Veri sorumlusu: JINA Studios, [adres doldurulacak]. İletişim: [e-posta adresi doldurulacak]. Fransız veri koruma kurumu CNIL'e de (cnil.fr) başvurabilirsin."]}
+ {h:"İletişim",p:["Veri sorumlusu: JINA Studios, [adres doldurulacak]. İletişim: jinastudios.support@gmail.com. Fransız veri koruma kurumu CNIL'e de (cnil.fr) başvurabilirsin."]}
 ]},
 mentions:{titre:"Yasal bilgiler",maj:"2026-11-18",sections:[
- {h:"Yayıncı",p:["JINA Studios — [hukuki statü, adres, SIREN/SIRET numarası doldurulacak].","Yayın sorumlusu: [ad doldurulacak].","İletişim: [e-posta adresi doldurulacak]."]},
+ {h:"Yayıncı",p:["JINA Studios — [hukuki statü, adres, SIREN/SIRET numarası doldurulacak].","Yayın sorumlusu: [ad doldurulacak].","İletişim: jinastudios.support@gmail.com."]},
  {h:"Barındırma ve dağıtım",p:["Uygulama App Store (Apple) ve Google Play (Google) üzerinden dağıtılır. [Doldurulacak: çevrim içi işlevler eklenirse barındırma sağlayıcısı.]"]}
 ]},
 reglement:{titre:"Büyük Yarışma Yönetmeliği",maj:"2026-11-18",sections:[

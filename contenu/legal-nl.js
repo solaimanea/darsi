@@ -19,7 +19,7 @@ methode:{titre:"Bronnen en methode",maj:"2026-11-19",sections:[
  {h:"De lessen en de vragen",p:["De lessen en de vragen zijn geschreven door het team van {APP} op basis van deze bronnen, waarbij we ons houden aan de punten waarover consensus bestaat.",
      "[Aan te vullen: naam en hoedanigheid van de persoon of instelling die de religieuze inhoud heeft nagelezen en goedgekeurd.]"]},
  {h:"De data",p:["De getoonde Hidjri-datum wordt berekend volgens de Umm al-Qura-kalender. Die kan één dag afwijken van de plaatselijk aangekondigde datum, die afhangt van de waarneming van de maansikkel. De data van Ramadan zijn schattingen en vervangen niet de aankondiging van je moskee of je land."]},
-  {h:"Een fout melden",p:["Een fout, een bron die preciezer moet, een vertaling die beter kan? Schrijf ons: [contactadres (e-mail) aan te vullen]. Elke melding wordt gecontroleerd."]}
+  {h:"Een fout melden",p:["Een fout, een bron die preciezer moet, een vertaling die beter kan? Schrijf ons: jinastudios.support@gmail.com. Elke melding wordt gecontroleerd."]}
 ]},
 cgu:{titre:"Algemene gebruiksvoorwaarden",maj:"2026-11-18",sections:[
  {h:"1. Doel",p:["Deze voorwaarden regelen het gebruik van de app {APP}, uitgegeven door JINA Studios (hierna “de Uitgever”). Door de app te gebruiken, aanvaard je deze voorwaarden."]},
@@ -33,18 +33,18 @@ cgu:{titre:"Algemene gebruiksvoorwaarden",maj:"2026-11-18",sections:[
  {h:"8. Grote Quiz en beloningen",p:["Deelname aan de Grote Quiz van Ramadan is gratis en zonder aankoopverplichting. Wanneer er beloningen worden aangeboden, worden de voorwaarden vastgelegd in een reglement dat in de app beschikbaar is."]},
  {h:"9. Wijziging en toepasselijk recht",p:["Deze voorwaarden kunnen veranderen; de datum van bijwerking staat bovenaan deze pagina. Ze vallen onder het Franse recht. [Aan te vullen: bevoegde rechtbank.]"]}
 ]},
-confidentialite:{titre:"Privacybeleid",maj:"2026-11-19",sections:[
+confidentialite:{titre:"Privacybeleid",maj:"2026-11-25",sections:[
  {h:"In het kort",p:["{APP} vraagt geen account, geen e-mailadres en geen telefoonnummer. Je voortgang blijft op je apparaat. We verkopen geen gegevens en de app bevat geen advertenties."]},
- {h:"Gegevens die op je apparaat worden opgeslagen",p:["Je voornaam (optioneel), de gekozen taal, je scores, je reeks dagen, je statistieken per thema en, als je die gebruikt, je familiegroep (voornamen, kleuren en geschreven vragen). Deze gegevens worden alleen in het geheugen van je apparaat opgeslagen en worden niet naar ons verzonden."]},
+ {h:"Gegevens die op je apparaat worden opgeslagen",p:["Je voornaam (optioneel), de gekozen taal, je scores, je reeks dagen, je statistieken per thema en, als je die gebruikt, je familiegroep (voornamen, kleuren en geschreven vragen). Behalve bij quizzen op afstand en meldingen blijven deze gegevens op je apparaat."]},
  {h:"Locatie (qibla)",p:["Als je op “Mijn locatie gebruiken” tikt, vraagt de app toegang tot je locatie om de richting van Mekka te berekenen. Deze berekening gebeurt op je apparaat. De locatie, afgerond op ongeveer 1 km, wordt alleen op je telefoon opgeslagen en nooit verzonden. Je kunt ook een stad uit de lijst kiezen, zonder je locatie te delen.","Het kompas gebruikt de oriëntatiesensor van de telefoon, met jouw toestemming; er worden geen gegevens opgeslagen."]},
  {h:"Je rechten",p:["Je kunt je voornaam op elk moment wijzigen in de Instellingen, en al je voortgang wissen met de knop “Mijn voortgang wissen”. Het verwijderen van de app wist ook al deze gegevens."]},
- {h:"Diensten van derden",p:["In deze versie worden de lettertypen geladen via Google Fonts, waardoor je IP-adres naar Google wordt verzonden. In de gepubliceerde versie worden ze in de app opgenomen, zodat er niets meer wordt verzonden."]},
- {h:"Wijzigingen",p:["Als er onlinefuncties worden toegevoegd (groepen op afstand, ranglijst), wordt dit beleid vóór de lancering ervan bijgewerkt en wordt om je toestemming gevraagd wanneer de wet dat vereist."]},
+ {h:"Diensten van derden",p:["De lettertypen zitten in de app: er wordt niets bij Google opgevraagd. Onlinefuncties gebruiken Supabase. De uitnodiging opent WhatsApp alleen als je op de knop tikt."]},
+ {h:"Quiz op afstand",p:["Als je een groep maakt of eraan deelneemt, bewaart onze server (gehost door Supabase) de groepsnaam, je bijnaam, een kleur en je scores. Groepsleden zien die. Een bijnaam volstaat: gebruik niet je volledige naam. Zoals bij elke onlinedienst wordt je IP-adres bij het verbinden naar de server gestuurd. De groep verlaten wist je bijnaam en scores uit de groep. De app resetten of verwijderen wist ze niet: verlaat eerst de groep."]},
  {h:"Een vraag melden",p:["Als u een vraag meldt, ontvangen wij het nummer, de tekst, de taal, de reden en uw opmerking. Afhankelijk van de versie gaat dit via uw e-mailapp (wij zien uw adres) of via onze server, zonder naam of account. Dit dient alleen om de inhoud te verbeteren. Schrijf geen persoonsgegevens."]},
- {h:"Contact",p:["Verwerkingsverantwoordelijke: JINA Studios, [adres aan te vullen]. Contact: [e-mailadres aan te vullen]. Je kunt ook een klacht indienen bij de CNIL (cnil.fr)."]}
+ {h:"Contact",p:["Verwerkingsverantwoordelijke: JINA Studios, [adres aan te vullen]. Contact: jinastudios.support@gmail.com. Je kunt ook een klacht indienen bij de CNIL (cnil.fr)."]}
 ]},
 mentions:{titre:"Juridische informatie",maj:"2026-11-18",sections:[
- {h:"Uitgever",p:["JINA Studios — [rechtsvorm, adres, SIREN/SIRET-nummer aan te vullen].","Verantwoordelijke uitgever: [naam aan te vullen].","Contact: [e-mailadres aan te vullen]."]},
+ {h:"Uitgever",p:["JINA Studios — [rechtsvorm, adres, SIREN/SIRET-nummer aan te vullen].","Verantwoordelijke uitgever: [naam aan te vullen].","Contact: jinastudios.support@gmail.com."]},
  {h:"Hosting en distributie",p:["App verspreid via de App Store (Apple) en Google Play (Google). [Aan te vullen: hostingprovider, als er onlinefuncties worden toegevoegd.]"]}
 ]},
 reglement:{titre:"Reglement van de Grote Quiz",maj:"2026-11-18",sections:[

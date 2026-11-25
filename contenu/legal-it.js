@@ -19,7 +19,7 @@ methode:{titre:"Fonti e metodo",maj:"2026-11-19",sections:[
  {h:"Le lezioni e le domande",p:["Le lezioni e le domande sono redatte dal team di {APP} a partire da queste fonti, attenendosi ai punti su cui c'è consenso.",
      "[Da completare: nome e qualifica della persona o dell'istituzione che ha riletto e convalidato il contenuto religioso.]"]},
  {h:"Le date",p:["La data dell'Egira mostrata è calcolata secondo il calendario Umm al-Qura. Può differire di un giorno dalla data annunciata localmente, che dipende dall'avvistamento della falce di luna. Le date del Ramadan sono stime e non sostituiscono l'annuncio della tua moschea o del tuo paese."]},
-  {h:"Segnalare un errore",p:["Un errore, una fonte da precisare, una traduzione da migliorare? Scrivici: [indirizzo e-mail di contatto da completare]. Ogni segnalazione viene verificata."]}
+  {h:"Segnalare un errore",p:["Un errore, una fonte da precisare, una traduzione da migliorare? Scrivici: jinastudios.support@gmail.com. Ogni segnalazione viene verificata."]}
 ]},
 cgu:{titre:"Condizioni generali d'uso",maj:"2026-11-18",sections:[
  {h:"1. Oggetto",p:["Le presenti condizioni regolano l'uso dell'applicazione {APP}, pubblicata da JINA Studios (di seguito «l'Editore»). L'uso dell'applicazione comporta l'accettazione di queste condizioni."]},
@@ -33,18 +33,18 @@ cgu:{titre:"Condizioni generali d'uso",maj:"2026-11-18",sections:[
  {h:"8. Grande Quiz e premi",p:["La partecipazione al Grande Quiz del Ramadan è gratuita e senza obbligo di acquisto. Quando vengono proposti dei premi, le modalità sono stabilite da un regolamento disponibile nell'applicazione."]},
  {h:"9. Modifiche e legge applicabile",p:["Queste condizioni possono cambiare; la data di aggiornamento è indicata in cima a questa pagina. Sono soggette alla legge francese. [Da completare: foro competente.]"]}
 ]},
-confidentialite:{titre:"Informativa sulla privacy",maj:"2026-11-19",sections:[
+confidentialite:{titre:"Informativa sulla privacy",maj:"2026-11-25",sections:[
  {h:"In breve",p:["{APP} non chiede né account, né e-mail, né numero di telefono. I tuoi progressi restano sul tuo dispositivo. Non vendiamo alcun dato e l'applicazione non contiene pubblicità."]},
- {h:"Dati salvati sul tuo dispositivo",p:["Il tuo nome (facoltativo), la lingua scelta, i tuoi punteggi, la tua serie di giorni, le tue statistiche per tema e, se lo usi, il tuo gruppo familiare (nomi, colori e domande scritte). Questi dati sono memorizzati unicamente nella memoria del tuo dispositivo e non ci vengono trasmessi."]},
+ {h:"Dati salvati sul tuo dispositivo",p:["Il tuo nome (facoltativo), la lingua scelta, i tuoi punteggi, la tua serie di giorni, le tue statistiche per tema e, se lo usi, il tuo gruppo familiare (nomi, colori e domande scritte). Salvo quiz a distanza e segnalazioni, questi dati restano sul tuo dispositivo."]},
  {h:"Posizione (Qibla)",p:["Se tocchi «Usa la mia posizione», l'applicazione chiede l'accesso alla tua posizione per calcolare la direzione della Mecca. Questo calcolo avviene sul tuo dispositivo. La posizione, arrotondata a circa 1 km, è salvata unicamente sul tuo telefono e non viene mai trasmessa. Puoi anche scegliere una città dall'elenco, senza condividere la tua posizione.","La bussola usa il sensore di orientamento del telefono, con il tuo consenso; nessun dato viene salvato."]},
  {h:"I tuoi diritti",p:["Puoi modificare il tuo nome in qualsiasi momento nelle Impostazioni, e cancellare tutti i tuoi progressi con il pulsante «Azzera i miei progressi». Anche disinstallare l'applicazione cancella tutti questi dati."]},
- {h:"Servizi di terzi",p:["In questa versione, i caratteri tipografici sono caricati da Google Fonts, il che trasmette il tuo indirizzo IP a Google. Saranno integrati nell'applicazione nella versione pubblicata, in modo che non venga più trasmesso nulla."]},
- {h:"Evoluzioni",p:["Se verranno aggiunte funzioni online (gruppi a distanza, classifica), questa informativa sarà aggiornata prima del loro lancio e ti verrà chiesto il consenso quando la legge lo richiede."]},
+ {h:"Servizi di terzi",p:["I caratteri sono integrati nell'applicazione: nulla viene richiesto a Google. Le funzioni online usano Supabase. L'invito apre WhatsApp solo se tocchi il pulsante."]},
+ {h:"Quiz a distanza",p:["Se crei un gruppo o vi entri, il nostro server (ospitato da Supabase) salva il nome del gruppo, il tuo soprannome, un colore e i tuoi punteggi. I membri del gruppo li vedono. Basta un soprannome: non usare il tuo nome completo. Come per ogni servizio online, il tuo indirizzo IP viene trasmesso al server quando ti colleghi. Uscire dal gruppo cancella dal gruppo il tuo soprannome e i tuoi punteggi. Azzerare o eliminare l'applicazione non li cancella: esci prima dal gruppo."]},
  {h:"Segnalare una domanda",p:["Se segnala una domanda, riceviamo il numero, il testo, la lingua, il motivo e il suo commento. Secondo la versione, l'invio avviene con la sua app e-mail (vediamo il suo indirizzo) o con il nostro server, senza nome né account. Serve solo a correggere i contenuti. Non scriva dati personali."]},
- {h:"Contatti",p:["Titolare del trattamento: JINA Studios, [indirizzo da completare]. Contatto: [indirizzo e-mail da completare]. Puoi anche rivolgerti alla CNIL (cnil.fr)."]}
+ {h:"Contatti",p:["Titolare del trattamento: JINA Studios, [indirizzo da completare]. Contatto: jinastudios.support@gmail.com. Puoi anche rivolgerti alla CNIL (cnil.fr)."]}
 ]},
 mentions:{titre:"Note legali",maj:"2026-11-18",sections:[
- {h:"Editore",p:["JINA Studios — [forma giuridica, indirizzo, numero SIREN/SIRET da completare].","Direttore della pubblicazione: [nome da completare].","Contatto: [indirizzo e-mail da completare]."]},
+ {h:"Editore",p:["JINA Studios — [forma giuridica, indirizzo, numero SIREN/SIRET da completare].","Direttore della pubblicazione: [nome da completare].","Contatto: jinastudios.support@gmail.com."]},
  {h:"Hosting e distribuzione",p:["Applicazione distribuita tramite l'App Store (Apple) e Google Play (Google). [Da completare: fornitore di hosting, se verranno aggiunte funzioni online.]"]}
 ]},
 reglement:{titre:"Regolamento del Grande Quiz",maj:"2026-11-18",sections:[

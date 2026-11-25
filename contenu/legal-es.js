@@ -19,7 +19,7 @@ methode:{titre:"Fuentes y método",maj:"2026-11-19",sections:[
  {h:"Las lecciones y las preguntas",p:["Las lecciones y las preguntas las redacta el equipo de {APP} a partir de estas fuentes, ciñéndose a los puntos en los que hay consenso.",
      "[Por completar: nombre y cualificación de la persona o de la institución que ha revisado y validado el contenido religioso.]"]},
  {h:"Las fechas",p:["La fecha de la Hégira que se muestra se calcula según el calendario Umm al-Qura. Puede diferir en un día de la fecha anunciada localmente, que depende de la observación de la luna creciente. Las fechas de Ramadán son estimaciones y no sustituyen el anuncio de tu mezquita o de tu país."]},
-  {h:"Informar de un error",p:["¿Un error, una fuente que precisar, una traducción que mejorar? Escríbenos: [dirección de correo de contacto por completar]. Cada aviso se verifica."]}
+  {h:"Informar de un error",p:["¿Un error, una fuente que precisar, una traducción que mejorar? Escríbenos: jinastudios.support@gmail.com. Cada aviso se verifica."]}
 ]},
 cgu:{titre:"Condiciones generales de uso",maj:"2026-11-18",sections:[
  {h:"1. Objeto",p:["Las presentes condiciones regulan el uso de la aplicación {APP}, editada por JINA Studios (en adelante, «el Editor»). Usar la aplicación implica la aceptación de estas condiciones."]},
@@ -33,18 +33,18 @@ cgu:{titre:"Condiciones generales de uso",maj:"2026-11-18",sections:[
  {h:"8. Gran Quiz y recompensas",p:["La participación en el Gran Quiz de Ramadán es gratuita y sin obligación de compra. Cuando se ofrezcan recompensas, las condiciones se fijarán en un reglamento disponible en la aplicación."]},
  {h:"9. Modificación y derecho aplicable",p:["Estas condiciones pueden cambiar; la fecha de actualización figura al principio de esta página. Se rigen por el derecho francés. [Por completar: jurisdicción competente.]"]}
 ]},
-confidentialite:{titre:"Política de privacidad",maj:"2026-11-19",sections:[
+confidentialite:{titre:"Política de privacidad",maj:"2026-11-25",sections:[
  {h:"En resumen",p:["{APP} no pide ni cuenta, ni correo electrónico, ni número de teléfono. Tu progreso se queda en tu dispositivo. No vendemos ningún dato y la aplicación no contiene publicidad."]},
- {h:"Datos guardados en tu dispositivo",p:["Tu nombre (opcional), el idioma elegido, tus puntuaciones, tu racha de días, tus estadísticas por tema y, si lo usas, tu grupo familiar (nombres, colores y preguntas escritas). Estos datos se almacenan únicamente en la memoria de tu dispositivo y no se nos transmiten."]},
+ {h:"Datos guardados en tu dispositivo",p:["Tu nombre (opcional), el idioma elegido, tus puntuaciones, tu racha de días, tus estadísticas por tema y, si lo usas, tu grupo familiar (nombres, colores y preguntas escritas). Salvo en los quiz a distancia y los avisos, estos datos permanecen en tu dispositivo."]},
  {h:"Ubicación (qibla)",p:["Si tocas «Usar mi ubicación», la aplicación pide acceso a tu ubicación para calcular la dirección de La Meca. Este cálculo se hace en tu dispositivo. La ubicación, redondeada a aproximadamente 1 km, se guarda únicamente en tu teléfono y nunca se transmite. También puedes elegir una ciudad de la lista, sin compartir tu ubicación.","La brújula usa el sensor de orientación del teléfono, con tu consentimiento; no se guarda ningún dato."]},
  {h:"Tus derechos",p:["Puedes cambiar tu nombre en cualquier momento en Ajustes y borrar todo tu progreso con el botón «Reiniciar mi progreso». Eliminar la aplicación también borra todos estos datos."]},
- {h:"Servicios de terceros",p:["En esta versión, las fuentes tipográficas se cargan desde Google Fonts, lo que transmite tu dirección IP a Google. Se integrarán en la aplicación en la versión publicada, para que ya no se transmita nada."]},
- {h:"Cambios",p:["Si se añaden funciones en línea (grupos a distancia, clasificación), esta política se actualizará antes de su lanzamiento y se pedirá tu consentimiento cuando la ley lo exija."]},
+ {h:"Servicios de terceros",p:["Las fuentes están integradas en la aplicación: no se pide nada a Google. Las funciones en línea usan Supabase. La invitación abre WhatsApp solo si tocas el botón."]},
+ {h:"Quiz a distancia",p:["Si creas un grupo o te unes a uno, nuestro servidor (alojado por Supabase) guarda el nombre del grupo, tu apodo, un color y tus puntuaciones. Los miembros del grupo los ven. Basta un apodo: no uses tu nombre completo. Como en cualquier servicio en línea, tu dirección IP se transmite al servidor al conectarte. Salir del grupo borra tu apodo y tus puntuaciones del grupo. Reiniciar o eliminar la aplicación no los borra: sal primero del grupo."]},
  {h:"Informar sobre una pregunta",p:["Si informa sobre una pregunta, recibimos su número, texto, idioma, motivo y su comentario. Según la versión, se envía por su aplicación de correo (vemos su dirección) o por nuestro servidor, sin nombre ni cuenta. Solo se usa para corregir el contenido. No escriba datos personales."]},
- {h:"Contacto",p:["Responsable del tratamiento: JINA Studios, [dirección por completar]. Contacto: [dirección de correo por completar]. También puedes presentar una reclamación ante la CNIL (cnil.fr)."]}
+ {h:"Contacto",p:["Responsable del tratamiento: JINA Studios, [dirección por completar]. Contacto: jinastudios.support@gmail.com. También puedes presentar una reclamación ante la CNIL (cnil.fr)."]}
 ]},
 mentions:{titre:"Aviso legal",maj:"2026-11-18",sections:[
- {h:"Editor",p:["JINA Studios — [forma jurídica, dirección, número SIREN/SIRET por completar].","Director de la publicación: [nombre por completar].","Contacto: [dirección de correo por completar]."]},
+ {h:"Editor",p:["JINA Studios — [forma jurídica, dirección, número SIREN/SIRET por completar].","Director de la publicación: [nombre por completar].","Contacto: jinastudios.support@gmail.com."]},
  {h:"Alojamiento y distribución",p:["Aplicación distribuida a través del App Store (Apple) y Google Play (Google). [Por completar: proveedor de alojamiento, si se añaden funciones en línea.]"]}
 ]},
 reglement:{titre:"Reglamento del Gran Quiz",maj:"2026-11-18",sections:[
