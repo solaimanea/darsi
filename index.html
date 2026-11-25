@@ -3,21 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#03211a">
+<meta name="theme-color" content="#6f2a15">
 <title>Darsi</title>
 <link rel="icon" href="favicon.png"><link rel="apple-touch-icon" href="pwa/apple-touch-icon.png">
 <!-- Web app (PWA) : installable depuis Safari (iPhone) ou Chrome, fonctionne hors connexion (sw.js, créé par outils/preparer_web.sh) -->
 <link rel="manifest" href="pwa/manifest.webmanifest">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Darsi"><!-- nom : voir NOM_APP dans js/structure.js -->
-<link rel="stylesheet" href="css/polices/polices.css?v=18c3c3be345f">
-<link rel="stylesheet" href="css/nour.css?v=18c3c3be345f">
+<link rel="stylesheet" href="css/polices/polices.css?v=a5dfccdb0355">
+<link rel="stylesheet" href="css/nour.css?v=a5dfccdb0355">
+<script src="js/theme.js?v=a5dfccdb0355"></script><!-- avant l'affichage : pas d'éclair clair en mode sombre -->
 </head>
 <body>
 <!-- Animation d'ouverture JINA Studios : jouée en premier à chaque lancement, puis on entre dans l'appli (js/app.js, finIntro) -->
 <div id="intro"><video id="intro-v" src="media/intro.mp4" poster="media/intro-debut.jpg" muted playsinline webkit-playsinline autoplay preload="auto" disablepictureinpicture></video><div class="op-skip">Touche pour passer</div></div>
 <div class="ciel" id="ciel"></div>
 <div class="motif"></div>
+<div id="haut"></div>
 <div class="app">
   <section class="ecran" id="e-bienvenue"></section>
   <section class="ecran" id="e-accueil"></section>
@@ -47,38 +49,38 @@
   <section class="ecran" id="e-imam-poser"></section>
   <section class="ecran" id="e-mosquees"></section>
   <section class="ecran" id="e-espace-imam"></section>
-  <section class="ecran" id="e-groupe"></section>
   <section class="ecran" id="e-decouvrir"></section>
 </div>
 <nav class="onglets" id="onglets"></nav>
-<script src="js/icones.js?v=18c3c3be345f"></script>
-<script src="js/i18n.js?v=18c3c3be345f"></script>
-<script src="js/structure.js?v=18c3c3be345f"></script>
-<script src="js/sources.js?v=18c3c3be345f"></script>
-<script src="contenu/rappels.js?v=18c3c3be345f"></script>
-<script src="contenu/fr.js?v=18c3c3be345f"></script>
-<script src="contenu/fr-expert.js?v=18c3c3be345f"></script>
-<script src="contenu/fr-plus.js?v=18c3c3be345f"></script>
-<script src="contenu/legal-fr.js?v=18c3c3be345f"></script>
-<script src="contenu/calendrier-fr.js?v=18c3c3be345f"></script>
-<script src="contenu/invocations-fr.js?v=18c3c3be345f"></script>
-<script src="contenu/en.js?v=18c3c3be345f"></script><script src="contenu/en-expert.js?v=18c3c3be345f"></script><script src="contenu/legal-en.js?v=18c3c3be345f"></script><script src="contenu/calendrier-en.js?v=18c3c3be345f"></script><script src="contenu/invocations-en.js?v=18c3c3be345f"></script>
-<script src="contenu/ar.js?v=18c3c3be345f"></script><script src="contenu/ar-expert.js?v=18c3c3be345f"></script><script src="contenu/legal-ar.js?v=18c3c3be345f"></script><script src="contenu/calendrier-ar.js?v=18c3c3be345f"></script><script src="contenu/invocations-ar.js?v=18c3c3be345f"></script>
-<script src="contenu/id.js?v=18c3c3be345f"></script><script src="contenu/id-expert.js?v=18c3c3be345f"></script><script src="contenu/legal-id.js?v=18c3c3be345f"></script><script src="contenu/calendrier-id.js?v=18c3c3be345f"></script><script src="contenu/invocations-id.js?v=18c3c3be345f"></script>
-<script src="contenu/tr.js?v=18c3c3be345f"></script><script src="contenu/tr-expert.js?v=18c3c3be345f"></script><script src="contenu/legal-tr.js?v=18c3c3be345f"></script><script src="contenu/calendrier-tr.js?v=18c3c3be345f"></script><script src="contenu/invocations-tr.js?v=18c3c3be345f"></script>
-<script src="contenu/de.js?v=18c3c3be345f"></script><script src="contenu/de-expert.js?v=18c3c3be345f"></script><script src="contenu/legal-de.js?v=18c3c3be345f"></script><script src="contenu/calendrier-de.js?v=18c3c3be345f"></script><script src="contenu/invocations-de.js?v=18c3c3be345f"></script>
-<script src="contenu/nl.js?v=18c3c3be345f"></script><script src="contenu/nl-expert.js?v=18c3c3be345f"></script><script src="contenu/legal-nl.js?v=18c3c3be345f"></script><script src="contenu/calendrier-nl.js?v=18c3c3be345f"></script><script src="contenu/invocations-nl.js?v=18c3c3be345f"></script>
-<script src="contenu/es.js?v=18c3c3be345f"></script><script src="contenu/es-expert.js?v=18c3c3be345f"></script><script src="contenu/legal-es.js?v=18c3c3be345f"></script><script src="contenu/calendrier-es.js?v=18c3c3be345f"></script><script src="contenu/invocations-es.js?v=18c3c3be345f"></script>
-<script src="contenu/it.js?v=18c3c3be345f"></script><script src="contenu/it-expert.js?v=18c3c3be345f"></script><script src="contenu/legal-it.js?v=18c3c3be345f"></script><script src="contenu/calendrier-it.js?v=18c3c3be345f"></script><script src="contenu/invocations-it.js?v=18c3c3be345f"></script>
-<script src="js/geomag.js?v=18c3c3be345f"></script>
-<script src="js/fonds-mini.js?v=18c3c3be345f"></script>
-<script src="js/partage.js?v=18c3c3be345f"></script>
-<script src="js/decouvrir.js?v=18c3c3be345f"></script>
-<script src="js/app.js?v=18c3c3be345f"></script>
-<script src="js/en_ligne.js?v=18c3c3be345f"></script>
-<script src="js/signaler.js?v=18c3c3be345f"></script>
-<script src="js/imam.js?v=18c3c3be345f"></script>
-<script src="js/groupes.js?v=18c3c3be345f"></script>
-<script src="js/pwa.js?v=18c3c3be345f"></script>
+<script src="js/icones.js?v=a5dfccdb0355"></script>
+<script src="js/i18n.js?v=a5dfccdb0355"></script>
+<script src="js/structure.js?v=a5dfccdb0355"></script>
+<script src="js/sources.js?v=a5dfccdb0355"></script>
+<script src="contenu/rappels.js?v=a5dfccdb0355"></script>
+<script src="contenu/fr.js?v=a5dfccdb0355"></script>
+<script src="contenu/fr-expert.js?v=a5dfccdb0355"></script>
+<script src="contenu/fr-plus.js?v=a5dfccdb0355"></script>
+<script src="contenu/legal-fr.js?v=a5dfccdb0355"></script>
+<script src="contenu/calendrier-fr.js?v=a5dfccdb0355"></script>
+<script src="contenu/invocations-fr.js?v=a5dfccdb0355"></script>
+<script src="contenu/en.js?v=a5dfccdb0355"></script><script src="contenu/en-expert.js?v=a5dfccdb0355"></script><script src="contenu/legal-en.js?v=a5dfccdb0355"></script><script src="contenu/calendrier-en.js?v=a5dfccdb0355"></script><script src="contenu/invocations-en.js?v=a5dfccdb0355"></script>
+<script src="contenu/ar.js?v=a5dfccdb0355"></script><script src="contenu/ar-expert.js?v=a5dfccdb0355"></script><script src="contenu/legal-ar.js?v=a5dfccdb0355"></script><script src="contenu/calendrier-ar.js?v=a5dfccdb0355"></script><script src="contenu/invocations-ar.js?v=a5dfccdb0355"></script>
+<script src="contenu/id.js?v=a5dfccdb0355"></script><script src="contenu/id-expert.js?v=a5dfccdb0355"></script><script src="contenu/legal-id.js?v=a5dfccdb0355"></script><script src="contenu/calendrier-id.js?v=a5dfccdb0355"></script><script src="contenu/invocations-id.js?v=a5dfccdb0355"></script>
+<script src="contenu/tr.js?v=a5dfccdb0355"></script><script src="contenu/tr-expert.js?v=a5dfccdb0355"></script><script src="contenu/legal-tr.js?v=a5dfccdb0355"></script><script src="contenu/calendrier-tr.js?v=a5dfccdb0355"></script><script src="contenu/invocations-tr.js?v=a5dfccdb0355"></script>
+<script src="contenu/de.js?v=a5dfccdb0355"></script><script src="contenu/de-expert.js?v=a5dfccdb0355"></script><script src="contenu/legal-de.js?v=a5dfccdb0355"></script><script src="contenu/calendrier-de.js?v=a5dfccdb0355"></script><script src="contenu/invocations-de.js?v=a5dfccdb0355"></script>
+<script src="contenu/nl.js?v=a5dfccdb0355"></script><script src="contenu/nl-expert.js?v=a5dfccdb0355"></script><script src="contenu/legal-nl.js?v=a5dfccdb0355"></script><script src="contenu/calendrier-nl.js?v=a5dfccdb0355"></script><script src="contenu/invocations-nl.js?v=a5dfccdb0355"></script>
+<script src="contenu/es.js?v=a5dfccdb0355"></script><script src="contenu/es-expert.js?v=a5dfccdb0355"></script><script src="contenu/legal-es.js?v=a5dfccdb0355"></script><script src="contenu/calendrier-es.js?v=a5dfccdb0355"></script><script src="contenu/invocations-es.js?v=a5dfccdb0355"></script>
+<script src="contenu/it.js?v=a5dfccdb0355"></script><script src="contenu/it-expert.js?v=a5dfccdb0355"></script><script src="contenu/legal-it.js?v=a5dfccdb0355"></script><script src="contenu/calendrier-it.js?v=a5dfccdb0355"></script><script src="contenu/invocations-it.js?v=a5dfccdb0355"></script>
+<script src="js/geomag.js?v=a5dfccdb0355"></script>
+<script src="js/fonds-mini.js?v=a5dfccdb0355"></script>
+<script src="js/partage.js?v=a5dfccdb0355"></script>
+<script src="js/decouvrir.js?v=a5dfccdb0355"></script>
+<script src="js/app.js?v=a5dfccdb0355"></script>
+<script src="js/en_ligne.js?v=a5dfccdb0355"></script>
+<script src="js/signaler.js?v=a5dfccdb0355"></script>
+<script src="js/imam.js?v=a5dfccdb0355"></script>
+<script src="js/groupes.js?v=a5dfccdb0355"></script>
+<script src="js/tirer.js?v=a5dfccdb0355"></script>
+<script src="js/pwa.js?v=a5dfccdb0355"></script>
 </body>
 </html>

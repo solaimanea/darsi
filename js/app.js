@@ -245,7 +245,7 @@ function ouvrirRamadan(){
     <h1 style="text-align:center;margin-top:6px">${R.etat==='pendant'?t('jourSur',{n:Math.min(R.jour,30)}):R.etat==='fini'?t('ramFini'):t('jMoins',{n:R.reste})}</h1>
     <p class="doux" style="text-align:center;margin-top:8px;line-height:1.6">${R.etat==='pendant'?t('ramPendant',{q:NB_FINAL}):R.etat==='fini'?t('ramApres'):t('ramAvant',{d:dateLoc(R.debut)})}</p>
     <div class="carte"><div class="grille" id="grille"></div>
-    <div class="legende"><span><svg viewBox="0 0 24 24" width="10" height="10" style="color:#f7dca0">${ETOILE4}</svg> ${t('nuitsImpaires')}</span></div></div>`;
+    <div class="legende"><span><svg viewBox="0 0 24 24" width="10" height="10" style="color:#a94e2d">${ETOILE4}</svg> ${t('nuitsImpaires')}</span></div></div>`;
   const g=$('grille');
   for(let n=1;n<=30;n++){
     const b=document.createElement('button'),ok=ramOuvert(R,n),f=n===30?D.final!==null:D.jours[n]!==undefined;
@@ -774,7 +774,8 @@ function ouvrirParametres(section){
       <label for="p-prenom">${t('prenom')}</label>
       <div class="rangee"><input id="p-prenom" value="${esc(S.prenom)}" maxlength="20" placeholder="${t('prenom')}" autocomplete="off">
       <button class="btn mini" id="p-ok" onclick="enregistrerPrenom()">${t('enregistrer')}</button></div>
-      <label>${t('langue')}</label>${selecteurLangue()}</div>
+      <label>${t('langue')}</label>${selecteurLangue()}
+      <label>${t('th_titre')}</label><div class="themes-grille" id="choix-theme" role="radiogroup" aria-label="${t('th_titre')}">${THEME.noms.map(k=>{const [a,b]=THEME.VUE[k]||['',''];return `<button role="radio" aria-checked="${THEME.lire()===k}" data-th="${k}" onclick="choisirTheme('${k}')"><span class="th-rond" style="background:${k==='auto'?'linear-gradient(120deg,#f1e6da 50%,#2d1832 50%)':a}"><i style="background:${k==='auto'?'#c98f5a':b}"></i></span><small>${t('th_'+k)}</small></button>`}).join('')}</div><p class="petit">${t('th_info')}</p></div>
     <div class="carte"><h3 class="titre-carte">${t('informations')}</h3>${DOCS_LISTE.map(([k,i])=>`<div class="ligne-theme" onclick="ouvrirDoc('${k}')">
       <div class="pastille">${ic(i)}</div><div class="milieu"><b>${t('doc_'+k)}</b></div>${ic('droite','sm')}</div>`).join('')}</div>
     ${carteEspaceImam()}
@@ -785,6 +786,7 @@ function ouvrirParametres(section){
   aller('parametres');
   if(section)setTimeout(()=>{const e=$('p-'+section);if(e)e.scrollIntoView({behavior:'smooth',block:'start'})},60);
 }
+function choisirTheme(k){THEME.choisir(k);vibrer(12);document.querySelectorAll('#choix-theme button').forEach(b=>b.setAttribute('aria-checked',b.dataset.th===k))}
 function enregistrerPrenom(){
   S.prenom=$('p-prenom').value.trim();
   if(S.groupe){const m=S.groupe.membres.find(x=>x.id==='moi');if(m&&S.prenom)m.nom=S.prenom}
@@ -855,7 +857,7 @@ let CAP=null,ALIGNE=false,ECOUTE=false;
 /* Styles de boussole au choix (S.qibla) ; la couleur d'accent passe par la variable CSS --qa */
 const QSTYLES=['classique','calligraphie','arabesque','mihrab','nuit','zellige','etoile','aiguille','minimal'];
 let NSVG=0;   // identifiants uniques des tracés de texte (plusieurs cadrans sur la page)
-const QCOULEURS={or:'#e8be6e',emeraude:'#6fe0b0',argent:'#dfe6ea',rose:'#eaa3b8',azur:'#8fb8ff'};
+const QCOULEURS={or:'var(--q-or)',emeraude:'var(--q-em)',argent:'var(--q-ar)',rose:'var(--q-ro)',azur:'var(--q-az)'};
 function reglageQibla(){return Object.assign({style:'classique',couleur:'or'},S.qibla||{})}
 function marqueKaaba(y,r=19){return `<g transform="translate(${150-r+3} ${y-r+3})"><circle cx="${r-3}" cy="${r-3}" r="${r}" class="kaaba-fond"/><svg x="${r-15}" y="${r-15}" width="24" height="24" viewBox="0 0 24 24" class="kaaba-ic">${ICONS.kaaba}</svg></g>`}
 function graduations(r,pas,long,court){let g='';for(let a=0;a<360;a+=pas){const l=a%90===0?long:a%30===0?long*.65:court;
@@ -929,6 +931,11 @@ function lieuFuseau(){
 }
 function lieuQibla(){return S.lieu&&S.lieu.gps?S.lieu:(S.lieu||lieuFuseau()||null)}   // GPS > ancienne ville choisie > fuseau horaire
 let GEO_ID=null,GEO_FIN=null,GPS_ECHEC=false;
+/* Avant de prier : rappel de l'invocation d'après les ablutions (texte complet, phonétique et source dans sa page) */
+function rappelAblutions(){
+  const d=listeInv().find(x=>x.id==='wudu');if(!d)return '';
+  return `<button class="q-wudu" id="q-wudu" onclick="INV_RETOUR='ouvrirQibla()';ouvrirInvocation('wudu')"><span class="pastille">${ic(ICONE_INV.wudu||'doua')}</span><span class="milieu"><b>${esc(d.titre)}</b><small>${t('q_wudu')}</small></span>${ic('droite','sm')}</button>`;
+}
 function ouvrirQibla(){
   const L=lieuQibla(),q=L?directionQibla(L.lat,L.lon):null,RQ=reglageQibla();
   // Mise en page inspirée des applis de prière : infos en haut, boussole, consigne, styles à faire glisser en bas (sans défiler)
@@ -936,6 +943,7 @@ function ouvrirQibla(){
     <div class="q-tete"><div class="surtitre" onclick="tapDiag()">${ic('boussole','sm')} ${t('tab_qibla')}</div></div>
     <pre class="q-diag" id="q-diag" hidden></pre>
     <div class="q-puces" id="q-info">${infoQibla(L,q)}</div>
+    ${rappelAblutions()}
     <div class="boussole-zone" id="q-zone"><div class="repere-haut"></div><div class="cadran" id="cadran">${cadranSVG(q)}</div></div>
     <p class="q-etat" id="q-etat">${CAP===null?'':t('tourne')}</p>
     <div class="q-bas"><div class="q-styles" id="q-styles">${QSTYLES.map(st=>`<button class="style-q ${st===RQ.style?'sel':''}" data-st="${st}" onclick="choisirStyleQ('${st}')" aria-label="${t('qs_'+st)}">

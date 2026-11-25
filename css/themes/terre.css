@@ -1,0 +1,193 @@
+/* Darsi : thème terre. Fichier fabriqué par outils/themes.mjs */
+html[data-theme="terre"]{--nuit:#703420;--nuit2:#763621;--nuit3:#7d3a23;--verre:rgba(255,255,255,.045);--bord:rgba(242,225,202,.16);--or:#f2e1ca;--or2:#f2e1ca;--or-fonce:#d6ba9a;--texte:#f3eee2;--doux:#ebd8c2;--vert:#ebd8c2;--rouge:#ec7d7d}
+html[data-theme="terre"] .ciel{background:radial-gradient(90% 55% at 70% 0%,#8e4228 0%,rgba(142,66,40,0) 70%),
+             radial-gradient(70% 40% at 10% 10%,#853d26 0%,rgba(133,61,38,0) 70%),
+             linear-gradient(180deg,#7a3822 0%,var(--nuit) 70%)}
+html[data-theme="terre"] .motif{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23f2e1ca' stroke-width='1'%3E%3Cpath d='M32 10l6.4 15.6L54 32l-15.6 6.4L32 54l-6.4-15.6L10 32l15.6-6.4z'/%3E%3Crect x='19' y='19' width='26' height='26' transform='rotate(45 32 32)'/%3E%3Crect x='19' y='19' width='26' height='26'/%3E%3C/g%3E%3C/svg%3E");mask-image:linear-gradient(rgb(0, 0, 0) 0%, transparent 55%)}
+html[data-theme="terre"] .pastille{background:linear-gradient(160deg, rgba(242,225,202, 0.22), rgba(242,225,202, 0.06))}
+html[data-theme="terre"] .btn{color:rgb(37, 26, 5);box-shadow:rgba(242,225,202, 0.55) 0px 10px 30px -10px, rgba(255, 255, 255, 0.5) 0px 1px 0px inset}
+html[data-theme="terre"] input,html[data-theme="terre"] select,html[data-theme="terre"] textarea{background:rgba(112,52,32, 0.6)}
+html[data-theme="terre"] .jour-du{background:linear-gradient(150deg, rgba(242,225,202, 0.16), rgba(255, 255, 255, 0.03) 60%)}
+html[data-theme="terre"] .case{background:rgba(255, 255, 255, 0.04);border:1px solid rgba(255, 255, 255, 0.06)}
+html[data-theme="terre"] .case.ok{color:rgb(37, 26, 5)}
+html[data-theme="terre"] .case.final{background:radial-gradient(circle at 30% 30%, rgb(149,69,42), rgb(122,56,34))}
+html[data-theme="terre"] .badge .medaillon{background:radial-gradient(circle at 35% 30%, rgba(242,225,202, 0.35), rgba(242,225,202, 0.08))}
+html[data-theme="terre"] .badge.non .medaillon{background:rgba(255, 255, 255, 0.03);border:1.5px dashed rgba(255, 255, 255, 0.15);color:rgba(255, 255, 255, 0.25)}
+html[data-theme="terre"] .lecon p.txt{color:rgb(230, 225, 212)}
+html[data-theme="terre"] .retenir{background:rgba(242,225,202, 0.1)}
+html[data-theme="terre"] .source{background:rgba(112,52,32, 0.55);border-top:1px solid rgba(255, 255, 255, 0.07);border-right:1px solid rgba(255, 255, 255, 0.07);border-bottom:1px solid rgba(255, 255, 255, 0.07)}
+html[data-theme="terre"] .ar{color:rgb(251, 243, 221)}
+html[data-theme="terre"] .tr{color:rgb(217, 212, 199)}
+html[data-theme="terre"] .barre{background:rgba(255, 255, 255, 0.07)}
+html[data-theme="terre"] .choix{border:1px solid rgba(255, 255, 255, 0.08)}
+html[data-theme="terre"] .choix.bon{background:rgba(235,216,194, 0.14)}
+html[data-theme="terre"] .choix.bon .lettre{color:rgb(112,52,32)}
+html[data-theme="terre"] .choix.faux{background:rgba(236, 125, 125, 0.12)}
+html[data-theme="terre"] .choix.faux .lettre{color:rgb(43, 11, 11)}
+html[data-theme="terre"] .explic{color:rgb(225, 220, 207)}
+html[data-theme="terre"] .bas{background:linear-gradient(180deg,rgba(112,52,32,0),var(--nuit) 35%)}
+html[data-theme="terre"] .membre{border-bottom:1px solid rgba(255, 255, 255, 0.06)}
+html[data-theme="terre"] .avatar{color:rgb(27, 20, 5);box-shadow:rgba(0, 0, 0, 0.15) 0px -3px 0px inset}
+html[data-theme="terre"] .puce{background:rgba(255, 255, 255, 0.05)}
+html[data-theme="terre"] .ligne-theme{border-bottom:1px solid rgba(255, 255, 255, 0.06)}
+html[data-theme="terre"] .ligne-lecon{border:1px solid rgba(255, 255, 255, 0.08)}
+html[data-theme="terre"] .ligne-lecon.fait .num{color:rgb(37, 26, 5)}
+html[data-theme="terre"] .ligne-lecon.verrou .num{border-color:rgba(255, 255, 255, 0.2)}
+html[data-theme="terre"] .ramadan-grand{background:linear-gradient(150deg, rgba(242,225,202, 0.22), rgba(136,63,38, 0.5) 70%);border-color:rgba(242,225,202, 0.4)}
+html[data-theme="terre"][dir="rtl"] .source{border-left:1px solid rgba(255, 255, 255, 0.07)}
+html[data-theme="terre"] .frise{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='12' viewBox='0 0 24 12'%3E%3Cg fill='none' stroke='%23f2e1ca' stroke-width='1'%3E%3Cpath d='M12 1.5l1.5 3 3 1.5-3 1.5-1.5 3-1.5-3-3-1.5 3-1.5z'/%3E%3Cpath d='M0 6h7.5M16.5 6H24'/%3E%3C/g%3E%3C/svg%3E") center center / 24px 12px repeat-x}
+html[data-theme="terre"] .pliable::after{background:linear-gradient(rgba(115,53,32, 0), rgb(115,53,32))}
+html[data-theme="terre"] .avis{background:rgba(242,225,202, 0.1);border:1px solid rgba(242,225,202, 0.3)}
+html[data-theme="terre"] .tag-expert{color:rgb(37, 26, 5)}
+html[data-theme="terre"] .choix.sel{background:rgba(242,225,202, 0.12)}
+html[data-theme="terre"] .choix.sel .lettre{color:rgb(37, 26, 5)}
+html[data-theme="terre"] .btn.danger{border:1px solid rgba(236, 125, 125, 0.5)}
+html[data-theme="terre"] .doc p{color:rgb(225, 220, 207)}
+html[data-theme="terre"] .decompte{background:linear-gradient(150deg, rgba(242,225,202, 0.24), rgba(136,63,38, 0.55) 70%);border-color:rgba(242,225,202, 0.45)}
+html[data-theme="terre"] .compteur-ram b{text-shadow:rgba(242,225,202, 0.35) 0px 0px 26px}
+html[data-theme="terre"] .filtre.actif{color:rgb(37, 26, 5)}
+html[data-theme="terre"] .cor-choix.bon{background:rgba(235,216,194, 0.12);border-color:rgba(235,216,194, 0.45)}
+html[data-theme="terre"] .cor-choix.faux{background:rgba(236, 125, 125, 0.1);border-color:rgba(236, 125, 125, 0.45)}
+html[data-theme="terre"] .prochain{background:linear-gradient(150deg, rgba(242,225,202, 0.22), rgba(136,63,38, 0.55) 70%);border-color:rgba(242,225,202, 0.45)}
+html[data-theme="terre"] .evt{border-bottom:1px solid rgba(255, 255, 255, 0.06)}
+html[data-theme="terre"] .evt-date{background:linear-gradient(160deg, rgba(242,225,202, 0.22), rgba(242,225,202, 0.06))}
+html[data-theme="terre"] .t-jeune{border-color:rgba(235,216,194, 0.5)}
+html[data-theme="terre"] .t-fete{color:rgb(37, 26, 5)}
+html[data-theme="terre"] .t-interdit{border-color:rgba(236, 125, 125, 0.5)}
+html[data-theme="terre"] .t-repere{border-color:rgba(255, 255, 255, 0.15)}
+html[data-theme="terre"] .onglets{background:rgba(112,52,32, 0.86)}
+html[data-theme="terre"] .onglet.actif .ic{filter:drop-shadow(rgba(242,225,202, 0.45) 0px 0px 8px)}
+html[data-theme="terre"] .bandeau{border:1px solid rgba(242,225,202, 0.4);background:linear-gradient(120deg, rgba(242,225,202, 0.2), rgba(136,63,38, 0.45) 70%)}
+html[data-theme="terre"] .bd-pilule{background:rgba(112,52,32, 0.5)}
+html[data-theme="terre"] .cadran-svg .anneau{fill:rgba(112,52,32, 0.55)}
+html[data-theme="terre"] .boussole-carte.aligne{box-shadow:rgba(235,216,194, 0.6) 0px 0px 30px -8px}
+html[data-theme="terre"] .decompte2{background:linear-gradient(150deg, rgba(242,225,202, 0.24), rgba(136,63,38, 0.55) 70%);border-color:rgba(242,225,202, 0.45)}
+html[data-theme="terre"] .carre{background:linear-gradient(160deg, rgba(242,225,202, 0.22), rgba(112,52,32, 0.6));box-shadow:rgba(242,225,202, 0.5) 0px 12px 30px -12px}
+html[data-theme="terre"] .carre b{text-shadow:rgba(242,225,202, 0.35) 0px 0px 24px}
+html[data-theme="terre"] .mini-carre.m-jeune{border-color:rgba(235,216,194, 0.45)}
+html[data-theme="terre"] .mini-carre.m-interdit{border-color:rgba(236, 125, 125, 0.45)}
+html[data-theme="terre"] .cadran-svg .anneau{fill:rgba(112,52,32, 0.55)}
+html[data-theme="terre"] .cadran-svg .anneau-fin{fill:rgba(112,52,32, 0.35)}
+html[data-theme="terre"] .cadran-svg .etoile-g{fill:rgba(255, 255, 255, 0.03)}
+html[data-theme="terre"] .liste-langues{background:rgba(115,53,32, 0.97);box-shadow:rgba(0, 0, 0, 0.6) 0px 20px 50px -10px}
+html[data-theme="terre"] .liste-langues button.sel{background:rgba(242,225,202, 0.12)}
+html[data-theme="terre"] .bd-priere{background:rgba(112,52,32, 0.55);border:1px solid rgba(242,225,202, 0.2)}
+html[data-theme="terre"] .bd-grille .proch span,html[data-theme="terre"] .bd-grille .proch b{color:rgb(37, 26, 5)}
+html[data-theme="terre"] .bd-sans-lieu{background:rgba(112,52,32, 0.5)}
+html[data-theme="terre"] .recherche{background:rgba(112,52,32, 0.6)}
+html[data-theme="terre"] .inv-grille .tuile{border:1px solid rgba(255, 255, 255, 0.07)}
+html[data-theme="terre"] .inv-grille .tuile-ic{background:linear-gradient(160deg, rgba(242,225,202, 0.2), rgba(242,225,202, 0.05))}
+html[data-theme="terre"] .inv-liste .tuile{border-bottom:1px solid rgba(255, 255, 255, 0.06)}
+html[data-theme="terre"] .inv-liste .tuile-ic{background:rgba(242,225,202, 0.1)}
+html[data-theme="terre"] .fav{color:rgba(255, 255, 255, 0.35)}
+html[data-theme="terre"] .rosace polygon{fill:rgba(242,225,202, 0.08)}
+html[data-theme="terre"] .jour-court{background:linear-gradient(150deg, rgba(242,225,202, 0.18), rgba(255, 255, 255, 0.03) 60%)}
+html[data-theme="terre"] .jouer{color:rgb(37, 26, 5);box-shadow:rgba(242,225,202, 0.7) 0px 8px 22px -8px}
+html[data-theme="terre"] .tuile-ic{border:1px solid rgba(255, 255, 255, 0.08)}
+html[data-theme="terre"] .t-or{--c:#f2e1ca}
+html[data-theme="terre"] .t-vert{--c:#ebd8c2}
+html[data-theme="terre"] .t-azur{--c:#8fb8ff}
+html[data-theme="terre"] .t-rose{--c:#eaa3b8}
+html[data-theme="terre"] .t-violet{--c:#b9a2ff}
+html[data-theme="terre"] .t-orange{--c:#f2e1ca}
+html[data-theme="terre"] .pastille-num{color:rgb(27, 20, 5)}
+html[data-theme="terre"] .jour{background:rgba(255, 255, 255, 0.035)}
+html[data-theme="terre"] .jour.c-blanc{background:rgb(251, 248, 240);color:rgb(124,57,35);box-shadow:rgba(255, 255, 255, 0.55) 0px 0px 14px -4px}
+html[data-theme="terre"] .jour.c-blanc span{color:rgb(169,78,48)}
+html[data-theme="terre"] .jour.c-fete{color:rgb(37, 26, 5)}
+html[data-theme="terre"] .jour.c-fete span{color:rgb(91, 69, 21)}
+html[data-theme="terre"] .jour.c-jeune{background:rgba(235,216,194, 0.1)}
+html[data-theme="terre"] .jour.c-interdit{background:rgba(236, 125, 125, 0.1)}
+html[data-theme="terre"] .jour.c-periode{background:rgba(242,225,202, 0.14)}
+html[data-theme="terre"] .jour.c-repere{border-color:rgba(255, 255, 255, 0.25)}
+html[data-theme="terre"] .legende-cal i{background:rgba(255, 255, 255, 0.05)}
+html[data-theme="terre"] .legende-cal i.c-blanc{background:rgb(251, 248, 240)}
+html[data-theme="terre"] .legende-cal i.c-periode{background:rgba(242,225,202, 0.3)}
+html[data-theme="terre"] .evt-jour{border-top:1px solid rgba(255, 255, 255, 0.06)}
+html[data-theme="terre"] .bd-grille div{background:rgba(255, 255, 255, 0.04)}
+html[data-theme="terre"] .bd-grille span{color:rgb(235,217,196)}
+html[data-theme="terre"] .rep-boite{border-top:1px solid rgba(255, 255, 255, 0.06)}
+html[data-theme="terre"] .reponse-imam{background:rgba(242,225,202, 0.07)}
+html[data-theme="terre"] .etat-attente{border-color:rgba(235,216,194, 0.4)}
+html[data-theme="terre"] .etat-repondue{border-color:rgba(235,216,194, 0.45)}
+html[data-theme="terre"] .etat-refusee{border-color:rgba(236, 125, 125, 0.45)}
+html[data-theme="terre"] .notif{box-shadow:rgba(0, 0, 0, 0.4) 0px 12px 30px}
+html[data-theme="terre"] #intro{background:rgb(0, 0, 0)}
+html[data-theme="terre"] #intro video{background:rgb(0, 0, 0)}
+html[data-theme="terre"] #intro .op-skip{color:rgba(255, 255, 255, 0.45)}
+html[data-theme="terre"] .boussole-zone.aligne{box-shadow:rgba(235,216,194, 0.55) 0px 0px 44px -6px}
+html[data-theme="terre"] .q-styles .vignette{border:2px solid rgba(255, 255, 255, 0.12)}
+html[data-theme="terre"] .cadran-svg .mihrab{fill:rgba(112,52,32, 0.75)}
+html[data-theme="terre"] .cadran-svg .ciel-nuit{fill:rgb(6, 20, 46)}
+html[data-theme="terre"] .cadran-svg .etoile-ciel{fill:rgb(255, 255, 255)}
+html[data-theme="terre"] .cadran-svg .zel{stroke:rgba(0, 0, 0, 0.25)}
+html[data-theme="terre"] .cadran-svg .zel.z1{fill:rgb(153,71,43)}
+html[data-theme="terre"] .cadran-svg .zel.z2{fill:rgb(233, 226, 207)}
+html[data-theme="terre"].leger .carte{background:rgba(121,56,34, 0.94)}
+html[data-theme="terre"].leger .onglets{background:rgba(111,51,31, 0.98)}
+html[data-theme="terre"] #e-qibla .boussole-zone.aligne .cadran{box-shadow:rgba(235,216,194, 0.55) 0px 0px 44px -6px}
+html[data-theme="terre"] .q-diag{background:rgba(0, 0, 0, 0.45);color:rgb(235,216,194)}
+html[data-theme="terre"] .pwa-banniere{box-shadow:rgba(0, 0, 0, 0.45) 0px 14px 34px}
+html[data-theme="terre"] .logo-darsi{filter:drop-shadow(rgba(0, 0, 0, 0.35) 0px 6px 18px)}
+html[data-theme="terre"] #toast{background:rgb(128,59,36)}
+html[data-theme="terre"] .fil-obj{background:rgba(255, 255, 255, 0.1)}
+html[data-theme="terre"] .fc-in{background:linear-gradient(165deg, rgba(142,66,40, 0.5), rgba(118,54,33, 0.92));box-shadow:rgba(0, 0, 0, 0.3) 0px 18px 40px}
+html[data-theme="terre"] .k-retenir .fc-in{background:linear-gradient(165deg, rgba(214,186,154, 0.38), rgba(118,54,33, 0.94))}
+html[data-theme="terre"] .k-eclair .fc-in,html[data-theme="terre"] .k-revoir .fc-in{background:linear-gradient(165deg, rgba(80, 110, 200, 0.32), rgba(118,54,33, 0.94))}
+html[data-theme="terre"] .k-vf .fc-in{background:linear-gradient(165deg, rgba(200, 90, 130, 0.28), rgba(118,54,33, 0.94))}
+html[data-theme="terre"] .k-verset .fc-in,html[data-theme="terre"] .k-inv .fc-in{background:linear-gradient(rgba(112,52,32, 0.96), rgba(125,58,35, 0.96));border-color:rgba(242,225,202, 0.4)}
+html[data-theme="terre"] .k-rappel .fc-in{background:radial-gradient(120% 80% at 50% 0%, rgba(242,225,202, 0.32), rgba(118,54,33, 0.96) 70%)}
+html[data-theme="terre"] .fc-tag{background:rgba(242,225,202, 0.14)}
+html[data-theme="terre"] .fc-partage{background:rgba(255, 255, 255, 0.06)}
+html[data-theme="terre"] .vf-prop{background:rgba(242,225,202, 0.07)}
+html[data-theme="terre"] .paire-r{background:rgba(242,225,202, 0.1)}
+html[data-theme="terre"] .ch-tout{stroke:rgba(242,225,202, 0.22)}
+html[data-theme="terre"] .ch-etape{border:2px solid rgba(242,225,202, 0.35)}
+html[data-theme="terre"] .ch-etape.faite{color:rgb(42, 28, 4)}
+html[data-theme="terre"] .ch-etape.courante{border-color:rgb(255, 255, 255);color:rgb(112,52,32);box-shadow:rgba(235,216,194, 0.6) 0px 0px 0px 0px}
+html[data-theme="terre"] .ch-bulle{background:rgb(128,59,36)}
+html[data-theme="terre"] .balayable[data-etiquette]:not([data-etiquette=""])::after{background:rgba(112,52,32, 0.85)}
+html[data-theme="terre"] .vf-carte{background:linear-gradient(165deg, rgba(200, 90, 130, 0.22), rgba(118,54,33, 0.94));box-shadow:rgba(0, 0, 0, 0.25) 0px 14px 30px}
+html[data-theme="terre"] .ft-niv{color:rgb(37, 26, 5)}
+html[data-theme="terre"] .ft-barre{background:rgba(255, 255, 255, 0.1)}
+html[data-theme="terre"] .gain-vol{text-shadow:rgba(0, 0, 0, 0.5) 0px 2px 10px}
+html[data-theme="terre"] .combo{color:rgb(37, 26, 5)}
+html[data-theme="terre"] .combo.c4,html[data-theme="terre"] .combo.c5{background:linear-gradient(rgb(242,225,202), rgb(242, 160, 102))}
+html[data-theme="terre"] .combo.c6{background:linear-gradient(rgb(255, 176, 160), rgb(236, 125, 125));color:rgb(255, 255, 255)}
+html[data-theme="terre"] .niveau-up{background:rgba(112,52,32, 0.72)}
+html[data-theme="terre"] .niveau-up > div{background:radial-gradient(120% 90% at 50% 0%, rgba(242,225,202, 0.45), rgb(125,58,35) 70%)}
+html[data-theme="terre"] .k-perle .fc-in{background:radial-gradient(130% 90% at 50% 0%, rgba(242,225,202, 0.5), rgba(214,186,154, 0.25) 40%, rgba(118,54,33, 0.96) 75%);box-shadow:rgba(242,225,202, 0.25) 0px 0px 40px, rgba(0, 0, 0, 0.3) 0px 18px 40px}
+html[data-theme="terre"] .k-perle .fc-tag{color:rgb(37, 26, 5)}
+html[data-theme="terre"] .nv-rond{background:linear-gradient(160deg, rgba(242,225,202, 0.2), rgba(214,186,154, 0.08))}
+html[data-theme="terre"] dialog.sig{background:rgb(116,54,33)}
+html[data-theme="terre"] dialog.sig::backdrop{background:rgba(0, 0, 0, 0.65)}
+html[data-theme="terre"] .sig select,html[data-theme="terre"] .sig textarea{background:rgb(112,52,32)}
+html[data-theme="terre"] dialog.pf{background:rgb(116,54,33)}
+html[data-theme="terre"] dialog.pf::backdrop{background:rgba(0, 0, 0, 0.75)}
+html[data-theme="terre"] .pf canvas{box-shadow:rgba(0, 0, 0, 0.5) 0px 10px 30px}
+html[data-theme="terre"] .pf-formats .on{color:rgb(37, 26, 5)}
+html[data-theme="terre"] .pf-fonds button{background:linear-gradient(160deg, rgb(142,66,40), rgb(112,52,32))}
+html[data-theme="terre"] .pf-parts .on{background:rgba(242,225,202, 0.12)}
+html[data-theme="terre"] .pf-teintes button{border:2px solid rgba(255, 255, 255, 0.25)}
+html[data-theme="terre"] .pf-teintes .on{box-shadow:rgba(242,225,202, 0.35) 0px 0px 0px 2px}
+html[data-theme="terre"] .fc-tete .fc-partage{background:rgba(112,52,32, 0.75)}
+html[data-theme="terre"] #tirer.pret .tr-etoile{filter:drop-shadow(rgba(242,225,202, 0.75) 0px 0px 5px)}
+html[data-theme="terre"] .pod-haut .avatar.grand{box-shadow:0 0 0 3px var(--or),0 0 26px rgba(242,225,202,.45)}
+html[data-theme="terre"] .pod1 .pod-marche{background:linear-gradient(rgb(242,225,202), rgb(141, 106, 44));color:rgb(43, 29, 5)}
+html[data-theme="terre"] .pod2 .pod-marche{background:linear-gradient(rgb(235,216,194), rgb(176,81,50));color:rgb(118,55,33)}
+html[data-theme="terre"] .pod3 .pod-marche{background:linear-gradient(rgb(242,225,202), rgb(110, 69, 38));color:rgb(37, 20, 10)}
+html[data-theme="terre"] #tuto{background:rgba(109,50,31, 0.97)}
+
+html[data-theme="terre"]{color-scheme:dark;--j0:#f2e1ca;--j1:#f2e1ca;--j2:#f2e1ca;--j3:#d6ba9a;--j4:#743621;--j5:#703420;--q-or:#f3dfc2;--q-em:#4cc7a0;--q-ar:#dfe6ea;--q-ro:#eaa3b8;--q-az:#8fb8ff;--nuit:#7c3219;--nuit-haut:#6a2913;--or:#f3dfc2;--or2:#fbeedd;--or-fonce:#b98d3e;--texte:#f6efe2;--doux:#f0d6be;--vert:#7fe0ad;--rouge:#ff9c96;--ivoire:#6b2a14;--bord:rgba(232,200,140,.2);--verre:rgba(255,236,200,.055)}
+html[data-theme="terre"] .motif{opacity:.1}html[data-theme="terre"] #haut{display:none!important}html[data-theme="terre"] .ciel circle,html[data-theme="terre"] .scintille{opacity:.4!important}
+html[data-theme="terre"] .marque .lunette svg,html[data-theme="terre"] #e-bienvenue .illu svg,html[data-theme="terre"] #e-bienvenue .heros svg{filter:none;opacity:1}
+html[data-theme="terre"] .btn:not(.sec):not(.danger):not(.secondaire),html[data-theme="terre"] .filtre.actif,html[data-theme="terre"] .jouer,html[data-theme="terre"] .jour-court .jouer{background:linear-gradient(180deg,#fbeedd,#ecd7b8)!important;color:#6b2a14!important}
+html[data-theme="terre"] .btn:not(.sec):not(.danger):not(.secondaire) .ic,html[data-theme="terre"] .filtre.actif *,html[data-theme="terre"] .jouer .ic{color:#6b2a14!important}
+html[data-theme="terre"] .btn.sec,html[data-theme="terre"] .btn.secondaire{color:var(--texte);background:rgba(255,236,200,.06);border-color:rgba(232,200,140,.3);box-shadow:none}html[data-theme="terre"] .btn.danger{color:var(--rouge);background:transparent;box-shadow:none}
+html[data-theme="terre"] .cor-choix.bon{background:rgba(111,215,159,.15)!important;border-color:#7fe0ad!important;color:#d3f7e3!important}html[data-theme="terre"] .cor-choix.bon .ic{color:#7fe0ad!important}
+html[data-theme="terre"] .cor-choix.faux{background:rgba(255,138,138,.13)!important;border-color:#ff9c96!important;color:#ffd9d6!important}
+html[data-theme="terre"] .t-or,html[data-theme="terre"] .t-orange{--c:#f3dfc2}html[data-theme="terre"] .t-vert{--c:#7fe0ad}html[data-theme="terre"] .t-azur{--c:#a5c4ff}html[data-theme="terre"] .t-rose{--c:#f2b3c5}html[data-theme="terre"] .t-violet{--c:#cbb9ff}
+html[data-theme="terre"] .pod1 .pod-marche{background:linear-gradient(180deg,#ecc878,#b98d3e)}html[data-theme="terre"] .pod2 .pod-marche{background:linear-gradient(180deg,#e3e3e1,#8d8d8a)}html[data-theme="terre"] .pod3 .pod-marche{background:linear-gradient(180deg,#d49a6a,#8f5a33)}
+html[data-theme="terre"] .choix.sel .lettre{color:#6b2a14!important}html[data-theme="terre"] .pastille-num{color:#1b1405}html[data-theme="terre"] #tuto{background:#7c3219fa}html[data-theme="terre"] .fam-ronds .avatar{border-color:#7c3219}html[data-theme="terre"] .tr-rond::before{opacity:0}
+html[data-theme="terre"] .fam-jour{background:linear-gradient(160deg,#5a2210,#742d16);border:1px solid rgba(232,200,140,.3);color:#f6efe2;box-shadow:none}html[data-theme="terre"] .fam-jour #gl-jouer{background:linear-gradient(180deg,#fbeedd,#ecd7b8)!important;color:#6b2a14!important}html[data-theme="terre"] .fam-jour #gl-jouer .ic{color:#6b2a14!important}html[data-theme="terre"] .fam-jour .surtitre{color:#f3dfc2}html[data-theme="terre"] .fam-jour.fait .pastille{color:#f3dfc2}
+html[data-theme="terre"] .q-wudu,html[data-theme="terre"] .fam-inv{background:rgba(232,200,140,.1)}html[data-theme="terre"] .onglets{background:#6a2913f2}

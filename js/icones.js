@@ -86,15 +86,15 @@ function illuLune(taille=180){
   const u=++_uid;
   return `<svg viewBox="0 0 200 200" width="${taille}" height="${taille}" aria-hidden="true" style="position:relative">
    <defs>
-    <radialGradient id="halo${u}" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#f7dca0" stop-opacity=".35"/><stop offset="1" stop-color="#f7dca0" stop-opacity="0"/></radialGradient>
-    <linearGradient id="or${u}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbe7b8"/><stop offset=".55" stop-color="#e8be6e"/><stop offset="1" stop-color="#a87a2e"/></linearGradient>
+    <radialGradient id="halo${u}" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="var(--j0)" stop-opacity=".35"/><stop offset="1" stop-color="var(--j0)" stop-opacity="0"/></radialGradient>
+    <linearGradient id="or${u}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--j1)"/><stop offset=".55" stop-color="var(--j2)"/><stop offset="1" stop-color="var(--j3)"/></linearGradient>
     <mask id="cr${u}"><rect width="200" height="200" fill="#fff"/><circle cx="122" cy="82" r="56" fill="#000"/></mask>
    </defs>
    <circle cx="100" cy="100" r="96" fill="url(#halo${u})"/>
    <circle cx="96" cy="104" r="62" fill="url(#or${u})" mask="url(#cr${u})"/>
-   <path d="M150 52l3.2 7.8 7.8 3.2-7.8 3.2-3.2 7.8-3.2-7.8-7.8-3.2 7.8-3.2z" fill="#fbe7b8" class="scintille"/>
-   <circle cx="168" cy="96" r="2.2" fill="#fbe7b8" class="scintille" style="animation-delay:1.2s"/>
-   <circle cx="138" cy="150" r="1.6" fill="#fbe7b8" class="scintille" style="animation-delay:.6s"/>
+   <path d="M150 52l3.2 7.8 7.8 3.2-7.8 3.2-3.2 7.8-3.2-7.8-7.8-3.2 7.8-3.2z" fill="var(--j1)" class="scintille"/>
+   <circle cx="168" cy="96" r="2.2" fill="var(--j1)" class="scintille" style="animation-delay:1.2s"/>
+   <circle cx="138" cy="150" r="1.6" fill="var(--j1)" class="scintille" style="animation-delay:.6s"/>
   </svg>`;
 }
 
@@ -105,9 +105,9 @@ function moucharabieh(largeur=220){
   return `<svg class="moucharabieh" viewBox="0 0 200 262" width="${largeur}" height="${h}" aria-hidden="true">
    <defs>
     <pattern id="tr${u}" width="22" height="22" patternUnits="userSpaceOnUse">
-      <path d="M11 1.5l2.6 6.9 6.9 2.6-6.9 2.6L11 20.5l-2.6-6.9L1.5 11l6.9-2.6z" fill="none" stroke="#e8be6e" stroke-width=".9"/>
-      <path d="M0 0l5 5M22 0l-5 5M0 22l5-5M22 22l-5-5" stroke="#e8be6e" stroke-width=".9"/>
-      <circle cx="11" cy="11" r="1.6" fill="#e8be6e"/>
+      <path d="M11 1.5l2.6 6.9 6.9 2.6-6.9 2.6L11 20.5l-2.6-6.9L1.5 11l6.9-2.6z" fill="none" stroke="var(--j2)" stroke-width=".9"/>
+      <path d="M0 0l5 5M22 0l-5 5M0 22l5-5M22 22l-5-5" stroke="var(--j2)" stroke-width=".9"/>
+      <circle cx="11" cy="11" r="1.6" fill="var(--j2)"/>
     </pattern>
     <clipPath id="cl${u}"><path d="${arc}Z"/></clipPath>
     <linearGradient id="fd${u}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
@@ -115,8 +115,8 @@ function moucharabieh(largeur=220){
    </defs>
    <g mask="url(#mk${u})">
     <g clip-path="url(#cl${u})"><rect width="200" height="262" fill="url(#tr${u})" opacity=".42"/></g>
-    <path d="${arc}" fill="none" stroke="#e8be6e" stroke-opacity=".7" stroke-width="2"/>
-    <path d="M22 260V124c0-42 40-74 78-100 38 26 78 58 78 100v136" fill="none" stroke="#e8be6e" stroke-opacity=".35" stroke-width="1"/>
+    <path d="${arc}" fill="none" stroke="var(--j2)" stroke-opacity=".7" stroke-width="2"/>
+    <path d="M22 260V124c0-42 40-74 78-100 38 26 78 58 78 100v136" fill="none" stroke="var(--j2)" stroke-opacity=".35" stroke-width="1"/>
    </g>
   </svg>`;
 }
@@ -136,7 +136,7 @@ function dessinerCiel(){
     etoiles+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r}" fill="#fff"${i%5===0?` class="scintille" style="animation-delay:${(i%7)*.5}s"`:''} opacity=".5"/>`;
   }
   document.getElementById('ciel').innerHTML=`<svg viewBox="0 0 400 860" preserveAspectRatio="xMidYMin slice">
-   <defs><linearGradient id="silh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#042b21"/><stop offset="1" stop-color="#03211a"/></linearGradient></defs>
+   <defs><linearGradient id="silh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--j4)"/><stop offset="1" stop-color="var(--j5)"/></linearGradient></defs>
    ${etoiles}
    <g opacity=".95" fill="url(#silh)" transform="translate(0,700)">
      <rect x="30" y="20" width="12" height="140"/><path d="M28 22l8-22 8 22z"/><rect x="27" y="55" width="18" height="5"/>

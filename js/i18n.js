@@ -10,7 +10,7 @@ fr:{
  expert:"Expert",consigneMulti:"Plusieurs réponses possibles : coche toutes les bonnes, et seulement elles.",valider:"Valider",lesBonnes:"Les bonnes réponses :",groupePlein:"Un groupe peut compter {n} membres au maximum.",
  sousTitre:"Apprendre sa religion, un peu chaque jour.<br>Une leçon, un quiz, des sources vérifiables.",
  e1t:"Une leçon par jour",e1s:"Courte, avec versets et hadiths en source",e2t:"Un quiz de 10 questions",e2s:"Chaque réponse est expliquée",
- e3t:"En famille",e3s:"Défis, questions entre vous et bilans",e4t:"Le défi du Ramadan",e4s:"30 jours et un Grand Quiz, chaque année",
+ e3t:"En famille",e3s:"Le même quiz pour tous, chacun sur son téléphone",e4t:"Le défi du Ramadan",e4s:"30 jours et un Grand Quiz, chaque année",
  prenom:"Ton prénom",commencer:"Commencer",salam:"As-salâmu ʿalaykum, {n}",langue:"Langue",
  points:"points",serie:["jour de suite","jours de suite"],lecons:"leçons",jours:["{n} jour","{n} jours"],
  ramDans:"Ramadan {an} dans {j}",ramDefiDu:"Défi de 30 jours à partir du {d}",ramJourDu:"Jour {n} du défi",ramTermine:"Défi terminé",
@@ -710,3 +710,11 @@ for(const l in I18N_QIBLA2)Object.assign(I18N[l],I18N_QIBLA2[l]);
 const I18N_INTRO={fr:{touchePasser:"Touche pour passer"},en:{touchePasser:"Tap to skip"},ar:{touchePasser:"المس للتخطي"},de:{touchePasser:"Tippen zum Überspringen"},
  nl:{touchePasser:"Tik om over te slaan"},es:{touchePasser:"Toca para saltar"},it:{touchePasser:"Tocca per saltare"},tr:{touchePasser:"Geçmek için dokun"},id:{touchePasser:"Ketuk untuk melewati"}};
 for(const l in I18N_INTRO)Object.assign(I18N[l],I18N_INTRO[l]);
+
+/* Qibla : rappel de l'invocation après les ablutions (2026-11-25) */
+const I18N_WUDU={"fr": "Ablutions faites ? Pense à cette invocation.", "en": "Made your ablutions? Remember this supplication.", "ar": "هل توضأت؟ تذكّر هذا الدعاء.", "de": "Schon gewaschen? Denk an dieses Bittgebet.", "nl": "Wassing gedaan? Denk aan deze smeekbede.", "es": "¿Ablución hecha? Recuerda esta súplica.", "it": "Abluzioni fatte? Ricorda questa invocazione.", "tr": "Abdest aldın mı? Bu duayı hatırla.", "id": "Sudah berwudu? Ingat doa ini."};
+for(const l in I18N_WUDU)I18N[l].q_wudu=I18N_WUDU[l];
+
+/* Thèmes (2026-11-25) */
+const I18N_TH={"fr": ["Thème", "Automatique", "Sable", "Figue", "Émeraude", "Terracotta", "Café", "Grenade", "Terre cuite", "Terre et sable", "Automatique : Sable, puis Figue quand ton téléphone passe en mode sombre."], "en": ["Theme", "Automatic", "Sand", "Fig", "Emerald", "Terracotta", "Coffee", "Pomegranate", "Clay", "Clay and sand", "Automatic: Sand, then Fig when your phone switches to dark mode."], "ar": ["السمة", "تلقائي", "رملي", "تيني", "زمردي", "تيراكوتا", "قهوة", "رمّان", "طين", "طين ورمل", "تلقائي: رملي، ثم تيني عند تفعيل الوضع الداكن في هاتفك."], "de": ["Design", "Automatisch", "Sand", "Feige", "Smaragd", "Terrakotta", "Kaffee", "Granatapfel", "Ton", "Ton und Sand", "Automatisch: Sand, dann Feige, wenn dein Telefon in den Dunkelmodus wechselt."], "nl": ["Thema", "Automatisch", "Zand", "Vijg", "Smaragd", "Terracotta", "Koffie", "Granaatappel", "Klei", "Klei en zand", "Automatisch: Zand, daarna Vijg als je telefoon naar de donkere modus gaat."], "es": ["Tema", "Automático", "Arena", "Higo", "Esmeralda", "Terracota", "Café", "Granada", "Arcilla", "Arcilla y arena", "Automático: Arena y luego Higo cuando tu teléfono pasa al modo oscuro."], "it": ["Tema", "Automatico", "Sabbia", "Fico", "Smeraldo", "Terracotta", "Caffè", "Melagrana", "Argilla", "Argilla e sabbia", "Automatico: Sabbia, poi Fico quando il telefono passa alla modalità scura."], "tr": ["Tema", "Otomatik", "Kum", "İncir", "Zümrüt", "Terakota", "Kahve", "Nar", "Kil", "Kil ve kum", "Otomatik: Kum, telefonun koyu moda geçince İncir."], "id": ["Tema", "Otomatis", "Pasir", "Ara", "Zamrud", "Terakota", "Kopi", "Delima", "Tanah liat", "Tanah liat dan pasir", "Otomatis: Pasir, lalu Ara saat ponselmu beralih ke mode gelap."]};
+for(const l in I18N_TH)["titre", "auto", "sable", "figue", "vert", "terracotta", "cafe", "grenade", "terre", "terre2", "info"].forEach((k,i)=>{I18N[l]['th_'+k]=I18N_TH[l][i]});

@@ -1,0 +1,193 @@
+/* Darsi : thème vert. Fichier fabriqué par outils/themes.mjs */
+html[data-theme="vert"]{--nuit:#03211a;--nuit2:#062e24;--nuit3:#0b3d30;--verre:rgba(255,255,255,.045);--bord:rgba(232,190,110,.16);--or:#e8be6e;--or2:#f7dca0;--or-fonce:#b98d3e;--texte:#f3eee2;--doux:#a3c4b6;--vert:#6fe0b0;--rouge:#ec7d7d}
+html[data-theme="vert"] .ciel{background:radial-gradient(90% 55% at 70% 0%,#0f6b4f 0%,rgba(15,107,79,0) 70%),
+             radial-gradient(70% 40% at 10% 10%,#0a5640 0%,rgba(10,86,64,0) 70%),
+             linear-gradient(180deg,#073a2d 0%,var(--nuit) 70%)}
+html[data-theme="vert"] .motif{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23e8be6e' stroke-width='1'%3E%3Cpath d='M32 10l6.4 15.6L54 32l-15.6 6.4L32 54l-6.4-15.6L10 32l15.6-6.4z'/%3E%3Crect x='19' y='19' width='26' height='26' transform='rotate(45 32 32)'/%3E%3Crect x='19' y='19' width='26' height='26'/%3E%3C/g%3E%3C/svg%3E");mask-image:linear-gradient(rgb(0, 0, 0) 0%, transparent 55%)}
+html[data-theme="vert"] .pastille{background:linear-gradient(160deg, rgba(232, 190, 110, 0.22), rgba(232, 190, 110, 0.06))}
+html[data-theme="vert"] .btn{color:rgb(37, 26, 5);box-shadow:rgba(232, 190, 110, 0.55) 0px 10px 30px -10px, rgba(255, 255, 255, 0.5) 0px 1px 0px inset}
+html[data-theme="vert"] input,html[data-theme="vert"] select,html[data-theme="vert"] textarea{background:rgba(3, 33, 26, 0.6)}
+html[data-theme="vert"] .jour-du{background:linear-gradient(150deg, rgba(232, 190, 110, 0.16), rgba(255, 255, 255, 0.03) 60%)}
+html[data-theme="vert"] .case{background:rgba(255, 255, 255, 0.04);border:1px solid rgba(255, 255, 255, 0.06)}
+html[data-theme="vert"] .case.ok{color:rgb(37, 26, 5)}
+html[data-theme="vert"] .case.final{background:radial-gradient(circle at 30% 30%, rgb(19, 121, 90), rgb(6, 57, 44))}
+html[data-theme="vert"] .badge .medaillon{background:radial-gradient(circle at 35% 30%, rgba(247, 220, 160, 0.35), rgba(232, 190, 110, 0.08))}
+html[data-theme="vert"] .badge.non .medaillon{background:rgba(255, 255, 255, 0.03);border:1.5px dashed rgba(255, 255, 255, 0.15);color:rgba(255, 255, 255, 0.25)}
+html[data-theme="vert"] .lecon p.txt{color:rgb(230, 225, 212)}
+html[data-theme="vert"] .retenir{background:rgba(232, 190, 110, 0.1)}
+html[data-theme="vert"] .source{background:rgba(3, 33, 26, 0.55);border-top:1px solid rgba(255, 255, 255, 0.07);border-right:1px solid rgba(255, 255, 255, 0.07);border-bottom:1px solid rgba(255, 255, 255, 0.07)}
+html[data-theme="vert"] .ar{color:rgb(251, 243, 221)}
+html[data-theme="vert"] .tr{color:rgb(217, 212, 199)}
+html[data-theme="vert"] .barre{background:rgba(255, 255, 255, 0.07)}
+html[data-theme="vert"] .choix{border:1px solid rgba(255, 255, 255, 0.08)}
+html[data-theme="vert"] .choix.bon{background:rgba(76, 199, 160, 0.14)}
+html[data-theme="vert"] .choix.bon .lettre{color:rgb(3, 33, 26)}
+html[data-theme="vert"] .choix.faux{background:rgba(236, 125, 125, 0.12)}
+html[data-theme="vert"] .choix.faux .lettre{color:rgb(43, 11, 11)}
+html[data-theme="vert"] .explic{color:rgb(225, 220, 207)}
+html[data-theme="vert"] .bas{background:linear-gradient(180deg,rgba(3,33,26,0),var(--nuit) 35%)}
+html[data-theme="vert"] .membre{border-bottom:1px solid rgba(255, 255, 255, 0.06)}
+html[data-theme="vert"] .avatar{color:rgb(27, 20, 5);box-shadow:rgba(0, 0, 0, 0.15) 0px -3px 0px inset}
+html[data-theme="vert"] .puce{background:rgba(255, 255, 255, 0.05)}
+html[data-theme="vert"] .ligne-theme{border-bottom:1px solid rgba(255, 255, 255, 0.06)}
+html[data-theme="vert"] .ligne-lecon{border:1px solid rgba(255, 255, 255, 0.08)}
+html[data-theme="vert"] .ligne-lecon.fait .num{color:rgb(37, 26, 5)}
+html[data-theme="vert"] .ligne-lecon.verrou .num{border-color:rgba(255, 255, 255, 0.2)}
+html[data-theme="vert"] .ramadan-grand{background:linear-gradient(150deg, rgba(232, 190, 110, 0.22), rgba(11, 92, 68, 0.5) 70%);border-color:rgba(232, 190, 110, 0.4)}
+html[data-theme="vert"][dir="rtl"] .source{border-left:1px solid rgba(255, 255, 255, 0.07)}
+html[data-theme="vert"] .frise{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='12' viewBox='0 0 24 12'%3E%3Cg fill='none' stroke='%23e8be6e' stroke-width='1'%3E%3Cpath d='M12 1.5l1.5 3 3 1.5-3 1.5-1.5 3-1.5-3-3-1.5 3-1.5z'/%3E%3Cpath d='M0 6h7.5M16.5 6H24'/%3E%3C/g%3E%3C/svg%3E") center center / 24px 12px repeat-x}
+html[data-theme="vert"] .pliable::after{background:linear-gradient(rgba(5, 39, 31, 0), rgb(5, 39, 31))}
+html[data-theme="vert"] .avis{background:rgba(232, 190, 110, 0.1);border:1px solid rgba(232, 190, 110, 0.3)}
+html[data-theme="vert"] .tag-expert{color:rgb(37, 26, 5)}
+html[data-theme="vert"] .choix.sel{background:rgba(232, 190, 110, 0.12)}
+html[data-theme="vert"] .choix.sel .lettre{color:rgb(37, 26, 5)}
+html[data-theme="vert"] .btn.danger{border:1px solid rgba(236, 125, 125, 0.5)}
+html[data-theme="vert"] .doc p{color:rgb(225, 220, 207)}
+html[data-theme="vert"] .decompte{background:linear-gradient(150deg, rgba(232, 190, 110, 0.24), rgba(11, 92, 68, 0.55) 70%);border-color:rgba(232, 190, 110, 0.45)}
+html[data-theme="vert"] .compteur-ram b{text-shadow:rgba(247, 220, 160, 0.35) 0px 0px 26px}
+html[data-theme="vert"] .filtre.actif{color:rgb(37, 26, 5)}
+html[data-theme="vert"] .cor-choix.bon{background:rgba(111, 224, 176, 0.12);border-color:rgba(111, 224, 176, 0.45)}
+html[data-theme="vert"] .cor-choix.faux{background:rgba(236, 125, 125, 0.1);border-color:rgba(236, 125, 125, 0.45)}
+html[data-theme="vert"] .prochain{background:linear-gradient(150deg, rgba(232, 190, 110, 0.22), rgba(11, 92, 68, 0.55) 70%);border-color:rgba(232, 190, 110, 0.45)}
+html[data-theme="vert"] .evt{border-bottom:1px solid rgba(255, 255, 255, 0.06)}
+html[data-theme="vert"] .evt-date{background:linear-gradient(160deg, rgba(232, 190, 110, 0.22), rgba(232, 190, 110, 0.06))}
+html[data-theme="vert"] .t-jeune{border-color:rgba(111, 224, 176, 0.5)}
+html[data-theme="vert"] .t-fete{color:rgb(37, 26, 5)}
+html[data-theme="vert"] .t-interdit{border-color:rgba(236, 125, 125, 0.5)}
+html[data-theme="vert"] .t-repere{border-color:rgba(255, 255, 255, 0.15)}
+html[data-theme="vert"] .onglets{background:rgba(3, 33, 26, 0.86)}
+html[data-theme="vert"] .onglet.actif .ic{filter:drop-shadow(rgba(247, 220, 160, 0.45) 0px 0px 8px)}
+html[data-theme="vert"] .bandeau{border:1px solid rgba(232, 190, 110, 0.4);background:linear-gradient(120deg, rgba(232, 190, 110, 0.2), rgba(11, 92, 68, 0.45) 70%)}
+html[data-theme="vert"] .bd-pilule{background:rgba(3, 33, 26, 0.5)}
+html[data-theme="vert"] .cadran-svg .anneau{fill:rgba(3, 33, 26, 0.55)}
+html[data-theme="vert"] .boussole-carte.aligne{box-shadow:rgba(111, 224, 176, 0.6) 0px 0px 30px -8px}
+html[data-theme="vert"] .decompte2{background:linear-gradient(150deg, rgba(232, 190, 110, 0.24), rgba(11, 92, 68, 0.55) 70%);border-color:rgba(232, 190, 110, 0.45)}
+html[data-theme="vert"] .carre{background:linear-gradient(160deg, rgba(247, 220, 160, 0.22), rgba(3, 33, 26, 0.6));box-shadow:rgba(232, 190, 110, 0.5) 0px 12px 30px -12px}
+html[data-theme="vert"] .carre b{text-shadow:rgba(247, 220, 160, 0.35) 0px 0px 24px}
+html[data-theme="vert"] .mini-carre.m-jeune{border-color:rgba(111, 224, 176, 0.45)}
+html[data-theme="vert"] .mini-carre.m-interdit{border-color:rgba(236, 125, 125, 0.45)}
+html[data-theme="vert"] .cadran-svg .anneau{fill:rgba(3, 33, 26, 0.55)}
+html[data-theme="vert"] .cadran-svg .anneau-fin{fill:rgba(3, 33, 26, 0.35)}
+html[data-theme="vert"] .cadran-svg .etoile-g{fill:rgba(255, 255, 255, 0.03)}
+html[data-theme="vert"] .liste-langues{background:rgba(4, 40, 31, 0.97);box-shadow:rgba(0, 0, 0, 0.6) 0px 20px 50px -10px}
+html[data-theme="vert"] .liste-langues button.sel{background:rgba(232, 190, 110, 0.12)}
+html[data-theme="vert"] .bd-priere{background:rgba(3, 33, 26, 0.55);border:1px solid rgba(232, 190, 110, 0.2)}
+html[data-theme="vert"] .bd-grille .proch span,html[data-theme="vert"] .bd-grille .proch b{color:rgb(37, 26, 5)}
+html[data-theme="vert"] .bd-sans-lieu{background:rgba(3, 33, 26, 0.5)}
+html[data-theme="vert"] .recherche{background:rgba(3, 33, 26, 0.6)}
+html[data-theme="vert"] .inv-grille .tuile{border:1px solid rgba(255, 255, 255, 0.07)}
+html[data-theme="vert"] .inv-grille .tuile-ic{background:linear-gradient(160deg, rgba(232, 190, 110, 0.2), rgba(232, 190, 110, 0.05))}
+html[data-theme="vert"] .inv-liste .tuile{border-bottom:1px solid rgba(255, 255, 255, 0.06)}
+html[data-theme="vert"] .inv-liste .tuile-ic{background:rgba(232, 190, 110, 0.1)}
+html[data-theme="vert"] .fav{color:rgba(255, 255, 255, 0.35)}
+html[data-theme="vert"] .rosace polygon{fill:rgba(232, 190, 110, 0.08)}
+html[data-theme="vert"] .jour-court{background:linear-gradient(150deg, rgba(232, 190, 110, 0.18), rgba(255, 255, 255, 0.03) 60%)}
+html[data-theme="vert"] .jouer{color:rgb(37, 26, 5);box-shadow:rgba(232, 190, 110, 0.7) 0px 8px 22px -8px}
+html[data-theme="vert"] .tuile-ic{border:1px solid rgba(255, 255, 255, 0.08)}
+html[data-theme="vert"] .t-or{--c:#e8be6e}
+html[data-theme="vert"] .t-vert{--c:#6fe0b0}
+html[data-theme="vert"] .t-azur{--c:#8fb8ff}
+html[data-theme="vert"] .t-rose{--c:#eaa3b8}
+html[data-theme="vert"] .t-violet{--c:#b9a2ff}
+html[data-theme="vert"] .t-orange{--c:#f3a96b}
+html[data-theme="vert"] .pastille-num{color:rgb(27, 20, 5)}
+html[data-theme="vert"] .jour{background:rgba(255, 255, 255, 0.035)}
+html[data-theme="vert"] .jour.c-blanc{background:rgb(251, 248, 240);color:rgb(27, 42, 34);box-shadow:rgba(255, 255, 255, 0.55) 0px 0px 14px -4px}
+html[data-theme="vert"] .jour.c-blanc span{color:rgb(91, 107, 98)}
+html[data-theme="vert"] .jour.c-fete{color:rgb(37, 26, 5)}
+html[data-theme="vert"] .jour.c-fete span{color:rgb(91, 69, 21)}
+html[data-theme="vert"] .jour.c-jeune{background:rgba(111, 224, 176, 0.1)}
+html[data-theme="vert"] .jour.c-interdit{background:rgba(236, 125, 125, 0.1)}
+html[data-theme="vert"] .jour.c-periode{background:rgba(232, 190, 110, 0.14)}
+html[data-theme="vert"] .jour.c-repere{border-color:rgba(255, 255, 255, 0.25)}
+html[data-theme="vert"] .legende-cal i{background:rgba(255, 255, 255, 0.05)}
+html[data-theme="vert"] .legende-cal i.c-blanc{background:rgb(251, 248, 240)}
+html[data-theme="vert"] .legende-cal i.c-periode{background:rgba(232, 190, 110, 0.3)}
+html[data-theme="vert"] .evt-jour{border-top:1px solid rgba(255, 255, 255, 0.06)}
+html[data-theme="vert"] .bd-grille div{background:rgba(255, 255, 255, 0.04)}
+html[data-theme="vert"] .bd-grille span{color:rgb(207, 224, 216)}
+html[data-theme="vert"] .rep-boite{border-top:1px solid rgba(255, 255, 255, 0.06)}
+html[data-theme="vert"] .reponse-imam{background:rgba(232, 190, 110, 0.07)}
+html[data-theme="vert"] .etat-attente{border-color:rgba(163, 196, 182, 0.4)}
+html[data-theme="vert"] .etat-repondue{border-color:rgba(111, 224, 176, 0.45)}
+html[data-theme="vert"] .etat-refusee{border-color:rgba(236, 125, 125, 0.45)}
+html[data-theme="vert"] .notif{box-shadow:rgba(0, 0, 0, 0.4) 0px 12px 30px}
+html[data-theme="vert"] #intro{background:rgb(0, 0, 0)}
+html[data-theme="vert"] #intro video{background:rgb(0, 0, 0)}
+html[data-theme="vert"] #intro .op-skip{color:rgba(255, 255, 255, 0.45)}
+html[data-theme="vert"] .boussole-zone.aligne{box-shadow:rgba(111, 224, 176, 0.55) 0px 0px 44px -6px}
+html[data-theme="vert"] .q-styles .vignette{border:2px solid rgba(255, 255, 255, 0.12)}
+html[data-theme="vert"] .cadran-svg .mihrab{fill:rgba(3, 33, 26, 0.75)}
+html[data-theme="vert"] .cadran-svg .ciel-nuit{fill:rgb(6, 20, 46)}
+html[data-theme="vert"] .cadran-svg .etoile-ciel{fill:rgb(255, 255, 255)}
+html[data-theme="vert"] .cadran-svg .zel{stroke:rgba(0, 0, 0, 0.25)}
+html[data-theme="vert"] .cadran-svg .zel.z1{fill:rgb(31, 122, 92)}
+html[data-theme="vert"] .cadran-svg .zel.z2{fill:rgb(233, 226, 207)}
+html[data-theme="vert"].leger .carte{background:rgba(10, 52, 41, 0.94)}
+html[data-theme="vert"].leger .onglets{background:rgba(3, 30, 24, 0.98)}
+html[data-theme="vert"] #e-qibla .boussole-zone.aligne .cadran{box-shadow:rgba(111, 224, 176, 0.55) 0px 0px 44px -6px}
+html[data-theme="vert"] .q-diag{background:rgba(0, 0, 0, 0.45);color:rgb(153, 255, 238)}
+html[data-theme="vert"] .pwa-banniere{box-shadow:rgba(0, 0, 0, 0.45) 0px 14px 34px}
+html[data-theme="vert"] .logo-darsi{filter:drop-shadow(rgba(0, 0, 0, 0.35) 0px 6px 18px)}
+html[data-theme="vert"] #toast{background:rgb(13, 69, 53)}
+html[data-theme="vert"] .fil-obj{background:rgba(255, 255, 255, 0.1)}
+html[data-theme="vert"] .fc-in{background:linear-gradient(165deg, rgba(15, 107, 79, 0.5), rgba(6, 46, 36, 0.92));box-shadow:rgba(0, 0, 0, 0.3) 0px 18px 40px}
+html[data-theme="vert"] .k-retenir .fc-in{background:linear-gradient(165deg, rgba(185, 141, 62, 0.38), rgba(6, 46, 36, 0.94))}
+html[data-theme="vert"] .k-eclair .fc-in,html[data-theme="vert"] .k-revoir .fc-in{background:linear-gradient(165deg, rgba(80, 110, 200, 0.32), rgba(6, 46, 36, 0.94))}
+html[data-theme="vert"] .k-vf .fc-in{background:linear-gradient(165deg, rgba(200, 90, 130, 0.28), rgba(6, 46, 36, 0.94))}
+html[data-theme="vert"] .k-verset .fc-in,html[data-theme="vert"] .k-inv .fc-in{background:linear-gradient(rgba(3, 33, 26, 0.96), rgba(11, 61, 48, 0.96));border-color:rgba(232, 190, 110, 0.4)}
+html[data-theme="vert"] .k-rappel .fc-in{background:radial-gradient(120% 80% at 50% 0%, rgba(232, 190, 110, 0.32), rgba(6, 46, 36, 0.96) 70%)}
+html[data-theme="vert"] .fc-tag{background:rgba(232, 190, 110, 0.14)}
+html[data-theme="vert"] .fc-partage{background:rgba(255, 255, 255, 0.06)}
+html[data-theme="vert"] .vf-prop{background:rgba(232, 190, 110, 0.07)}
+html[data-theme="vert"] .paire-r{background:rgba(232, 190, 110, 0.1)}
+html[data-theme="vert"] .ch-tout{stroke:rgba(232, 190, 110, 0.22)}
+html[data-theme="vert"] .ch-etape{border:2px solid rgba(232, 190, 110, 0.35)}
+html[data-theme="vert"] .ch-etape.faite{color:rgb(42, 28, 4)}
+html[data-theme="vert"] .ch-etape.courante{border-color:rgb(255, 255, 255);color:rgb(3, 33, 26);box-shadow:rgba(111, 224, 176, 0.6) 0px 0px 0px 0px}
+html[data-theme="vert"] .ch-bulle{background:rgb(13, 69, 53)}
+html[data-theme="vert"] .balayable[data-etiquette]:not([data-etiquette=""])::after{background:rgba(3, 33, 26, 0.85)}
+html[data-theme="vert"] .vf-carte{background:linear-gradient(165deg, rgba(200, 90, 130, 0.22), rgba(6, 46, 36, 0.94));box-shadow:rgba(0, 0, 0, 0.25) 0px 14px 30px}
+html[data-theme="vert"] .ft-niv{color:rgb(37, 26, 5)}
+html[data-theme="vert"] .ft-barre{background:rgba(255, 255, 255, 0.1)}
+html[data-theme="vert"] .gain-vol{text-shadow:rgba(0, 0, 0, 0.5) 0px 2px 10px}
+html[data-theme="vert"] .combo{color:rgb(37, 26, 5)}
+html[data-theme="vert"] .combo.c4,html[data-theme="vert"] .combo.c5{background:linear-gradient(rgb(255, 211, 138), rgb(242, 160, 102))}
+html[data-theme="vert"] .combo.c6{background:linear-gradient(rgb(255, 176, 160), rgb(236, 125, 125));color:rgb(255, 255, 255)}
+html[data-theme="vert"] .niveau-up{background:rgba(3, 33, 26, 0.72)}
+html[data-theme="vert"] .niveau-up > div{background:radial-gradient(120% 90% at 50% 0%, rgba(232, 190, 110, 0.45), rgb(11, 61, 48) 70%)}
+html[data-theme="vert"] .k-perle .fc-in{background:radial-gradient(130% 90% at 50% 0%, rgba(247, 220, 160, 0.5), rgba(185, 141, 62, 0.25) 40%, rgba(6, 46, 36, 0.96) 75%);box-shadow:rgba(247, 220, 160, 0.25) 0px 0px 40px, rgba(0, 0, 0, 0.3) 0px 18px 40px}
+html[data-theme="vert"] .k-perle .fc-tag{color:rgb(37, 26, 5)}
+html[data-theme="vert"] .nv-rond{background:linear-gradient(160deg, rgba(247, 220, 160, 0.2), rgba(185, 141, 62, 0.08))}
+html[data-theme="vert"] dialog.sig{background:rgb(6, 41, 31)}
+html[data-theme="vert"] dialog.sig::backdrop{background:rgba(0, 0, 0, 0.65)}
+html[data-theme="vert"] .sig select,html[data-theme="vert"] .sig textarea{background:rgb(3, 33, 26)}
+html[data-theme="vert"] dialog.pf{background:rgb(6, 41, 31)}
+html[data-theme="vert"] dialog.pf::backdrop{background:rgba(0, 0, 0, 0.75)}
+html[data-theme="vert"] .pf canvas{box-shadow:rgba(0, 0, 0, 0.5) 0px 10px 30px}
+html[data-theme="vert"] .pf-formats .on{color:rgb(37, 26, 5)}
+html[data-theme="vert"] .pf-fonds button{background:linear-gradient(160deg, rgb(15, 107, 79), rgb(3, 33, 26))}
+html[data-theme="vert"] .pf-parts .on{background:rgba(232, 190, 110, 0.12)}
+html[data-theme="vert"] .pf-teintes button{border:2px solid rgba(255, 255, 255, 0.25)}
+html[data-theme="vert"] .pf-teintes .on{box-shadow:rgba(247, 220, 160, 0.35) 0px 0px 0px 2px}
+html[data-theme="vert"] .fc-tete .fc-partage{background:rgba(3, 33, 26, 0.75)}
+html[data-theme="vert"] #tirer.pret .tr-etoile{filter:drop-shadow(rgba(232, 190, 110, 0.75) 0px 0px 5px)}
+html[data-theme="vert"] .pod-haut .avatar.grand{box-shadow:0 0 0 3px var(--or),0 0 26px rgba(232,190,110,.45)}
+html[data-theme="vert"] .pod1 .pod-marche{background:linear-gradient(rgb(232, 190, 110), rgb(141, 106, 44));color:rgb(43, 29, 5)}
+html[data-theme="vert"] .pod2 .pod-marche{background:linear-gradient(rgb(201, 211, 208), rgb(95, 122, 114));color:rgb(18, 36, 30)}
+html[data-theme="vert"] .pod3 .pod-marche{background:linear-gradient(rgb(201, 141, 91), rgb(110, 69, 38));color:rgb(37, 20, 10)}
+html[data-theme="vert"] #tuto{background:rgba(2, 24, 18, 0.97)}
+
+html[data-theme="vert"]{color-scheme:dark;--j0:#f7dca0;--j1:#fbe7b8;--j2:#e8be6e;--j3:#a87a2e;--j4:#042b21;--j5:#03211a;--q-or:#e8be6e;--q-em:#4cc7a0;--q-ar:#dfe6ea;--q-ro:#eaa3b8;--q-az:#8fb8ff;--nuit:#03211a;--nuit-haut:#03211a;--or:#e8be6e;--or2:#f7dca0;--or-fonce:#b98d3e;--texte:#f6efe2;--doux:#a3c4b6;--vert:#7fe0ad;--rouge:#ff9c96;--ivoire:#2b1d05;--bord:rgba(232,200,140,.2);--verre:rgba(255,236,200,.055)}
+html[data-theme="vert"] .motif{opacity:.1}html[data-theme="vert"] #haut{display:none!important}html[data-theme="vert"] .ciel circle,html[data-theme="vert"] .scintille{opacity:.4!important}
+html[data-theme="vert"] .marque .lunette svg,html[data-theme="vert"] #e-bienvenue .illu svg,html[data-theme="vert"] #e-bienvenue .heros svg{filter:none;opacity:1}
+html[data-theme="vert"] .btn:not(.sec):not(.danger):not(.secondaire),html[data-theme="vert"] .filtre.actif,html[data-theme="vert"] .jouer,html[data-theme="vert"] .jour-court .jouer{background:linear-gradient(180deg,#f3d48e,#cf9f4a)!important;color:#2b1d05!important}
+html[data-theme="vert"] .btn:not(.sec):not(.danger):not(.secondaire) .ic,html[data-theme="vert"] .filtre.actif *,html[data-theme="vert"] .jouer .ic{color:#2b1d05!important}
+html[data-theme="vert"] .btn.sec,html[data-theme="vert"] .btn.secondaire{color:var(--texte);background:rgba(255,236,200,.06);border-color:rgba(232,200,140,.3);box-shadow:none}html[data-theme="vert"] .btn.danger{color:var(--rouge);background:transparent;box-shadow:none}
+html[data-theme="vert"] .cor-choix.bon{background:rgba(111,215,159,.15)!important;border-color:#7fe0ad!important;color:#d3f7e3!important}html[data-theme="vert"] .cor-choix.bon .ic{color:#7fe0ad!important}
+html[data-theme="vert"] .cor-choix.faux{background:rgba(255,138,138,.13)!important;border-color:#ff9c96!important;color:#ffd9d6!important}
+html[data-theme="vert"] .t-or,html[data-theme="vert"] .t-orange{--c:#e8be6e}html[data-theme="vert"] .t-vert{--c:#7fe0ad}html[data-theme="vert"] .t-azur{--c:#a5c4ff}html[data-theme="vert"] .t-rose{--c:#f2b3c5}html[data-theme="vert"] .t-violet{--c:#cbb9ff}
+html[data-theme="vert"] .pod1 .pod-marche{background:linear-gradient(180deg,#ecc878,#b98d3e)}html[data-theme="vert"] .pod2 .pod-marche{background:linear-gradient(180deg,#e3e3e1,#8d8d8a)}html[data-theme="vert"] .pod3 .pod-marche{background:linear-gradient(180deg,#d49a6a,#8f5a33)}
+html[data-theme="vert"] .choix.sel .lettre{color:#2b1d05!important}html[data-theme="vert"] .pastille-num{color:#1b1405}html[data-theme="vert"] #tuto{background:#03211afa}html[data-theme="vert"] .fam-ronds .avatar{border-color:#03211a}html[data-theme="vert"] .tr-rond::before{opacity:0}
+html[data-theme="vert"] .fam-jour{background:linear-gradient(160deg,#0f5a44,#073a2d);border:1px solid rgba(232,200,140,.3);color:#f6efe2;box-shadow:none}html[data-theme="vert"] .fam-jour #gl-jouer{background:linear-gradient(180deg,#f3d48e,#cf9f4a)!important;color:#2b1d05!important}html[data-theme="vert"] .fam-jour #gl-jouer .ic{color:#2b1d05!important}html[data-theme="vert"] .fam-jour .surtitre{color:#e8be6e}html[data-theme="vert"] .fam-jour.fait .pastille{color:#e8be6e}
+html[data-theme="vert"] .q-wudu,html[data-theme="vert"] .fam-inv{background:rgba(232,200,140,.1)}html[data-theme="vert"] .onglets{background:#03211af2}

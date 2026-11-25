@@ -1,0 +1,193 @@
+/* Darsi : thème cafe. Fichier fabriqué par outils/themes.mjs */
+html[data-theme="cafe"]{--nuit:#211912;--nuit2:#2c2018;--nuit3:#392a1f;--verre:rgba(255,255,255,.045);--bord:rgba(232,190,110,.16);--or:#e8be6e;--or2:#f7dca0;--or-fonce:#b98d3e;--texte:#f3eee2;--doux:#c4b8a3;--vert:#c2ae8d;--rouge:#ec7d7d}
+html[data-theme="cafe"] .ciel{background:radial-gradient(90% 55% at 70% 0%,#594230 0%,rgba(89,66,48,0) 70%),
+             radial-gradient(70% 40% at 10% 10%,#483527 0%,rgba(72,53,39,0) 70%),
+             linear-gradient(180deg,#34271c 0%,var(--nuit) 70%)}
+html[data-theme="cafe"] .motif{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23e8be6e' stroke-width='1'%3E%3Cpath d='M32 10l6.4 15.6L54 32l-15.6 6.4L32 54l-6.4-15.6L10 32l15.6-6.4z'/%3E%3Crect x='19' y='19' width='26' height='26' transform='rotate(45 32 32)'/%3E%3Crect x='19' y='19' width='26' height='26'/%3E%3C/g%3E%3C/svg%3E");mask-image:linear-gradient(rgb(0, 0, 0) 0%, transparent 55%)}
+html[data-theme="cafe"] .pastille{background:linear-gradient(160deg, rgba(232, 190, 110, 0.22), rgba(232, 190, 110, 0.06))}
+html[data-theme="cafe"] .btn{color:rgb(37, 26, 5);box-shadow:rgba(232, 190, 110, 0.55) 0px 10px 30px -10px, rgba(255, 255, 255, 0.5) 0px 1px 0px inset}
+html[data-theme="cafe"] input,html[data-theme="cafe"] select,html[data-theme="cafe"] textarea{background:rgba(33,25,18, 0.6)}
+html[data-theme="cafe"] .jour-du{background:linear-gradient(150deg, rgba(232, 190, 110, 0.16), rgba(255, 255, 255, 0.03) 60%)}
+html[data-theme="cafe"] .case{background:rgba(255, 255, 255, 0.04);border:1px solid rgba(255, 255, 255, 0.06)}
+html[data-theme="cafe"] .case.ok{color:rgb(37, 26, 5)}
+html[data-theme="cafe"] .case.final{background:radial-gradient(circle at 30% 30%, rgb(101,75,54), rgb(51,38,27))}
+html[data-theme="cafe"] .badge .medaillon{background:radial-gradient(circle at 35% 30%, rgba(247, 220, 160, 0.35), rgba(232, 190, 110, 0.08))}
+html[data-theme="cafe"] .badge.non .medaillon{background:rgba(255, 255, 255, 0.03);border:1.5px dashed rgba(255, 255, 255, 0.15);color:rgba(255, 255, 255, 0.25)}
+html[data-theme="cafe"] .lecon p.txt{color:rgb(230, 225, 212)}
+html[data-theme="cafe"] .retenir{background:rgba(232, 190, 110, 0.1)}
+html[data-theme="cafe"] .source{background:rgba(33,25,18, 0.55);border-top:1px solid rgba(255, 255, 255, 0.07);border-right:1px solid rgba(255, 255, 255, 0.07);border-bottom:1px solid rgba(255, 255, 255, 0.07)}
+html[data-theme="cafe"] .ar{color:rgb(251, 243, 221)}
+html[data-theme="cafe"] .tr{color:rgb(217, 212, 199)}
+html[data-theme="cafe"] .barre{background:rgba(255, 255, 255, 0.07)}
+html[data-theme="cafe"] .choix{border:1px solid rgba(255, 255, 255, 0.08)}
+html[data-theme="cafe"] .choix.bon{background:rgba(173,147,102, 0.14)}
+html[data-theme="cafe"] .choix.bon .lettre{color:rgb(33,25,18)}
+html[data-theme="cafe"] .choix.faux{background:rgba(236, 125, 125, 0.12)}
+html[data-theme="cafe"] .choix.faux .lettre{color:rgb(43, 11, 11)}
+html[data-theme="cafe"] .explic{color:rgb(225, 220, 207)}
+html[data-theme="cafe"] .bas{background:linear-gradient(180deg,rgba(33,25,18,0),var(--nuit) 35%)}
+html[data-theme="cafe"] .membre{border-bottom:1px solid rgba(255, 255, 255, 0.06)}
+html[data-theme="cafe"] .avatar{color:rgb(27, 20, 5);box-shadow:rgba(0, 0, 0, 0.15) 0px -3px 0px inset}
+html[data-theme="cafe"] .puce{background:rgba(255, 255, 255, 0.05)}
+html[data-theme="cafe"] .ligne-theme{border-bottom:1px solid rgba(255, 255, 255, 0.06)}
+html[data-theme="cafe"] .ligne-lecon{border:1px solid rgba(255, 255, 255, 0.08)}
+html[data-theme="cafe"] .ligne-lecon.fait .num{color:rgb(37, 26, 5)}
+html[data-theme="cafe"] .ligne-lecon.verrou .num{border-color:rgba(255, 255, 255, 0.2)}
+html[data-theme="cafe"] .ramadan-grand{background:linear-gradient(150deg, rgba(232, 190, 110, 0.22), rgba(77,57,41, 0.5) 70%);border-color:rgba(232, 190, 110, 0.4)}
+html[data-theme="cafe"][dir="rtl"] .source{border-left:1px solid rgba(255, 255, 255, 0.07)}
+html[data-theme="cafe"] .frise{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='12' viewBox='0 0 24 12'%3E%3Cg fill='none' stroke='%23e8be6e' stroke-width='1'%3E%3Cpath d='M12 1.5l1.5 3 3 1.5-3 1.5-1.5 3-1.5-3-3-1.5 3-1.5z'/%3E%3Cpath d='M0 6h7.5M16.5 6H24'/%3E%3C/g%3E%3C/svg%3E") center center / 24px 12px repeat-x}
+html[data-theme="cafe"] .pliable::after{background:linear-gradient(rgba(39,28,21, 0), rgb(39,28,21))}
+html[data-theme="cafe"] .avis{background:rgba(232, 190, 110, 0.1);border:1px solid rgba(232, 190, 110, 0.3)}
+html[data-theme="cafe"] .tag-expert{color:rgb(37, 26, 5)}
+html[data-theme="cafe"] .choix.sel{background:rgba(232, 190, 110, 0.12)}
+html[data-theme="cafe"] .choix.sel .lettre{color:rgb(37, 26, 5)}
+html[data-theme="cafe"] .btn.danger{border:1px solid rgba(236, 125, 125, 0.5)}
+html[data-theme="cafe"] .doc p{color:rgb(225, 220, 207)}
+html[data-theme="cafe"] .decompte{background:linear-gradient(150deg, rgba(232, 190, 110, 0.24), rgba(77,57,41, 0.55) 70%);border-color:rgba(232, 190, 110, 0.45)}
+html[data-theme="cafe"] .compteur-ram b{text-shadow:rgba(247, 220, 160, 0.35) 0px 0px 26px}
+html[data-theme="cafe"] .filtre.actif{color:rgb(37, 26, 5)}
+html[data-theme="cafe"] .cor-choix.bon{background:rgba(194,174,141, 0.12);border-color:rgba(194,174,141, 0.45)}
+html[data-theme="cafe"] .cor-choix.faux{background:rgba(236, 125, 125, 0.1);border-color:rgba(236, 125, 125, 0.45)}
+html[data-theme="cafe"] .prochain{background:linear-gradient(150deg, rgba(232, 190, 110, 0.22), rgba(77,57,41, 0.55) 70%);border-color:rgba(232, 190, 110, 0.45)}
+html[data-theme="cafe"] .evt{border-bottom:1px solid rgba(255, 255, 255, 0.06)}
+html[data-theme="cafe"] .evt-date{background:linear-gradient(160deg, rgba(232, 190, 110, 0.22), rgba(232, 190, 110, 0.06))}
+html[data-theme="cafe"] .t-jeune{border-color:rgba(194,174,141, 0.5)}
+html[data-theme="cafe"] .t-fete{color:rgb(37, 26, 5)}
+html[data-theme="cafe"] .t-interdit{border-color:rgba(236, 125, 125, 0.5)}
+html[data-theme="cafe"] .t-repere{border-color:rgba(255, 255, 255, 0.15)}
+html[data-theme="cafe"] .onglets{background:rgba(33,25,18, 0.86)}
+html[data-theme="cafe"] .onglet.actif .ic{filter:drop-shadow(rgba(247, 220, 160, 0.45) 0px 0px 8px)}
+html[data-theme="cafe"] .bandeau{border:1px solid rgba(232, 190, 110, 0.4);background:linear-gradient(120deg, rgba(232, 190, 110, 0.2), rgba(77,57,41, 0.45) 70%)}
+html[data-theme="cafe"] .bd-pilule{background:rgba(33,25,18, 0.5)}
+html[data-theme="cafe"] .cadran-svg .anneau{fill:rgba(33,25,18, 0.55)}
+html[data-theme="cafe"] .boussole-carte.aligne{box-shadow:rgba(194,174,141, 0.6) 0px 0px 30px -8px}
+html[data-theme="cafe"] .decompte2{background:linear-gradient(150deg, rgba(232, 190, 110, 0.24), rgba(77,57,41, 0.55) 70%);border-color:rgba(232, 190, 110, 0.45)}
+html[data-theme="cafe"] .carre{background:linear-gradient(160deg, rgba(247, 220, 160, 0.22), rgba(33,25,18, 0.6));box-shadow:rgba(232, 190, 110, 0.5) 0px 12px 30px -12px}
+html[data-theme="cafe"] .carre b{text-shadow:rgba(247, 220, 160, 0.35) 0px 0px 24px}
+html[data-theme="cafe"] .mini-carre.m-jeune{border-color:rgba(194,174,141, 0.45)}
+html[data-theme="cafe"] .mini-carre.m-interdit{border-color:rgba(236, 125, 125, 0.45)}
+html[data-theme="cafe"] .cadran-svg .anneau{fill:rgba(33,25,18, 0.55)}
+html[data-theme="cafe"] .cadran-svg .anneau-fin{fill:rgba(33,25,18, 0.35)}
+html[data-theme="cafe"] .cadran-svg .etoile-g{fill:rgba(255, 255, 255, 0.03)}
+html[data-theme="cafe"] .liste-langues{background:rgba(39,28,21, 0.97);box-shadow:rgba(0, 0, 0, 0.6) 0px 20px 50px -10px}
+html[data-theme="cafe"] .liste-langues button.sel{background:rgba(232, 190, 110, 0.12)}
+html[data-theme="cafe"] .bd-priere{background:rgba(33,25,18, 0.55);border:1px solid rgba(232, 190, 110, 0.2)}
+html[data-theme="cafe"] .bd-grille .proch span,html[data-theme="cafe"] .bd-grille .proch b{color:rgb(37, 26, 5)}
+html[data-theme="cafe"] .bd-sans-lieu{background:rgba(33,25,18, 0.5)}
+html[data-theme="cafe"] .recherche{background:rgba(33,25,18, 0.6)}
+html[data-theme="cafe"] .inv-grille .tuile{border:1px solid rgba(255, 255, 255, 0.07)}
+html[data-theme="cafe"] .inv-grille .tuile-ic{background:linear-gradient(160deg, rgba(232, 190, 110, 0.2), rgba(232, 190, 110, 0.05))}
+html[data-theme="cafe"] .inv-liste .tuile{border-bottom:1px solid rgba(255, 255, 255, 0.06)}
+html[data-theme="cafe"] .inv-liste .tuile-ic{background:rgba(232, 190, 110, 0.1)}
+html[data-theme="cafe"] .fav{color:rgba(255, 255, 255, 0.35)}
+html[data-theme="cafe"] .rosace polygon{fill:rgba(232, 190, 110, 0.08)}
+html[data-theme="cafe"] .jour-court{background:linear-gradient(150deg, rgba(232, 190, 110, 0.18), rgba(255, 255, 255, 0.03) 60%)}
+html[data-theme="cafe"] .jouer{color:rgb(37, 26, 5);box-shadow:rgba(232, 190, 110, 0.7) 0px 8px 22px -8px}
+html[data-theme="cafe"] .tuile-ic{border:1px solid rgba(255, 255, 255, 0.08)}
+html[data-theme="cafe"] .t-or{--c:#e8be6e}
+html[data-theme="cafe"] .t-vert{--c:#c2ae8d}
+html[data-theme="cafe"] .t-azur{--c:#8fb8ff}
+html[data-theme="cafe"] .t-rose{--c:#eaa3b8}
+html[data-theme="cafe"] .t-violet{--c:#b9a2ff}
+html[data-theme="cafe"] .t-orange{--c:#f3a96b}
+html[data-theme="cafe"] .pastille-num{color:rgb(27, 20, 5)}
+html[data-theme="cafe"] .jour{background:rgba(255, 255, 255, 0.035)}
+html[data-theme="cafe"] .jour.c-blanc{background:rgb(251, 248, 240);color:rgb(51,41,33);box-shadow:rgba(255, 255, 255, 0.55) 0px 0px 14px -4px}
+html[data-theme="cafe"] .jour.c-blanc span{color:rgb(115,106,98)}
+html[data-theme="cafe"] .jour.c-fete{color:rgb(37, 26, 5)}
+html[data-theme="cafe"] .jour.c-fete span{color:rgb(91, 69, 21)}
+html[data-theme="cafe"] .jour.c-jeune{background:rgba(194,174,141, 0.1)}
+html[data-theme="cafe"] .jour.c-interdit{background:rgba(236, 125, 125, 0.1)}
+html[data-theme="cafe"] .jour.c-periode{background:rgba(232, 190, 110, 0.14)}
+html[data-theme="cafe"] .jour.c-repere{border-color:rgba(255, 255, 255, 0.25)}
+html[data-theme="cafe"] .legende-cal i{background:rgba(255, 255, 255, 0.05)}
+html[data-theme="cafe"] .legende-cal i.c-blanc{background:rgb(251, 248, 240)}
+html[data-theme="cafe"] .legende-cal i.c-periode{background:rgba(232, 190, 110, 0.3)}
+html[data-theme="cafe"] .evt-jour{border-top:1px solid rgba(255, 255, 255, 0.06)}
+html[data-theme="cafe"] .bd-grille div{background:rgba(255, 255, 255, 0.04)}
+html[data-theme="cafe"] .bd-grille span{color:rgb(224,218,207)}
+html[data-theme="cafe"] .rep-boite{border-top:1px solid rgba(255, 255, 255, 0.06)}
+html[data-theme="cafe"] .reponse-imam{background:rgba(232, 190, 110, 0.07)}
+html[data-theme="cafe"] .etat-attente{border-color:rgba(196,184,163, 0.4)}
+html[data-theme="cafe"] .etat-repondue{border-color:rgba(194,174,141, 0.45)}
+html[data-theme="cafe"] .etat-refusee{border-color:rgba(236, 125, 125, 0.45)}
+html[data-theme="cafe"] .notif{box-shadow:rgba(0, 0, 0, 0.4) 0px 12px 30px}
+html[data-theme="cafe"] #intro{background:rgb(0, 0, 0)}
+html[data-theme="cafe"] #intro video{background:rgb(0, 0, 0)}
+html[data-theme="cafe"] #intro .op-skip{color:rgba(255, 255, 255, 0.45)}
+html[data-theme="cafe"] .boussole-zone.aligne{box-shadow:rgba(194,174,141, 0.55) 0px 0px 44px -6px}
+html[data-theme="cafe"] .q-styles .vignette{border:2px solid rgba(255, 255, 255, 0.12)}
+html[data-theme="cafe"] .cadran-svg .mihrab{fill:rgba(33,25,18, 0.75)}
+html[data-theme="cafe"] .cadran-svg .ciel-nuit{fill:rgb(6, 20, 46)}
+html[data-theme="cafe"] .cadran-svg .etoile-ciel{fill:rgb(255, 255, 255)}
+html[data-theme="cafe"] .cadran-svg .zel{stroke:rgba(0, 0, 0, 0.25)}
+html[data-theme="cafe"] .cadran-svg .zel.z1{fill:rgb(109,81,59)}
+html[data-theme="cafe"] .cadran-svg .zel.z2{fill:rgb(233, 226, 207)}
+html[data-theme="cafe"].leger .carte{background:rgba(50,37,27, 0.94)}
+html[data-theme="cafe"].leger .onglets{background:rgba(31,23,17, 0.98)}
+html[data-theme="cafe"] #e-qibla .boussole-zone.aligne .cadran{box-shadow:rgba(194,174,141, 0.55) 0px 0px 44px -6px}
+html[data-theme="cafe"] .q-diag{background:rgba(0, 0, 0, 0.45);color:rgb(219,208,189)}
+html[data-theme="cafe"] .pwa-banniere{box-shadow:rgba(0, 0, 0, 0.45) 0px 14px 34px}
+html[data-theme="cafe"] .logo-darsi{filter:drop-shadow(rgba(0, 0, 0, 0.35) 0px 6px 18px)}
+html[data-theme="cafe"] #toast{background:rgb(63,47,34)}
+html[data-theme="cafe"] .fil-obj{background:rgba(255, 255, 255, 0.1)}
+html[data-theme="cafe"] .fc-in{background:linear-gradient(165deg, rgba(89,66,48, 0.5), rgba(44,32,24, 0.92));box-shadow:rgba(0, 0, 0, 0.3) 0px 18px 40px}
+html[data-theme="cafe"] .k-retenir .fc-in{background:linear-gradient(165deg, rgba(185, 141, 62, 0.38), rgba(44,32,24, 0.94))}
+html[data-theme="cafe"] .k-eclair .fc-in,html[data-theme="cafe"] .k-revoir .fc-in{background:linear-gradient(165deg, rgba(80, 110, 200, 0.32), rgba(44,32,24, 0.94))}
+html[data-theme="cafe"] .k-vf .fc-in{background:linear-gradient(165deg, rgba(200, 90, 130, 0.28), rgba(44,32,24, 0.94))}
+html[data-theme="cafe"] .k-verset .fc-in,html[data-theme="cafe"] .k-inv .fc-in{background:linear-gradient(rgba(33,25,18, 0.96), rgba(57,42,31, 0.96));border-color:rgba(232, 190, 110, 0.4)}
+html[data-theme="cafe"] .k-rappel .fc-in{background:radial-gradient(120% 80% at 50% 0%, rgba(232, 190, 110, 0.32), rgba(44,32,24, 0.96) 70%)}
+html[data-theme="cafe"] .fc-tag{background:rgba(232, 190, 110, 0.14)}
+html[data-theme="cafe"] .fc-partage{background:rgba(255, 255, 255, 0.06)}
+html[data-theme="cafe"] .vf-prop{background:rgba(232, 190, 110, 0.07)}
+html[data-theme="cafe"] .paire-r{background:rgba(232, 190, 110, 0.1)}
+html[data-theme="cafe"] .ch-tout{stroke:rgba(232, 190, 110, 0.22)}
+html[data-theme="cafe"] .ch-etape{border:2px solid rgba(232, 190, 110, 0.35)}
+html[data-theme="cafe"] .ch-etape.faite{color:rgb(42, 28, 4)}
+html[data-theme="cafe"] .ch-etape.courante{border-color:rgb(255, 255, 255);color:rgb(33,25,18);box-shadow:rgba(194,174,141, 0.6) 0px 0px 0px 0px}
+html[data-theme="cafe"] .ch-bulle{background:rgb(63,47,34)}
+html[data-theme="cafe"] .balayable[data-etiquette]:not([data-etiquette=""])::after{background:rgba(33,25,18, 0.85)}
+html[data-theme="cafe"] .vf-carte{background:linear-gradient(165deg, rgba(200, 90, 130, 0.22), rgba(44,32,24, 0.94));box-shadow:rgba(0, 0, 0, 0.25) 0px 14px 30px}
+html[data-theme="cafe"] .ft-niv{color:rgb(37, 26, 5)}
+html[data-theme="cafe"] .ft-barre{background:rgba(255, 255, 255, 0.1)}
+html[data-theme="cafe"] .gain-vol{text-shadow:rgba(0, 0, 0, 0.5) 0px 2px 10px}
+html[data-theme="cafe"] .combo{color:rgb(37, 26, 5)}
+html[data-theme="cafe"] .combo.c4,html[data-theme="cafe"] .combo.c5{background:linear-gradient(rgb(255, 211, 138), rgb(242, 160, 102))}
+html[data-theme="cafe"] .combo.c6{background:linear-gradient(rgb(255, 176, 160), rgb(236, 125, 125));color:rgb(255, 255, 255)}
+html[data-theme="cafe"] .niveau-up{background:rgba(33,25,18, 0.72)}
+html[data-theme="cafe"] .niveau-up > div{background:radial-gradient(120% 90% at 50% 0%, rgba(232, 190, 110, 0.45), rgb(57,42,31) 70%)}
+html[data-theme="cafe"] .k-perle .fc-in{background:radial-gradient(130% 90% at 50% 0%, rgba(247, 220, 160, 0.5), rgba(185, 141, 62, 0.25) 40%, rgba(44,32,24, 0.96) 75%);box-shadow:rgba(247, 220, 160, 0.25) 0px 0px 40px, rgba(0, 0, 0, 0.3) 0px 18px 40px}
+html[data-theme="cafe"] .k-perle .fc-tag{color:rgb(37, 26, 5)}
+html[data-theme="cafe"] .nv-rond{background:linear-gradient(160deg, rgba(247, 220, 160, 0.2), rgba(185, 141, 62, 0.08))}
+html[data-theme="cafe"] dialog.sig{background:rgb(40,30,22)}
+html[data-theme="cafe"] dialog.sig::backdrop{background:rgba(0, 0, 0, 0.65)}
+html[data-theme="cafe"] .sig select,html[data-theme="cafe"] .sig textarea{background:rgb(33,25,18)}
+html[data-theme="cafe"] dialog.pf{background:rgb(40,30,22)}
+html[data-theme="cafe"] dialog.pf::backdrop{background:rgba(0, 0, 0, 0.75)}
+html[data-theme="cafe"] .pf canvas{box-shadow:rgba(0, 0, 0, 0.5) 0px 10px 30px}
+html[data-theme="cafe"] .pf-formats .on{color:rgb(37, 26, 5)}
+html[data-theme="cafe"] .pf-fonds button{background:linear-gradient(160deg, rgb(89,66,48), rgb(33,25,18))}
+html[data-theme="cafe"] .pf-parts .on{background:rgba(232, 190, 110, 0.12)}
+html[data-theme="cafe"] .pf-teintes button{border:2px solid rgba(255, 255, 255, 0.25)}
+html[data-theme="cafe"] .pf-teintes .on{box-shadow:rgba(247, 220, 160, 0.35) 0px 0px 0px 2px}
+html[data-theme="cafe"] .fc-tete .fc-partage{background:rgba(33,25,18, 0.75)}
+html[data-theme="cafe"] #tirer.pret .tr-etoile{filter:drop-shadow(rgba(232, 190, 110, 0.75) 0px 0px 5px)}
+html[data-theme="cafe"] .pod-haut .avatar.grand{box-shadow:0 0 0 3px var(--or),0 0 26px rgba(232,190,110,.45)}
+html[data-theme="cafe"] .pod1 .pod-marche{background:linear-gradient(rgb(232, 190, 110), rgb(141, 106, 44));color:rgb(43, 29, 5)}
+html[data-theme="cafe"] .pod2 .pod-marche{background:linear-gradient(rgb(211,207,201), rgb(131,114,102));color:rgb(45,33,24)}
+html[data-theme="cafe"] .pod3 .pod-marche{background:linear-gradient(rgb(201, 141, 91), rgb(110, 69, 38));color:rgb(37, 20, 10)}
+html[data-theme="cafe"] #tuto{background:rgba(27,20,14, 0.97)}
+
+html[data-theme="cafe"]{color-scheme:dark;--j0:#f7dca0;--j1:#fbe7b8;--j2:#e8be6e;--j3:#a87a2e;--j4:#281e16;--j5:#211912;--q-or:#e8be6e;--q-em:#4cc7a0;--q-ar:#dfe6ea;--q-ro:#eaa3b8;--q-az:#8fb8ff;--nuit:#1b130d;--nuit-haut:#150e09;--or:#e8be6e;--or2:#f7dca0;--or-fonce:#b98d3e;--texte:#f6efe2;--doux:#c4b5a5;--vert:#7fe0ad;--rouge:#ff9c96;--ivoire:#2b1d05;--bord:rgba(232,200,140,.2);--verre:rgba(255,236,200,.055)}
+html[data-theme="cafe"] .motif{opacity:.1}html[data-theme="cafe"] #haut{display:none!important}html[data-theme="cafe"] .ciel circle,html[data-theme="cafe"] .scintille{opacity:.4!important}
+html[data-theme="cafe"] .marque .lunette svg,html[data-theme="cafe"] #e-bienvenue .illu svg,html[data-theme="cafe"] #e-bienvenue .heros svg{filter:none;opacity:1}
+html[data-theme="cafe"] .btn:not(.sec):not(.danger):not(.secondaire),html[data-theme="cafe"] .filtre.actif,html[data-theme="cafe"] .jouer,html[data-theme="cafe"] .jour-court .jouer{background:linear-gradient(180deg,#f3d48e,#cf9f4a)!important;color:#2b1d05!important}
+html[data-theme="cafe"] .btn:not(.sec):not(.danger):not(.secondaire) .ic,html[data-theme="cafe"] .filtre.actif *,html[data-theme="cafe"] .jouer .ic{color:#2b1d05!important}
+html[data-theme="cafe"] .btn.sec,html[data-theme="cafe"] .btn.secondaire{color:var(--texte);background:rgba(255,236,200,.06);border-color:rgba(232,200,140,.3);box-shadow:none}html[data-theme="cafe"] .btn.danger{color:var(--rouge);background:transparent;box-shadow:none}
+html[data-theme="cafe"] .cor-choix.bon{background:rgba(111,215,159,.15)!important;border-color:#7fe0ad!important;color:#d3f7e3!important}html[data-theme="cafe"] .cor-choix.bon .ic{color:#7fe0ad!important}
+html[data-theme="cafe"] .cor-choix.faux{background:rgba(255,138,138,.13)!important;border-color:#ff9c96!important;color:#ffd9d6!important}
+html[data-theme="cafe"] .t-or,html[data-theme="cafe"] .t-orange{--c:#e8be6e}html[data-theme="cafe"] .t-vert{--c:#7fe0ad}html[data-theme="cafe"] .t-azur{--c:#a5c4ff}html[data-theme="cafe"] .t-rose{--c:#f2b3c5}html[data-theme="cafe"] .t-violet{--c:#cbb9ff}
+html[data-theme="cafe"] .pod1 .pod-marche{background:linear-gradient(180deg,#ecc878,#b98d3e)}html[data-theme="cafe"] .pod2 .pod-marche{background:linear-gradient(180deg,#e3e3e1,#8d8d8a)}html[data-theme="cafe"] .pod3 .pod-marche{background:linear-gradient(180deg,#d49a6a,#8f5a33)}
+html[data-theme="cafe"] .choix.sel .lettre{color:#2b1d05!important}html[data-theme="cafe"] .pastille-num{color:#1b1405}html[data-theme="cafe"] #tuto{background:#1b130dfa}html[data-theme="cafe"] .fam-ronds .avatar{border-color:#1b130d}html[data-theme="cafe"] .tr-rond::before{opacity:0}
+html[data-theme="cafe"] .fam-jour{background:linear-gradient(160deg,#4a3624,#2d2015);border:1px solid rgba(232,200,140,.3);color:#f6efe2;box-shadow:none}html[data-theme="cafe"] .fam-jour #gl-jouer{background:linear-gradient(180deg,#f3d48e,#cf9f4a)!important;color:#2b1d05!important}html[data-theme="cafe"] .fam-jour #gl-jouer .ic{color:#2b1d05!important}html[data-theme="cafe"] .fam-jour .surtitre{color:#e8be6e}html[data-theme="cafe"] .fam-jour.fait .pastille{color:#e8be6e}
+html[data-theme="cafe"] .q-wudu,html[data-theme="cafe"] .fam-inv{background:rgba(232,200,140,.1)}html[data-theme="cafe"] .onglets{background:#150e09f2}
