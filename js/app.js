@@ -135,13 +135,14 @@ function changerLangue(code){S.langue=code;FIL.n=0;$('e-decouvrir').innerHTML=''
 
 /* ---------- Bienvenue ---------- */
 function dessinerBienvenue(){
-  $('e-bienvenue').innerHTML=`<div class="haut-droite">${menuLangues()}</div>
-    <div class="heros">${heros(104)}</div>   <!-- 2026-11-20 : plus petit, pour que toute la page tienne à l'écran -->
+  const saisi=$('prenom')?$('prenom').value:'';   // changer de langue ne doit pas effacer le prénom tapé
+  $('e-bienvenue').innerHTML=`<div class="heros">${heros(104)}</div>   <!-- 2026-11-20 : plus petit, pour que toute la page tienne à l'écran -->
     <h1 class="logo-titre"><img src="pwa/logo-darsi.png" alt="${NOM_APP} — درسي" class="logo-darsi"></h1>   <!-- logo Grok, arabe corrigé (identite/) -->
     <p class="doux" style="text-align:center;margin-top:8px;line-height:1.6">${t('sousTitre')}</p>
     <div class="carte etapes">${[['livre','e1t','e1s'],['cible','e2t','e2s'],['famille','e3t','e3s'],['lanterne','e4t','e4s']]
       .map(x=>`<div class="etape"><div class="pastille">${ic(x[0])}</div><div><b>${t(x[1])}</b><span>${t(x[2])}</span></div></div>`).join('')}</div>
-    <input id="prenom" placeholder="${t('prenom')}" maxlength="20" autocomplete="off">
+    <div class="langue-bienvenue">${selecteurLangue()}</div>   <!-- 2026-11-25 : la langue se choisit ici puis dans Paramètres, plus sur l'accueil -->
+    <input id="prenom" placeholder="${t('prenom')}" maxlength="20" autocomplete="off" value="${esc(saisi)}">
     <button class="btn" onclick="commencer()">${t('commencer')}</button>`;
   $('prenom').addEventListener('keydown',e=>{if(e.key==='Enter')commencer()});
   aller('bienvenue');
@@ -174,7 +175,7 @@ function dessinerAccueil(){
   const R=ramadanCourant();
   let h=`<div class="marque"><h1><img src="pwa/logo-darsi.png" alt="${NOM_APP} — درسي" class="logo-darsi petit"></h1><span class="lunette">${illuLune(46)}</span></div>
     <div class="ligne-salam"><div class="salam">${esc(S.prenom?t('salam',{n:S.prenom}):t('salamSeul'))}</div>
-      <div class="entete-boutons">${menuLangues()}<button class="rond" onclick="ouvrirParametres()" aria-label="${t('parametres')}">${ic('reglages')}</button></div></div>`+bandeau();
+      <div class="entete-boutons"><button class="rond" onclick="ouvrirParametres()" aria-label="${t('parametres')}">${ic('reglages')}</button></div></div>`+bandeau();
   if(R&&(R.etat==='pendant'||R.etat==='fini')){
     const D=ramDonnees(R.an),nbJ=Object.keys(D.jours).length;
     h+=`<div class="carte ramadan-grand"><div class="illu">${moucharabieh(150)}</div>

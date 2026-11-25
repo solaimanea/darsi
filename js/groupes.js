@@ -63,16 +63,22 @@ function glValider(mode){return glFaire('entrer',async()=>{
 // Accès secret = le jeton de ce téléphone. Jamais dans une adresse web ni dans l'invitation.
 function glRetrouver(){return glFaire('retrouver',async()=>{
   const j=$('gl-acces').value.replace(/[^0-9a-fA-F-]/g,'').toLowerCase();
-  let g;try{g=await rpc('dz_g_voir',{p_jeton:j})}catch(e){if(e.code==='jeton')e.code='acces';throw e}
+  let g;try{g=await rpcJour('dz_g_voir',{p_jeton:j})}catch(e){if(e.code==='jeton')e.code='acces';throw e}
   S.gl={jeton:j,code:g.code,joue:null,attente:null};delete S.invite;sauver();await glVoir();
 })}
 function glCopierAcces(){const j=S.gl.jeton;(navigator.clipboard?navigator.clipboard.writeText(j):Promise.reject()).then(()=>toast(t('gl_accesCopie')),()=>prompt(t('gl_copierAcces'),j))}
 let GL=null;
+/* 2026-11-25 : jour LOCAL de chaque joueur (tous les fuseaux). Serveur pas encore à jour (serveur/fuseaux.sql) : jour de Paris, comme avant. */
+let GL_LOCAL=false;
+async function rpcJour(fn,args,jour){
+  try{const r=await rpc(fn,{...args,p_jour:jour||dateCle()});GL_LOCAL=true;return r}
+  catch(e){if(!/Could not find the function/.test(e.code||''))throw e;GL_LOCAL=false;return rpc(fn,args)}
+}
 function voirGroupe(){return glFaire('voir',glVoir)}
 function glHorsLigne(){if(GL){const i=$('fam-info');if(i)i.textContent=t('gl_vieux')}else $('e-famille').innerHTML=`<div class="fam-charge">${ic('globe','lg')}<p class="doux">${t('gl_e_hors_ligne')}</p><button class="btn sec" onclick="voirGroupe()">${t('gl_reessayer')}</button></div>`}
 async function glVoir(){
   await glEnvoyer();
-  GL=await rpc('dz_g_voir',{p_jeton:S.gl.jeton});
+  GL=await rpcJour('dz_g_voir',{p_jeton:S.gl.jeton});
   S.gl.code=GL.code;S.gl.nom=GL.nom;
   FQ=await rpc('dz_g_q_liste',{p_jeton:S.gl.jeton}).catch(()=>FQ);
   const moi=GL.membres.find(m=>m.id===GL.moi);if(moi&&moi.jour!==null)S.gl.joue=GL.jour;
@@ -178,7 +184,8 @@ function tutoQuiz(local,nb,go){
 const _lancerDefi=lancerDefi;
 lancerDefi=function(){if(S.groupe.membres.length<2)return _lancerDefi();tutoQuiz(true,NB_DEFI,_lancerDefi)};
 function glJouer(){return glFaire('jouer',async()=>{
-  const u=await rpc('dz_g_quiz',{p_jeton:S.gl.jeton,p_uids:glProposer()}),tout=new Map(LECONS.flatMap(l=>questionsDe(l.id)).map(q=>[q.uid,q])),qs=u.map(x=>tout.get(x));
+  if(!GL||GL_LOCAL&&GL.jour!==dateCle()||!GL_LOCAL&&GL.jour!==glJourParis()){await glVoir();if(S.gl.joue===GL.jour)return}   // écran resté ouvert après minuit
+  const u=await rpcJour('dz_g_quiz',{p_jeton:S.gl.jeton,p_uids:glProposer()},GL.jour),tout=new Map(LECONS.flatMap(l=>questionsDe(l.id)).map(q=>[q.uid,q])),qs=u.map(x=>tout.get(x));
   if(qs.some(q=>!q)){const e=new Error('maj');e.code='maj';throw e}
   const jour=GL.jour,nom=GL.nom;
   tutoQuiz(false,qs.length,()=>{
@@ -192,13 +199,13 @@ const _finir=finir;
 finir=function(){
   if(CTX.mode!=='groupe')return _finir();
   $('q-barre').style.width='100%';REP.forEach(x=>{noterErreur(x.q,x.juste);vue(x.q)});
-  S.gl.attente={jour:CTX.jour,bonnes,ms:Math.round(S.gl.debut&&S.gl.debut.jour===CTX.jour?Math.max(CHRONO_MS,Date.now()-S.gl.debut.t):CHRONO_MS)};S.gl.joue=CTX.jour;S.points+=PTS*POINTS_BONNE+activite();sauver();
+  S.gl.attente={jour:CTX.jour,loc:GL_LOCAL,bonnes,ms:Math.round(S.gl.debut&&S.gl.debut.jour===CTX.jour?Math.max(CHRONO_MS,Date.now()-S.gl.debut.t):CHRONO_MS)};S.gl.joue=CTX.jour;S.points+=PTS*POINTS_BONNE+activite();sauver();
   montrerResultat(bonnes,TOT,bonnes===TOT?t('resParfait'):bonnes>=TOT/2?t('resBravo'):t('resProgres'),'','ouvrirGroupes()',REP);
   // score envoyé → podium du groupe ; sans réseau, on reste sur le résultat et le score partira plus tard
   glVoirFin();
 };
 async function glVoirFin(){
-  try{await glEnvoyer();const g=await rpc('dz_g_voir',{p_jeton:S.gl.jeton});
+  try{await glEnvoyer();const g=await rpcJour('dz_g_voir',{p_jeton:S.gl.jeton});
     if(!$('e-resultat').classList.contains('actif'))return;   // déjà parti ailleurs
     GL=g;S.gl.code=g.code;S.gl.nom=g.nom;S.gl.vue=g;sauver();GL_FIN=true;GL_TRI='jour';glDessiner();aller('famille');pluie();vibrer([20,60,20]);
   }catch(e){if(e.code==='jeton'){S.gl=null;GL=null;FQ=null;sauver();glErreur(e)}else toast(t('gl_enAttente'))}
@@ -214,16 +221,17 @@ classement=function(){
   const h=$('e-classement').querySelector('.heros');if(h)h.remove();
   $('e-classement').querySelector('h2').insertAdjacentHTML('beforebegin',`<div class="arrivee">${podiumHTML(L,NB_DEFI)}</div>`);
 };
-// Un score ne part que le jour même (heure de Paris, comme le serveur) : jamais compté pour un autre jour.
+// Un score est toujours compté pour le jour où le quiz a été joué (jour local ; jour de Paris tant que le serveur n'est pas à jour).
 const glJourParis=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Paris',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
 let GL_ENVOI=null;
 function glEnvoyer(){return GL_ENVOI||(GL_ENVOI=glEnvoi().finally(()=>{GL_ENVOI=null}))}
 async function glEnvoi(){
   const a=S.gl&&S.gl.attente;if(!a)return;
-  if(a.jour!==glJourParis()){S.gl.attente=null;sauver();toast(t('gl_perdu'));return}
+  if(!a.loc&&a.jour!==glJourParis()){S.gl.attente=null;sauver();toast(t('gl_perdu'));return}
   const base={p_jeton:S.gl.jeton,p_bonnes:a.bonnes};let ok;
-  try{ok=await rpc('dz_g_score',{...base,p_ms:a.ms||null})}
-  catch(e){if(!/Could not find the function/.test(e.code||''))throw e;ok=await rpc('dz_g_score',base)}   // serveur pas encore à jour
+  try{ok=await rpc('dz_g_score',a.loc?{...base,p_ms:a.ms||null,p_jour:a.jour}:{...base,p_ms:a.ms||null})}
+  catch(e){if(e.code==='date'){S.gl.attente=null;sauver();toast(t('gl_perdu'));return}   // jour trop ancien : fini partout sur Terre
+    if(!/Could not find the function/.test(e.code||''))throw e;ok=await rpc('dz_g_score',base)}   // serveur pas encore à jour
   if(S.gl){S.gl.attente=null;sauver()}toast(t(ok?'gl_envoye':'gl_dejaEnvoye'));
 }
 addEventListener('online',()=>{glEnvoyer().catch(()=>{})});

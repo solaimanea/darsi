@@ -1091,3 +1091,13 @@ body:has(#e-bienvenue.actif) #haut{display:block;height:calc(var(--st) + 430px);
 /* couleurs des dessins SVG et de la Qibla, thème sable */
 :root{--j0:#a94e2d;--j1:#37221b;--j2:#a94e2d;--j3:#a87a2e;--j4:#f0e5da;--j5:#f1e8de;--q-or:#a94e2d;--q-em:#2a7a4b;--q-ar:#7f8c93;--q-ro:#b84a72;--q-az:#3f74b8}
 html:not([data-theme]) .tag-expert{color:#fff4e6;background:#8f3a20}
+
+/* 2026-11-25 : choix de la langue sur l'écran de bienvenue */
+.langue-bienvenue{display:flex;margin-top:0}
+.langue-bienvenue .langue{flex:1;padding:6px 14px;border-radius:14px}
+.langue-bienvenue .langue select{flex:1;font-size:16px;padding:8px 6px}
+.langue-bienvenue+input{margin-top:10px}
+.rs-inter{flex:none;width:46px;height:27px;border-radius:14px;background:rgba(128,110,100,.35);position:relative;transition:background .2s}
+.rs-inter i{position:absolute;top:3px;left:3px;width:21px;height:21px;border-radius:50%;background:#fff;transition:transform .2s}
+.rs-inter.oui{background:#2f8f5b}
+.rs-inter.oui i{transform:translateX(19px)}
